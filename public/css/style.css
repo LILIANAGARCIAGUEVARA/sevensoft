@@ -1,0 +1,520 @@
+html, body {
+  height: 100%;
+  width: 100%;
+    background-color: aliceblue;
+}
+
+
+/* Header Parallax Element Style*/ 
+.paral {
+    min-height: 700px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.paral2 {
+    min-height: 900px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.paralSeccion3 {
+    min-height: 400px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+
+.paralSeccion4 {
+    min-height: 1000px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.paralSeccion5 {
+    min-height: 500px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+
+
+/* Paragrapgh for Parallax Section */ 
+.paral p {
+    font-size: 25px;
+    font-style: oblique ;
+    color:antiquewhite;
+    text-align: left;
+    line-height: 30px;
+    font-weight: bold;
+    
+}
+
+#lead2 {
+    font-size: 20px bold;
+    font-style: oblique;
+    color:black;
+    text-align: center;
+    line-height: 30px;
+    
+}
+ 
+/* Encabezado para la sección de paralaje */
+.paral h1 {
+    color: #FFFFFF;
+    font-size: 70px;
+    text-align: left;
+    padding-top: 60px;
+    line-height: 100px;}
+ 
+#paral {
+    color: black;
+    font-size: 70px;
+    text-align: center;
+    padding-top: 10px;
+    line-height: 90px;}
+
+/* Imagen para la sección de paralaje */ 
+.paralImgsec {
+    background-image: url("../fondos/principal.jpg");}
+.paralImgsec0 {
+    background-color: aliceblue;}
+ 
+.paralImgsec1 {
+    background-image: url("../fondos/gente2.jpg");
+    width: 60%;
+    height: 40%;
+    float: right;}
+ 
+.paralImgsec2 {
+    background-color: aliceblue;
+    width: 50%;
+    height: 50%;}
+
+.paralImgsec3{
+    margin-top: 250px;
+    background-color: aliceblue;}
+
+.paralImgsec4{
+    background-image: url("../fondos/technology.jpg");}
+
+.paralImgsec5{
+   background-color: aliceblue;}
+
+ 
+/* Remove Bottom Margin from Jumbotron */
+.jumbotron{margin-bottom: 0;}
+ 
+
+
+#Logo{
+
+    width: 5%;
+    height: 10%;}
+
+.herramientas{
+    margin-left:180px;
+    width: 15%;}
+
+#textoImgSec2{
+    font-size: 15px;
+    font-style: oblique ;
+    color:black;
+    text-align: center;
+    line-height: 30px;
+    width: 25%;
+    height: 20%;
+    margin-left: 100px;
+    display: inline-block;
+    float: left;
+    border-radius: 8px;}
+
+#textoMision{
+    font-size: 30px;
+    font-style: oblique ;
+    color:cadetblue;
+    margin-top: 200px;
+    text-align: center;
+    line-height: 30px;
+    width: 100%;
+    height: 20%;
+    background-color: rgba(179,229,252,.9);}
+
+#tituloSevenSoft{
+    font-size: 55px;
+    font-style:normal ;
+    color: coral;
+    text-align: left;
+    line-height: 30px;
+}
+
+#tituloSeccion3{
+    font-size: 55px;
+    font-style:normal ;
+    color: steelblue;
+    text-align: left;
+    line-height: 60px;
+}
+
+#textoSeccion3{
+    font-size: 25px;
+    font-style:normal ;
+    color: skyblue;
+    text-align: left;
+    line-height: 35px;
+    margin-top: 54px;
+}
+
+#premio{
+    margin-left: 250px;
+    width: 30%;
+    height: 30%;
+    
+}
+
+#silladeRuedas{
+    float: right;
+    width: 20%;
+    height: 30%;
+    margin-right: 300px;
+    
+}
+
+
+#tituloSeccion4{
+    font-size: 55px;
+    font-style:normal ;
+    color: steelblue;
+    text-align: left;
+    line-height: 60px;
+    margin-top: 200px;
+}
+
+#textoSeccion4{
+    font-size: 25px;
+    font-style:normal ;
+    color: moccasin;
+    text-align: left;
+    line-height: 35px;
+    margin-top:100px;
+     background-color: rgba(113,107,85,.5);
+}
+
+
+
+#aportacionSocial{
+    font-size: 55px;
+    font-style:normal;
+    color: black;
+    text-align: left;
+    line-height: 60px;
+
+
+}
+
+#textoAportacionSocial{
+    font-size: 25px;
+    font-style:normal ;
+    color: goldenrod;
+    text-align: left;
+    line-height: 35px;
+    margin-top: 100px;
+    width: 50%;
+   
+     
+}
+
+
+#tituloSeccion5{
+    margin-left: 150px;
+    font-size: 55px;
+    font-style:normal ;
+    color: cadetblue;
+    text-align: left;
+    align-content: center;
+    line-height: 60px;
+}
+
+#textoSeccion5{
+    font-size: 25px;
+    font-style:normal;
+    text-align: center;
+    color: black;
+    text-align: left;
+    line-height: 35px;
+    margin-top: 54px;
+    width: 50%;
+    margin-left: 150px;
+}
+
+
+#celular{
+    
+    float: right;
+    display: inline-block;
+    margin-right: 200px;
+    width: 10%;
+    height: 20%;
+    
+}
+
+
+
+
+
+
+
+/* Style the navbar */
+#navbar {
+  overflow: hidden;
+  background-color: #008080;
+}
+
+/* Navbar links */
+#navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: right;
+  padding: 14px;
+  text-decoration: none;
+  
+   
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+
+/*ESTILOS PREGUNTAS CLIENTES*/
+
+#formulario{
+    margin-left: 500px;
+    margin-top: 100px;
+
+}
+
+#cuaderno{
+   
+   margin-top: -200px;
+   margin-left: 520px;
+
+    width: 25%;
+    height: 25%;
+    display: inline-block;
+    float: left;
+}
+
+
+#enviar{
+
+
+    width: 120%;
+    height: 150%;
+    
+}
+
+#btnEnviar{
+    width: 70px;
+    height: 50px;
+    background:steelblue;
+    margin-left: 420px;
+
+}
+
+#espalda{
+    width: 10%;
+    height: 10%;
+    
+
+}
+ /* CONSULTA USUARIOS*/
+
+#tablaUsuarios{
+    margin-bottom: 300px;
+}
+
+#btnEdicion{
+    width: 45px;
+    height: 55px;
+    border-radius: 15px;
+   }
+
+#btnCircular{
+    
+    border-radius: 15px;
+   }
+
+#Usuario{
+    width: 70px;
+    height: 70px;
+    margin-top: -60px;
+    margin-left: 230px;
+   }
+
+
+/*css de pestaña menú de hamburguesa administrador*/
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+body {
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+}
+.header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #0489B1;
+    position: fixed;
+    height: 60px!important;
+    overflow: hidden;
+    z-index: 10;
+}
+.main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+.mainInner{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.mainInner div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    margin-top: 60px;
+    transform: translateX(-250px);
+    transition: transform 250ms ease-in-out;
+    background: linear-gradient(180deg, #0489B1 0%, #0AF5B1 100%);
+}
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+    list-style: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li span{
+    display: block;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.50);
+}
+.sidebarMenuInner li a{
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
