@@ -51,7 +51,7 @@ class ClienteController extends Controller
         $datos = new Cliente();
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
-        $datos->idusuario = $request->get('idusuarios');
+        $datos->idusuario = 1;
 
         $datos->save();
 
