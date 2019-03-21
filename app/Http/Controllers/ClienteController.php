@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
+use App\Usuario;
 use Illuminate\Http\Request;
-use App\Quotation;
-use Illuminate\Support\Facades\DB;
-use App\Pregunta;
-use Illuminate\Support\Facades\Crypt;
 
-class Controlador extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,26 +35,31 @@ class Controlador extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-         
+    {
 
+        $datos = new Cliente();
+        $datos->nombre = $request->input('nombre');
+        $datos->apellido = $request->input('apellidos');
+        $datos->idusuario =2;
 
-        $datos=new Pregunta(); 
-        $datos->idpreguntas=$request->input('idPregunta');
-        $datos->descripcion=$request->get('descripcion');
-        $format="Y-m-d";
-        $datos->fecha=date_format(date_create($request->input('fecha')),$format);
-        $datos->idCliente=$request->input('cliente');
         $datos->save();
-    }   
+
+
+        $data = new Usuario();
+        $data->correo = $request->input('correo');
+        $data->contraseña = $request->input('contrasena');
+        $data->tipo =1;
+
+        $data->save();
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cliente $cliente)
     {
         //
     }
@@ -64,10 +67,10 @@ class Controlador extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
         //
     }
@@ -76,31 +79,22 @@ class Controlador extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        
-        
-
-
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cliente $cliente)
     {
-        
-        
+        //
     }
-
-
-  
-
 }

@@ -32,12 +32,12 @@ Route::get('/modicarUsuarios', function () {
 
 Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
 
-Route::post('/save','Controlador@store');
-Route::get('/consultaUsuarios','Controlador@consulta');
-Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@destroy'));
+Route::post('/save','UsuarioController@store');
+Route::get('/consultaUsuarios','UsuarioController@consulta');
+Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
 
-Route::get('/datosModificar/{id}', array ('as'=>'id','uses'=>'Controlador@datosModificar'));
-Route::post('/modificarUsuarios/{id}','Controlador@update');
+Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
+Route::post('/modificarUsuarios/{id}','UsuarioController@update');
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
 
