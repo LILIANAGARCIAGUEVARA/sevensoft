@@ -1,13 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Trabajadore;
-use App\Usuario;
 
-
+use App\Trabajadors;
 use Illuminate\Http\Request;
 
-class TrabajadorController extends Controller
+class TrabajadorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,30 +35,16 @@ class TrabajadorController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = new Trabajadore();
-        $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
-        $datos->fecharegistro ='1998-01-01';
-        $datos->idusuarios =9;
-
-        $datos->save();
-
-
-        $data = new Usuario();
-        $data->correo = $request->input('correo');
-        $data->contraseña = $request->input('contrasenaTraba');
-        $data->tipo =1;
-
-        $data->save();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trabajadors $trabajadors)
     {
         //
     }
@@ -68,10 +52,10 @@ class TrabajadorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trabajadors $trabajadors)
     {
         //
     }
@@ -80,10 +64,10 @@ class TrabajadorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trabajadors $trabajadors)
     {
         //
     }
@@ -91,10 +75,10 @@ class TrabajadorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trabajadors $trabajadors)
     {
         //
     }

@@ -19,7 +19,7 @@
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
 	 
 
-	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasena"  required/>
+	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba"  required/>
 	    		
 	    
 	    
@@ -45,7 +45,8 @@
           $scope.trabajador={};
     			
  				$scope.guardar=function(){
-    				$http.post('/save', $scope.trabajador).then(
+ 					alert($scope.trabajador)
+    				$http.post('/saveTrabajador', $scope.trabajador).then(
 
         			function(response){
                 		alert("AGREGADO CON EXITO");

@@ -53,7 +53,7 @@ Route::get('/login','UsuarioController@login');
 
 
 Route::post('/save','ClienteController@store');
-Route::post('/save','TrabajadorController@store');
+Route::post('/saveTrabajador','TrabajadorController@store');
 
 Route::post('/guardar','ClienteController@store');
 
