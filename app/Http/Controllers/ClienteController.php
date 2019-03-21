@@ -46,6 +46,8 @@ class ClienteController extends Controller
 
         $data->save();
 
+        
+
         $datos = new Cliente();
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');

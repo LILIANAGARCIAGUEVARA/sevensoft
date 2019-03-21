@@ -26,7 +26,7 @@
 
 <div  id='center' class="main center" ng-controller="ctrl" >
   <div class="container">
-      <h1 style="padding: 40px 0px 0px 150px;">CONSULTA USUARIOS</h1>
+      <h1 style="padding: 40px 0px 0px 150px;">CONSULTA USUARIOS SOPORTE</h1>
       <br>
       
       <br>
@@ -35,22 +35,25 @@
         <thead class="thead-dark">
           <tr>  
             <th scope="col">***ID****</th>
+              <th  scope="col">***NOMBRE***</th>
+              <th  scope="col">***APELLIDO***</th>
               <th  scope="col">***CORREO***</th>
-              <th  scope="col">***CONTRASEÑA***</th>
-              <th  scope="col">***TIPO***</th>
+               <th  scope="col">***CONTRASEÑA***</th>
             <th scope="col">**ACCIONES**</th>
           </tr>
         </thead>
         <tbody>
             @foreach($consulta as $user)
           <tr>
-             <td>{{$user->idusuarios}}</td>
+             <td>{{$user->idtrabajadores}}</td>
+              <td>{{$user->nombre}}</td>
+              <td>{{$user->apellido}}</td>
               <td>{{$user->correo}}</td>
               <td>{{$user->contraseña}}</td>
-              <td>{{$user->tipo}}</td>
+              
           
-          <td><a id="btnCircular"  ng-click="pasarDatos({{$user->idusuarios}});"><img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
-          <td><a ng-click="eliminar({{$user->idusuarios}});"> <img id="btnEdicion" src="fondos/eliminar.png"></a></td>
+          <td><a id="btnCircular"  ng-click="pasarDatos({{$user->idtrabajadores}});"><img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
+          <td><a ng-click="eliminar({{$user->idtrabajadores}});"> <img id="btnEdicion" src="fondos/eliminar.png"></a></td>
             
           </tr>
           @endforeach
@@ -73,6 +76,7 @@
           
             $scope.pasarDatos=function(id)
             {
+
               window.location.href=`{{url("/datosModificar/`+id+`")}}`
             }
 

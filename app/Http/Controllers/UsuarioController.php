@@ -77,7 +77,11 @@ class UsuarioController extends Controller
     {
         $datosModificadosUsuarios=\DB::table('usuarios')
             ->where('idusuarios',$id)
-            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasena'),'tipo'=>$request->input('tipo')]);
+            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasena')]);
+
+        $datosModificadosUsuariosClientes=\DB::table('trabajadores')
+            ->where('idtrabajadores',$id)
+            ->update(['nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido')]);
     }
 
     /**
@@ -89,24 +93,29 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         $eliminar=DB::table('usuarios')->where('usuarios.idusuarios',$id)->delete();
+        $eliminarCliente=DB::table('trabajadores')->where('trabajadores.idtrabajadores',$id)->delete();
     }
     
 
       public function consulta()
     {
-        $consulta=\DB::table('usuarios')
-        ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
+         $consulta=\DB::table('trabajadores')
+         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+        ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->get();
-        return view('consultaUsuarios',compact('consulta'));
+         return view('consultaUsuarios',compact('consulta'));
+
     }
 
      public function datosModificar($id)
     {
-         $modificarUsuarios=\DB::table('usuarios')
-        ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
-        ->where('idusuarios',$id)
+        
+        $modificarUsuarios=\DB::table('trabajadores')
+         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+        ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
+        ->where('idtrabajadores',$id)
         ->get();
-       return view('modificarUsuarios',compact('modificarUsuarios'));
+        return view('modificarUsuarios',compact('modificarUsuarios'));
     }
 
 

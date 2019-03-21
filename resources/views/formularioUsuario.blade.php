@@ -51,14 +51,8 @@
                 		alert("AGREGADO CON EXITO");
        				},function(errorResponse){
        					alert("FALLO LA CONEXION");
-        			}
-
-
-
-        		);}
-
-
-        });
+        			});}
+    	});
     			
         		     			
 		</script>
