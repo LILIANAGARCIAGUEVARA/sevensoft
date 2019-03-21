@@ -51,8 +51,12 @@ Route::post('/modificarUsuarios/{id}','Controlador@update');
 Route::get('/formularioUsuarios', 'UsuarioController@formulario');
 Route::get('/login','UsuarioController@login');
 
+
 Route::post('/save','ClienteController@store');
 Route::post('/save','TrabajadorController@store');
+
+Route::post('/guardar','ClienteController@store');
+
 
 
 
@@ -74,6 +78,12 @@ Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
 
 Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
 Route::post('/modificarUsuarios/{id}','UsuarioController@update');
+Route::get('/menuUser', function () {
+    return view('menuUser');
+});
+
+
+/*lili rutas*/
 
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');

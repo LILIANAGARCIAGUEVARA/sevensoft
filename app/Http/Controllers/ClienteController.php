@@ -46,13 +46,8 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
-        $datos = new Cliente();
-        $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
-        $datos->idusuario =2;
 
-        $datos->save();
-
+        
 
         $data = new Usuario();
         $data->correo = $request->input('correo');
@@ -60,6 +55,16 @@ class ClienteController extends Controller
         $data->tipo =1;
 
         $data->save();
+
+        
+
+        $datos = new Cliente();
+        $datos->nombre = $request->input('nombre');
+        $datos->apellido = $request->input('apellidos');
+        $datos->idusuario = $request->get('idusuarios');
+
+        $datos->save();
+
     }
 
     /**

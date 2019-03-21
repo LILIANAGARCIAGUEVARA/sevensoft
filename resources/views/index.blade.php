@@ -1,4 +1,4 @@
-@extends('footer')
+@extends('footerCliente')
 @extends('header')
 
 @section('header')
@@ -79,7 +79,7 @@
 
 
 
-    	@section('footer')
+    	@section('footerCliente')
    	  	@parent
 
    	  
