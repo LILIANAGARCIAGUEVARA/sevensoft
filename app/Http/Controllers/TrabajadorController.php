@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Cliente;
+use App\Trabajador;
 use App\Usuario;
+
 
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class TrabajadorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,19 +35,9 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-
-    public function Usuarios(){
-        $mostrarusuarios=DB::table('Usuarios');
-        
-
-        return view('formularioUsuario',compact('mostrarusuarios'));
-    }
-
-
     public function store(Request $request)
     {
-        $datos = new Cliente();
+        $datos = new Trabajador();
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
         $datos->idusuario =2;
@@ -56,7 +47,7 @@ class ClienteController extends Controller
 
         $data = new Usuario();
         $data->correo = $request->input('correo');
-        $data->contraseña = $request->input('contrasena');
+        $data->contraseña = $request->input('contraseña');
         $data->tipo =1;
 
         $data->save();
