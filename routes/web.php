@@ -40,6 +40,7 @@ Route::get('/modicarUsuarios', function () {
     return view('modicarUsuarios');
 });
 
+
 Route::get('/consultaUsuarios','Controlador@consulta');
 Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@destroy'));
 
@@ -60,6 +61,16 @@ Route::post('/save','ClienteController@store');
 Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
 
 Route::post('/save','Controlador@store');
+
+
+Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
+
+Route::post('/save','UsuarioController@store');
+Route::get('/consultaUsuarios','UsuarioController@consulta');
+Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
+
+Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
+Route::post('/modificarUsuarios/{id}','UsuarioController@update');
 
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
