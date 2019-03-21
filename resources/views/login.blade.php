@@ -59,9 +59,5 @@
 		</div>
 	</div>
 </div>
-	@section('footer')
-		@parent
-		
-		</script>
-	@endsection
+	
 @endsection

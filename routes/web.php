@@ -22,6 +22,16 @@ Route::get('/preguntas', function () {
     return view('preguntasClientes');
 });
 
+
+//Liliana Rutas
+
+
+
+
+//
+
+
+//Julio Rutas
 Route::get('/consultaUsuarios', function () {
     return view('consultaUsuarios');
 });
@@ -30,14 +40,27 @@ Route::get('/modicarUsuarios', function () {
     return view('modicarUsuarios');
 });
 
-Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
-
-Route::post('/save','Controlador@store');
 Route::get('/consultaUsuarios','Controlador@consulta');
 Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@destroy'));
 
 Route::get('/datosModificar/{id}', array ('as'=>'id','uses'=>'Controlador@datosModificar'));
 Route::post('/modificarUsuarios/{id}','Controlador@update');
+Route::get('/formularioUsuarios', 'UsuarioController@formulario');
+Route::get('/login','UsuarioController@login');
+
+Route::post('/save','ClienteController@store');
+
+
+
+
+///
+
+//Maria Rutas
+
+Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
+
+Route::post('/save','Controlador@store');
+
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
 
@@ -54,7 +77,4 @@ Route::get('/modificar/{id}','PreguntasAdmin@modificar');
 Route::get('/menuadmin', function () {
     return view('menuadmin');
 });
-
-Route::get('/formularioUsuarios', 'UsuarioController@formulario');
-Route::get('/login','UsuarioController@login');
 
