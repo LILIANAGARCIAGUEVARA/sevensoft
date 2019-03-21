@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -35,7 +36,12 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Usuario();
+        $data->correo = $request->input('correo');
+        $data->contrasena = $request->input('contrasena');
+        $data->tipo =1;
+
+        $data->save();
     }
 
     /**
@@ -46,7 +52,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+
     }
 
     /**
@@ -67,9 +73,11 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
-        //
+        $datosModificadosUsuarios=\DB::table('usuarios')
+            ->where('idusuarios',$id)
+            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasena'),'tipo'=>$request->input('tipo')]);
     }
 
     /**
@@ -78,24 +86,42 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $eliminar=DB::table('usuarios')->where('usuarios.idusuarios',$id)->delete();
     }
+    
+
+      public function consulta()
+    {
+        $consulta=\DB::table('usuarios')
+        ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
+        ->get();
+        return view('consultaUsuarios',compact('consulta'));
+    }
+
+     public function datosModificar($id)
+    {
+         $modificarUsuarios=\DB::table('usuarios')
+        ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
+        ->where('idusuarios',$id)
+        ->get();
+       return view('modificarUsuarios',compact('modificarUsuarios'));
+    }
+
+
+
+
 
         public function formulario()
     {
-        
 
         return view('formularioUsuario');
-
     }
 
-         public function login()
+    public function login()
     {
-
         return view('login');
-
     }
 
 }

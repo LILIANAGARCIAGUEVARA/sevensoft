@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Quotation;
 use Illuminate\Support\Facades\DB;
 use App\Pregunta;
+use Illuminate\Support\Facades\Crypt;
 
 class Controlador extends Controller
 {
@@ -37,6 +38,9 @@ class Controlador extends Controller
      */
     public function store(Request $request)
     { 
+         
+
+
         $datos=new Pregunta(); 
         $datos->idpreguntas=$request->input('idPregunta');
         $datos->descripcion=$request->get('descripcion');
@@ -44,7 +48,7 @@ class Controlador extends Controller
         $datos->fecha=date_format(date_create($request->input('fecha')),$format);
         $datos->idCliente=$request->input('cliente');
         $datos->save();
-    }
+    }   
 
     /**
      * Display the specified resource.
@@ -77,9 +81,8 @@ class Controlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosModificadosUsuarios=\DB::table('usuarios')
-            ->where('idusuarios',$id)
-            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasena')]);
+        
+        
 
 
         
@@ -93,25 +96,11 @@ class Controlador extends Controller
      */
     public function destroy($id)
     {
-        $eliminar=DB::table('usuarios')->where('usuarios.idusuarios',$id)->delete();
+        
+        
     }
 
 
-    public function consulta()
-    {
-        $consulta=\DB::table('usuarios')
-        ->select(DB::raw('idusuarios,correo,contraseña'))
-        ->get();
-        return view('consultaUsuarios',compact('consulta'));
-    }
-
-     public function datosModificar($id)
-    {
-         $modificarUsuarios=\DB::table('usuarios')
-        ->select(DB::raw('idusuarios,correo,contraseña'))
-        ->where('idusuarios',$id)
-        ->get();
-       return view('modificarUsuarios',compact('modificarUsuarios'));
-    }
+  
 
 }
