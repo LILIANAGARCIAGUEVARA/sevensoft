@@ -49,7 +49,7 @@ Route::post('/modificarUsuarios/{id}','Controlador@update');
 Route::get('/formularioUsuarios', 'UsuarioController@formulario');
 Route::get('/login','UsuarioController@login');
 
-Route::post('/save','ClienteController@store');
+Route::post('/guardar','ClienteController@store');
 
 
 

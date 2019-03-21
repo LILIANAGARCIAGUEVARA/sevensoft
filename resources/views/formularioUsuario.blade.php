@@ -45,15 +45,18 @@
           $scope.cliente={};
     			
  				$scope.guardar=function(){
-    				$http.post('/save', $scope.cliente).then(
-
-        			function(response){
+ 					
+    				$http.post('/guardar', $scope.cliente).then(
+						function(response){
                 		alert("AGREGADO CON EXITO");
        				},function(errorResponse){
        					alert("FALLO LA CONEXION");
         			}
 
+
+
         		);}
+
 
         });
     			
