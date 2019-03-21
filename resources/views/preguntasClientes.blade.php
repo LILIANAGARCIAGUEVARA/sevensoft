@@ -1,4 +1,4 @@
-@extends('footer')
+@extends('footerCliente')
 @extends('header')
 
 @section('header')
@@ -41,7 +41,7 @@
       </div>
 
 
-    	@section('footer')
+    	@section('footerCliente')
    	  	@parent
          <script> 
          var app = angular.module('app',[])

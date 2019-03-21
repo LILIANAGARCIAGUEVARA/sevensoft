@@ -71,6 +71,12 @@ Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
 
 Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
 Route::post('/modificarUsuarios/{id}','UsuarioController@update');
+Route::get('/menuUser', function () {
+    return view('menuUser');
+});
+
+
+/*lili rutas*/
 
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
