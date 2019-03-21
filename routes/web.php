@@ -39,7 +39,9 @@ Route::get('/consultaUsuarios', function () {
 Route::get('/modicarUsuarios', function () {
     return view('modicarUsuarios');
 });
-
+Route::get('/formularioTrabajador',function(){
+	return view('formulariotrabajador');
+});
 
 Route::get('/consultaUsuarios','Controlador@consulta');
 Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@destroy'));
@@ -49,7 +51,12 @@ Route::post('/modificarUsuarios/{id}','Controlador@update');
 Route::get('/formularioUsuarios', 'UsuarioController@formulario');
 Route::get('/login','UsuarioController@login');
 
+
+Route::post('/save','ClienteController@store');
+Route::post('/save','TrabajadorController@store');
+
 Route::post('/guardar','ClienteController@store');
+
 
 
 
