@@ -13,10 +13,16 @@
 
 	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="trabajador.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/"/>
 	   			
-			
 
 	    		<input type="text" name="apellidos" placeholder="Apellidos" ng-model="trabajador.apellidos"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" />
 
+	    		<input type="text" name="domicilio" placeholder="Domicilio" ng-model="trabajador.domicilio"  required  />
+
+	    		<input type="date" name="fechaNac" placeholder="Fecha Nacimiento" ng-model="date" required max="@{{hoy}}">
+
+	    		<input type="text" name="curp" placeholder="CURP" ng-model="trabajador.curp"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" />
+
+	    		<input type="number" name="telefono" placeholder="Telefono" ng-model="trabajador.telefono"  required  />
 
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
 	 
@@ -40,11 +46,11 @@
 
 		<script >
 	     var app = angular.module('app',[])
-        .controller('ctrl',function($scope,$http)
+        .controller('ctrl',function($scope,$http,$filter)
    	     {
-        	
-          $scope.trabajador={};
-          
+        	$scope.hoy= $filter('date')(new Date(),'yyyy-MM-dd');
+          	$scope.trabajador={};
+          	$scope.date;
  				$scope.guardar=function(){
  					$scope.mostrar = {!! json_encode($vaso->toArray()) !!}
  					var contenido = 0;
@@ -60,7 +66,7 @@
 						alert("Correo ya Registrado");
 					}
 					else if(ban == 0){
-						alert($scope.trabajador)
+						$scope.trabajador.fechaNac = $filter('date')($scope.date,'yyyy-MM-d hh:mm:ss');
 						$http.post('/saveTrabajador', $scope.trabajador).then(
 							function(response){
 								alert("AGREGADO CON EXITO");

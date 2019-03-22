@@ -18,8 +18,8 @@ body {
 
   position: relative;
   margin: 5% auto;
-  width: 600px;
-  height: 450px;
+  width: 700px;
+  height: 650px;
   background: #FFF;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -43,6 +43,8 @@ h1 {
 
 input[type="text"],
 input[type="email"],
+input[type="number"],
+input[type="date"],
 input[type="password"] {
   display: block;
   box-sizing: border-box;
@@ -109,8 +111,8 @@ input[type="submit"]:active {
 
 .right {
   position: absolute;
-  top: 30px;
-  right: 0;
+  top: 180px;
+  right: 50px;
   box-sizing: border-box;
   padding: 40px;
   width: 300px;

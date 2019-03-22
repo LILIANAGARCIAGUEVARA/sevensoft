@@ -56,6 +56,10 @@ class TrabajadorController extends Controller
 
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
+        $datos->domicilio = $request->input('domicilio');
+        $datos->fechaNac = $request->input('fechaNac');
+        $datos->curp = $request->input('curp');
+        $datos->telefono= $request->input('telefono');
 
         $datos->fecharegistro ='1998-01-01';
         $datos->idusuarios = $data->id;
