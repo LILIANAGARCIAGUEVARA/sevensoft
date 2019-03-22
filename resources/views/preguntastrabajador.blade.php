@@ -28,7 +28,7 @@
       <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
       <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
     </ul>
-  </div>
+  </div>0
 
 
 <div  id='center' class="main center" ng-controller="ctrl" >
