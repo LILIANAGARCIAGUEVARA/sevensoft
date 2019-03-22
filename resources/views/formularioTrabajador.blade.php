@@ -1,12 +1,14 @@
 @extends('footerCliente')
 @extends('header')
 @section('header')
+
 	@parent
 	<link rel="stylesheet" type="text/css" href="/css/styleFormularioTrabajador.css">
 		<div id="login-box">
   			<div class="left" ng-controller="ctrl">
       
 	    		<h1>Registrar Trabajadores</h1>
+
 	    		<form name="frmUsuarios">
 
 	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="trabajador.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/"/>
@@ -40,22 +42,34 @@
 	     var app = angular.module('app',[])
         .controller('ctrl',function($scope,$http)
    	     {
-
-          
+        	
           $scope.trabajador={};
-    			
+          
  				$scope.guardar=function(){
- 					alert($scope.trabajador)
-    				$http.post('/saveTrabajador', $scope.trabajador).then(
-
-        			function(response){
-                		alert("AGREGADO CON EXITO");
-       				},function(errorResponse){
-       					alert("FALLO LA CONEXION");
-        			}
-
-        		);}
-
+ 					$scope.mostrar = {!! json_encode($vaso->toArray()) !!}
+ 					var contenido = 0;
+					var ban = 0;
+					if($scope.mostrar[0]!=null){
+						for(contenido = $scope.mostrar.length -1; contenido >=0; contenido--){
+							if($scope.trabajador.correo == $scope.mostrar[contenido].correo){
+								ban=1;
+							}
+						}
+					}
+					if(ban == 1){
+						window.location.href = '{{url("/login")}}';
+					}
+					else if(ban == 0){
+						alert($scope.trabajador)
+						$http.post('/saveTrabajador', $scope.trabajador).then(
+							function(response){
+								alert("AGREGADO CON EXITO");
+							},function(errorResponse){
+								alert("FALLO LA CONEXION");
+						}
+						);
+					}	
+        		}
         });
     			
         		     			
