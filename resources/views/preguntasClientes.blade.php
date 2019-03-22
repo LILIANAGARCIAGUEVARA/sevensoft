@@ -50,18 +50,19 @@
 
             $scope.fechaHoy = new Date().toISOString().split("T")[0];
             $scope.preguntas={
-              idPregunta:1,
+             
               descripcion:$scope.descripcion,
               fecha:$scope.fechaHoy,
-              cliente:2
+              cliente:7
             }
 
 
              $scope.enviar=function(){
               console.log($scope.preguntas)
 
-              $http.post('/save',$scope.preguntas).then(
+              $http.post('/savePregunta',$scope.preguntas).then(
                 function(response){
+                  alert('Su peticion se ha realizado correctamente');
                 
               },function(errorResponse)
               {

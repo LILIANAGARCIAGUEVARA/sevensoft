@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Contracts\Encryption\DecryptException;
 use App\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -75,13 +75,13 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosModificadosUsuarios=\DB::table('usuarios')
-            ->where('idusuarios',$id)
-            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasena')]);
+        \DB::table('trabajadores')
+            ->join('usuarios','trabajadores.idusuarios',"=","usuarios.idusuarios")
+            ->where('trabajadores.idusuarios',$id)
+            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasenaUser'),'nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido')]);
 
-        $datosModificadosUsuariosClientes=\DB::table('trabajadores')
-            ->where('idtrabajadores',$id)
-            ->update(['nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido')]);
+
+
     }
 
     /**
@@ -109,11 +109,11 @@ class UsuarioController extends Controller
 
      public function datosModificar($id)
     {
-        
+         $idDM=decrypt($id);
         $modificarUsuarios=\DB::table('trabajadores')
-         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+         ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,apellido,usuarios.`correo`,usuarios.`contraseña`'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
-        ->where('idtrabajadores',$id)
+        ->where('idtrabajadores',$idDM)
         ->get();
         return view('modificarUsuarios',compact('modificarUsuarios'));
     }

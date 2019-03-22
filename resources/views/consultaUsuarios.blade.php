@@ -52,7 +52,8 @@
               <td>{{$user->contraseña}}</td>
               
           
-          <td><a id="btnCircular"  ng-click="pasarDatos({{$user->idtrabajadores}});"><img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
+ <td>
+  <a id="btnCircular" href="{{url('/datosModificar/'.encrypt($user->idtrabajadores))}}"> <img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
           <td><a ng-click="eliminar({{$user->idtrabajadores}});"> <img id="btnEdicion" src="fondos/eliminar.png"></a></td>
             
           </tr>
