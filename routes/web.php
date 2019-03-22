@@ -40,9 +40,10 @@ Route::get('/modicarUsuarios', function () {
     return view('modicarUsuarios');
 });
 Route::get('/formularioTrabajador',function(){
-	return view('formulariotrabajador');
+	return view('formularioTrabajador');
 });
 
+Route::get('/formularioTrabajador','TrabajadorController@validacion');
 Route::get('/consultaUsuarios','Controlador@consulta');
 Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@destroy'));
 
