@@ -40,8 +40,7 @@ class TrabajadorController extends Controller
 
 
         $data = new Usuario();
-        $x=0;
-        $data->idusuarios=$x++;
+        $data->->insertGetId;
         $data->correo = $request->input('correo');
         $data->contraseña = $request->input('contrasenaTraba');
         $data->tipo =1;
@@ -49,6 +48,7 @@ class TrabajadorController extends Controller
         $data->save();
 
         $datos = new Trabajadore();
+
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
 
@@ -57,9 +57,7 @@ class TrabajadorController extends Controller
 
         $datos->save();
 
-        $datos->idusuarios=$data->idusuarios;
-
-        $datos->save();
+        
 
 
     }
