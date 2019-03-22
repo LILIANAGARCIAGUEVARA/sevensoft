@@ -1,12 +1,31 @@
-@extends('footer')
+@extends('footerCliente')
 @extends('header')
 
 @section('header')
    @parent
 
 
+
+<div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li>Liliana García Guevara <span>Administrador</span></li>
+      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
+      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
+      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+    </ul>
+  </div>
+
+
+
       <div ng-controller="ctrl">
-      <a href="/index"><img id="espalda" src="fondos/espalda.png" > </a>
+   
        <div id="formulario">
       <h1>Preguntas</h1>
       <form name="frm" style="width: 500px;height: 500px;">
@@ -22,7 +41,7 @@
       </div>
 
 
-    	@section('footer')
+    	@section('footerCliente')
    	  	@parent
          <script> 
          var app = angular.module('app',[])
@@ -31,18 +50,19 @@
 
             $scope.fechaHoy = new Date().toISOString().split("T")[0];
             $scope.preguntas={
-              idPregunta:1,
+             
               descripcion:$scope.descripcion,
               fecha:$scope.fechaHoy,
-              cliente:2
+              cliente:7
             }
 
 
              $scope.enviar=function(){
               console.log($scope.preguntas)
 
-              $http.post('/save',$scope.preguntas).then(
+              $http.post('/savePregunta',$scope.preguntas).then(
                 function(response){
+                  alert('Su peticion se ha realizado correctamente');
                 
               },function(errorResponse)
               {

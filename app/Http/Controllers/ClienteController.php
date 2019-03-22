@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Quotation;
+use App\Cliente;
+use App\Usuario;
 use Illuminate\Support\Facades\DB;
-use App\Pregunta;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Http\Request;
 
-class Controlador extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,19 +34,41 @@ class Controlador extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
+    public function Usuarios(){
+        $mostrarusuarios=DB::table('Usuarios');
+        
+
+        return view('formularioUsuario',compact('mostrarusuarios'));
+    }
+
+
     public function store(Request $request)
-    { 
-         
+    {
+
+        
+
+        $data = new Usuario();
+        $data->correo = $request->input('correo');
+        $data->contraseña = $request->input('contrasena');
+        $data->tipo =1;
 
 
-        $datos=new Pregunta(); 
-        $datos->idpreguntas=$request->input('idPregunta');
-        $datos->descripcion=$request->get('descripcion');
-        $format="Y-m-d";
-        $datos->fecha=date_format(date_create($request->input('fecha')),$format);
-        $datos->idCliente=$request->input('cliente');
+        $data->save();
+
+         $id=DB::getPdo()->lastInsertId();
+
+         echo $id;
+
+        $datos = new Cliente();
+        $datos->nombre = $request->input('nombre');
+        $datos->apellido = $request->input('apellidos');
+        $datos->idusuario = $id;
+
         $datos->save();
-    }   
+
+    }
 
     /**
      * Display the specified resource.
@@ -81,11 +101,7 @@ class Controlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        
-
-
-        
+        //
     }
 
     /**
@@ -96,11 +112,6 @@ class Controlador extends Controller
      */
     public function destroy($id)
     {
-        
-        
+        //
     }
-
-
-  
-
 }

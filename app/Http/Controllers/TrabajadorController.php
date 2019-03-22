@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Trabajadore;
+use App\Usuario;
 
-use Illuminate\Http\Request;
-use App\Quotation;
 use Illuminate\Support\Facades\DB;
-use App\Pregunta;
-use Illuminate\Support\Facades\Crypt;
+use Illuminate\Http\Request;
 
-class Controlador extends Controller
+class TrabajadorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,18 +36,40 @@ class Controlador extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-         
+    {
 
 
-        $datos=new Pregunta(); 
-        $datos->idpreguntas=$request->input('idPregunta');
-        $datos->descripcion=$request->get('descripcion');
-        $format="Y-m-d";
-        $datos->fecha=date_format(date_create($request->input('fecha')),$format);
-        $datos->idCliente=$request->input('cliente');
+        $data = new Usuario();
+       
+        $data->correo = $request->input('correo');
+        $data->contraseña = $request->input('contrasenaTraba');
+        $data->tipo =1;
+
+        $data->save();
+
+        $id=DB::getPdo()->lastInsertId();
+
+        echo $id;
+
+
+        $datos = new Trabajadore();
+
+        $datos->nombre = $request->input('nombre');
+        $datos->apellido = $request->input('apellidos');
+        $datos->domicilio = $request->input('domicilio');
+        $datos->fechaNac = $request->input('fechaNac');
+        $datos->curp = $request->input('curp');
+        $datos->telefono= $request->input('telefono');
+
+        $datos->fecharegistro ='1998-01-01';
+        $datos->idusuarios = $data->id;
+
         $datos->save();
-    }   
+
+        
+
+
+    }
 
     /**
      * Display the specified resource.
@@ -81,11 +102,7 @@ class Controlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        
-
-
-        
+        //
     }
 
     /**
@@ -96,11 +113,14 @@ class Controlador extends Controller
      */
     public function destroy($id)
     {
-        
-        
+        //
     }
 
 
-  
-
+    public function validacion(){
+        $vaso=\DB::table('usuarios')
+        ->select(DB::raw('correo'))
+        ->get(); 
+        return view ('formularioTrabajador',compact('vaso'));
+    }
 }

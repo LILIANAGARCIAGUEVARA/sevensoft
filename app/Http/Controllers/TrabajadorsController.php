@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Trabajadors;
 use Illuminate\Http\Request;
-use App\Quotation;
-use Illuminate\Support\Facades\DB;
-use App\Pregunta;
-use Illuminate\Support\Facades\Crypt;
 
-class Controlador extends Controller
+class TrabajadorsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,26 +34,17 @@ class Controlador extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-         
-
-
-        $datos=new Pregunta(); 
-        $datos->idpreguntas=$request->input('idPregunta');
-        $datos->descripcion=$request->get('descripcion');
-        $format="Y-m-d";
-        $datos->fecha=date_format(date_create($request->input('fecha')),$format);
-        $datos->idCliente=$request->input('cliente');
-        $datos->save();
-    }   
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trabajadors $trabajadors)
     {
         //
     }
@@ -64,10 +52,10 @@ class Controlador extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trabajadors $trabajadors)
     {
         //
     }
@@ -76,31 +64,22 @@ class Controlador extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trabajadors $trabajadors)
     {
-        
-        
-
-
-        
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Trabajadors  $trabajadors
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trabajadors $trabajadors)
     {
-        
-        
+        //
     }
-
-
-  
-
 }

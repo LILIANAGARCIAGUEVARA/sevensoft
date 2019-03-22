@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Contracts\Encryption\DecryptException;
 use App\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -35,7 +36,12 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Usuario();
+        $data->correo = $request->input('correo');
+        $data->contrasena = $request->input('contrasena');
+        $data->tipo =1;
+
+        $data->save();
     }
 
     /**
@@ -46,7 +52,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
+
     }
 
     /**
@@ -67,9 +73,15 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
-        //
+        \DB::table('trabajadores')
+            ->join('usuarios','trabajadores.idusuarios',"=","usuarios.idusuarios")
+            ->where('trabajadores.idusuarios',$id)
+            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasenaUser'),'nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido')]);
+
+
+
     }
 
     /**
@@ -78,24 +90,51 @@ class UsuarioController extends Controller
      * @param  \App\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $eliminar=DB::table('usuarios')->where('usuarios.idusuarios',$id)->delete();
+        $eliminarCliente=DB::table('trabajadores')->where('trabajadores.idtrabajadores',$id)->delete();
     }
+    
+
+      public function consulta()
+    {
+         $consulta=\DB::table('trabajadores')
+         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+        ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
+        ->get();
+         return view('consultaUsuarios',compact('consulta'));
+
+    }
+
+     public function datosModificar($id)
+    {
+         $idDM=decrypt($id);
+        $modificarUsuarios=\DB::table('trabajadores')
+         ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+        ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
+        ->where('idtrabajadores',$idDM)
+        ->get();
+        return view('modificarUsuarios',compact('modificarUsuarios'));
+    }
+
+     public function validacion(){
+        $consultaa=\DB::table('usuarios')
+        ->select(DB::raw('correo'))
+        ->get(); 
+        return view ('formulariousuario',compact('consultaa'));
+    }
+
 
         public function formulario()
     {
-        
 
         return view('formularioUsuario');
-
     }
 
-         public function login()
+    public function login()
     {
-
         return view('login');
-
     }
 
 }

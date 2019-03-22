@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Quotation;
-use Illuminate\Support\Facades\DB;
-use App\Pregunta;
-use Illuminate\Support\Facades\Crypt;
 
-class Controlador extends Controller
+class Login extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,18 +33,9 @@ class Controlador extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { 
-         
-
-
-        $datos=new Pregunta(); 
-        $datos->idpreguntas=$request->input('idPregunta');
-        $datos->descripcion=$request->get('descripcion');
-        $format="Y-m-d";
-        $datos->fecha=date_format(date_create($request->input('fecha')),$format);
-        $datos->idCliente=$request->input('cliente');
-        $datos->save();
-    }   
+    {
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -81,11 +68,7 @@ class Controlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        
-
-
-        
+        //
     }
 
     /**
@@ -96,11 +79,16 @@ class Controlador extends Controller
      */
     public function destroy($id)
     {
-        
-        
+        //
     }
 
+    public function login($correo,$contrasena){
+        $consulta=\DB::table('usuarios')
+        ->select(DB::raw('nombre,tipo'))
+        ->where('usuarios.correo',$correo);
+        ->where('usuarios.contraseña',$contrasena);
+        ->get();
 
-  
-
+        return view('index',compact('consulta'));
+    }
 }
