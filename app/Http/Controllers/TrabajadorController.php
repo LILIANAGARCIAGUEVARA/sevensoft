@@ -40,12 +40,17 @@ class TrabajadorController extends Controller
 
 
         $data = new Usuario();
-        $data->->insertGetId;
+       
         $data->correo = $request->input('correo');
         $data->contraseña = $request->input('contrasenaTraba');
         $data->tipo =1;
 
         $data->save();
+
+        $id=DB::getPdo()->lastInsertId();
+
+        echo $id;
+
 
         $datos = new Trabajadore();
 
@@ -53,7 +58,7 @@ class TrabajadorController extends Controller
         $datos->apellido = $request->input('apellidos');
 
         $datos->fecharegistro ='1998-01-01';
-        $datos->idusuarios = $data->idusuarios;
+        $datos->idusuarios = $data->id;
 
         $datos->save();
 
