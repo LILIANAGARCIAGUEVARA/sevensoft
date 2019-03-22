@@ -9,7 +9,7 @@
       
 	    		<h1>Registrar Trabajadores</h1>
 
-	    		<form name="frmUsuarios">
+	    		<form name="frmTrabajador">
 
 	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="trabajador.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/"/>
 	   			
@@ -25,7 +25,7 @@
 	    		
 	    
 	    
-	    		<input type="submit" name="signup_submit" value="Registrar" ng-click="guardar()"/>
+	    		<input type="submit" name="signup_submit" value="Registrar" ng-disabled="!frmTrabajador.$valid" ng-click="guardar()"/>
 	    		<div class="d-flex justify-content-center links">
 					Ya Tienes una Cuenta?<a href="/login">Login</a>
 				</div>

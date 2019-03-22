@@ -23,7 +23,7 @@
 	    		
 	    
 	    
-	    		<input type="submit" name="signup_submit" value="Registrar" ng-click="guardar()"/>
+	    		<input type="submit" name="signup_submit" value="Registrar" ng-disabled="!frmUsuarios.$valid" ng-click="guardar()"/>
 	    		<div class="d-flex justify-content-center links">
 					Ya Tienes una Cuenta?<a href="/login">Login</a>
 				</div>
@@ -45,13 +45,29 @@
           $scope.cliente={};
     			
  				$scope.guardar=function(){
- 					
-    				$http.post('/guardar', $scope.cliente).then(
-						function(response){
-                		alert("AGREGADO CON EXITO");
-       				},function(errorResponse){
-       					alert("FALLO LA CONEXION");
-        			});}
+ 					$scope.mostrar = {!! json_encode($consultaa->toArray()) !!}
+ 					var contenido = 0;
+					var ban = 0;
+					if($scope.mostrar[0]!=null){
+						for(contenido = $scope.mostrar.length -1; contenido >=0; contenido--){
+							if($scope.cliente.correo == $scope.mostrar[contenido].correo){
+								ban=1;
+							}
+						}
+					}
+					if(ban == 1){
+						alert("Correo ya Registrado");
+					}
+					else if(ban == 0){
+						$http.post('/guardar', $scope.cliente).then(
+							function(response){
+                				alert("AGREGADO CON EXITO");
+       						},function(errorResponse){
+       							alert("FALLO LA CONEXION");
+        					}
+        				);
+					}
+    			}
     	});
     			
         		     			
