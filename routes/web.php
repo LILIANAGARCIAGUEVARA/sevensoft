@@ -67,7 +67,7 @@ Route::post('/guardar','ClienteController@store');
 
 Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
 
-Route::post('/save','Controlador@store');
+Route::post('/savePregunta','Controlador@store');
 
 
 Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
