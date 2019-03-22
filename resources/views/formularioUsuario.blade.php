@@ -59,7 +59,7 @@
 						alert("Correo ya Registrado");
 					}
 					else if(ban == 0){
-						$http.post('/guardar', $scope.cliente).then(
+						$http.post('/guardarUsuario', $scope.cliente).then(
 							function(response){
                 				alert("AGREGADO CON EXITO");
        						},function(errorResponse){

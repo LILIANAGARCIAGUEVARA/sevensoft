@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Cliente;
 use App\Usuario;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -54,14 +54,17 @@ class ClienteController extends Controller
         $data->contraseña = $request->input('contrasena');
         $data->tipo =1;
 
+
         $data->save();
 
          $id=DB::getPdo()->lastInsertId();
 
+         echo $id;
+
         $datos = new Cliente();
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
-        $datos->idusuario = $data->id;
+        $datos->idusuario = $id;
 
         $datos->save();
 
