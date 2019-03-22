@@ -38,7 +38,10 @@ class TrabajadorController extends Controller
     public function store(Request $request)
     {
 
+
         $data = new Usuario();
+        $x=0;
+        $data->idusuarios=$x++;
         $data->correo = $request->input('correo');
         $data->contraseña = $request->input('contrasenaTraba');
         $data->tipo =1;
@@ -48,9 +51,16 @@ class TrabajadorController extends Controller
         $datos = new Trabajadore();
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
+
+        $datos->fecharegistro ='1998-01-01';
+        $datos->idusuarios = $data->idusuarios;
+
+        $datos->save();
+
         $datos->idusuarios=$data->idusuarios;
 
         $datos->save();
+
 
     }
 
