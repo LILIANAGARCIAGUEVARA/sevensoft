@@ -56,12 +56,12 @@ class ClienteController extends Controller
 
         $data->save();
 
-        
+         $id=DB::getPdo()->lastInsertId();
 
         $datos = new Cliente();
         $datos->nombre = $request->input('nombre');
         $datos->apellido = $request->input('apellidos');
-        $datos->idusuario = 2;
+        $datos->idusuario = $data->id;
 
         $datos->save();
 
