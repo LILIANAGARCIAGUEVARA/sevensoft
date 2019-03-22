@@ -44,12 +44,14 @@ Route::get('/formularioTrabajador',function(){
 });
 
 Route::get('/formularioTrabajador','TrabajadorController@validacion');
+Route::get('/formularioUsuarios','UsuarioController@validacion');
+
 Route::get('/consultaUsuarios','Controlador@consulta');
+
 Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@destroy'));
 
 Route::get('/datosModificar/{id}', array ('as'=>'id','uses'=>'Controlador@datosModificar'));
 Route::post('/modificarUsuarios/{id}','Controlador@update');
-Route::get('/formularioUsuarios', 'UsuarioController@formulario');
 Route::get('/login','UsuarioController@login');
 
 

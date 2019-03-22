@@ -118,8 +118,12 @@ class UsuarioController extends Controller
         return view('modificarUsuarios',compact('modificarUsuarios'));
     }
 
-
-
+     public function validacion(){
+        $consultaa=\DB::table('usuarios')
+        ->select(DB::raw('correo'))
+        ->get(); 
+        return view ('formulariousuario',compact('consultaa'));
+    }
 
 
         public function formulario()
