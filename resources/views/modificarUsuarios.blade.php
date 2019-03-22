@@ -8,15 +8,16 @@
    <div ng-controller="ctrl">
     <div id="formulario">
       <h1>USUARIOS</h1>
+     
     <script type="text/javascript">
-        window.idClien = "<?php print_r($modificarUsuarios[0]->idtrabajadores);?>";
+        window.idClien = "<?php print_r($modificarUsuarios[0]->idusuarios);?>";
         window.nombre = "<?php print_r($modificarUsuarios[0]->nombre);?>";
         window.apellido= "<?php print_r($modificarUsuarios[0]->apellido);?>";
         window.correo = "<?php print_r($modificarUsuarios[0]->correo);?>";
-        window.contrasena = "<?php print_r($modificarUsuarios[0]->contraseña);?>";
+        window.contrasenaUser = "<?php print_r($modificarUsuarios[0]->contraseña);?>";
        
       </script>
-     
+ 
 
    		<form name="frm" style="width: 500px;height: 500px;">
         <img id="Usuario" src="/fondos/usuarios.png">
@@ -43,8 +44,8 @@
             </div>
             <div>
                 <label>Contraseña:</label>
-                <input class="form-control" id="inputSeleccionado" type="text" name="contrasena" ng-model="usuarioEditado.contrasena" required>
-                <span ng-show="frm.contrasena.$dirty && frm.contrasena.$error.required"> Campo requerido </span> <br>
+                <input class="form-control" id="inputSeleccionado" type="text" name="contrasenaUser" ng-model="usuarioEditado.contrasenaUser" required>
+                <span ng-show="frm.contrasenaUser.$dirty && frm.contrasenaUser.$error.required"> Campo requerido </span> <br>
               
             </div>
             <button type=" text" class="btn btn-primary" ng-disabled="frm.$invalid" ng-click="editar()"> Modificar</button>
@@ -86,11 +87,14 @@
             nombre:window.nombre,
             apellido:window.apellido,
             correo:window.correo,
-            contrasena:window.contrasena
+            contrasenaUser:window.contrasenaUser
            }
 
           
+          
           $scope.editar=function(){
+
+               alert($scope.usuarioEditado.id);
               $http.post('/modificarUsuarios/'+$scope.usuarioEditado.id,$scope.usuarioEditado).then(
                 function(response){
                     alert('Los datos fueron modificados con exito');

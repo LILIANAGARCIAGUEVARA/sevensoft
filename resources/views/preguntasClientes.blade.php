@@ -50,7 +50,7 @@
 
             $scope.fechaHoy = new Date().toISOString().split("T")[0];
             $scope.preguntas={
-              idPregunta:1,
+             
               descripcion:$scope.descripcion,
               fecha:$scope.fechaHoy,
               cliente:2
