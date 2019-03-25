@@ -93,16 +93,23 @@ Route::get('/menuUser', function () {
 
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
+Route::delete('/delete/{id}', 'Descargas@destroy');
 
 Route::get('/preguntastrabajador','PreguntasAdmin@index');
+Route::get('/actualizaciones','Descargas@index');
 
 Route::get('/verrespuesta','PreguntasAdmin@respuesta');
 
 Route::post('/guardarrespuesta','PreguntasAdmin@store');
 
+Route::post('/hola','Descargas@store');
+
 Route::get('/editarrespuesta/{id}','PreguntasAdmin@preeditar');
 
+Route::get('/editaractualizacion/{id}','Descargas@preeditar');
+
 Route::get('/modificar/{id}','PreguntasAdmin@modificar');
+Route::post('/modificaract/{id}','Descargas@update');
 
 Route::get('/menuadmin', function () {
     return view('menuadmin');
