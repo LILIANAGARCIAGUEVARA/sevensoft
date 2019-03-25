@@ -22,6 +22,10 @@ Route::get('/preguntas', function () {
     return view('preguntasClientes');
 });
 
+Route::get('/tickets', function () {
+    return view('ticketsClientes');
+});
+
 
 //Liliana Rutas
 

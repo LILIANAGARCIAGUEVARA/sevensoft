@@ -60,7 +60,7 @@
 						alert("Correo ya Registrado");
 					}
 					else if(ban == 0){
-						alert($scope.trabajador)
+					
 						$http.post('/saveTrabajador', $scope.trabajador).then(
 							function(response){
 								alert("AGREGADO CON EXITO");

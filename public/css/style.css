@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
-    background-color: aliceblue;
+   
 }
 
 
@@ -82,7 +82,7 @@ html, body {
 .paralImgsec {
     background-image: url("../fondos/principal.jpg");}
 .paralImgsec0 {
-    background-color: aliceblue;}
+    background-color: white;}
  
 .paralImgsec1 {
     background-image: url("../fondos/gente2.jpg");
@@ -91,19 +91,19 @@ html, body {
     float: right;}
  
 .paralImgsec2 {
-    background-color: aliceblue;
+    background-color: white;
     width: 50%;
     height: 50%;}
 
 .paralImgsec3{
     margin-top: 250px;
-    background-color: aliceblue;}
+    background-color: white;}
 
 .paralImgsec4{
     background-image: url("../fondos/technology.jpg");}
 
 .paralImgsec5{
-   background-color: aliceblue;}
+   background-color: white;}
 
  
 /* Remove Bottom Margin from Jumbotron */
