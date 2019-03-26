@@ -50,7 +50,7 @@
           <div class="col-sm-5">
             <div class="row">
               <label for="ticket" class="form-label col-sm-5"><h3>Ticket#</h3></label>
-              <input type="text" name="ticket" class="form-control col-sm-3" disabled>
+              <input type="text" name="idTickets" class="form-control col-sm-3" ng-model="tickets.idTickets" disabled>
             </div>
           </div>
           <br>
@@ -58,7 +58,7 @@
           <div class="col-sm-5">
             <div class="row">
               <label for="ticket" class="form-label col-sm-4"><h3>Fecha</h3></label>
-              <input type="text" name="ticket" class="form-control col-sm-4" disabled>
+              <input type="text" name="fecha" ng-model="tickets.fecha" class="form-control col-sm-4" disabled>
             </div>
           </div>
           <br>
@@ -66,13 +66,13 @@
           <div class="col-sm-8">
             <div class="row">
               <label for="descripcion" class="form-label col-sm-12"><h4>Descripción del Problema</h4></label>
-              <textarea name="descripcion" rows="4" cols="50" class="form-label col-sm-12"></textarea>
+              <textarea name="descripcion" rows="4" cols="50" ng-model="tickets.descripcionTickets" class="form-label col-sm-12"></textarea>
             </div>
           </div>
           <br>
           <div class="col-sm-12">
             <div class="row">
-              <button ng-click="" class="btn btn-success col-sm-2">Guardar</button>
+              <button ng-click="agregarTickets()" class="btn btn-success col-sm-2">Guardar</button>
             </div>
           </div>
         </div>
@@ -83,48 +83,36 @@
 
 @section('footer')
     @parent
-  <script type="text/javascript">
-    var app=angular.module('app',[])
-      .controller('ctrl',function($scope,$http){
-      $scope.nombre="Liliana García Guevara";
-      $scope.tickets=[];
-      $scope.ticket={
-        id:'1',
-        fechayHora:'2019-10-18',
-        cliente:'Osmar',
-        correo:'1451@hotmail.com',
-        estado:'Cerrado'
-      };
-      $scope.tickets.push($scope.ticket);
-      $scope.ticket={
-        id:'2',
-        fechayHora:'2019-09-09',
-        cliente:'Alfonsina',
-        correo:'1245@hotmail.com',
-        estado:'Abierto'
-      };
-      $scope.tickets.push($scope.ticket);
-      $scope.ticket={
-        id:'3',
-        fechayHora:'2019-12-12',
-        cliente:'Partida',
-        correo:'tqrtrt@hotmail.com',
-        estado:'Pendiente'
-      };
-      $scope.tickets.push($scope.ticket);
-      $scope.ticket={
-        id:'4',
-        fechayHora:'2019-03-03',
-        cliente:'Corona',
-        correo:'Rqwr14r@hotmail.com',
-        estado:'Pendiente'
-      };
-      $scope.tickets.push($scope.ticket);
-      /*$scope.elegirTicket=function(index){
+  <script> 
+    var app = angular.module('app',[])
+    .controller('ctrl',function($scope,$http)
+      {
 
-      }*/
-      });
-  </script>
+        $scope.fechaHoy = new Date().toISOString().split("T")[0];
+        $scope.tickets={
+
+          fechaTickets:$scope.fechaHoy
+        };
+
+
+
+         $scope.agregarTickets=function(){
+          console.log($scope.tickets)
+
+          $http.post('/saveTickets',$scope.tickets).then(
+            function(response){
+              alert('Su peticion se ha realizado correctamente');
+            
+          },function(errorResponse)
+          {
+            alert('error');
+          });
+          $scope.tickets={};
+        }
+
+     });
+
+        </script>
 
   @endsection
 @endsection

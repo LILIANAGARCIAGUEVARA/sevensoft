@@ -4,7 +4,13 @@
 @section('header')
    @parent
 
-    <header>
+
+
+
+
+</header>
+
+    
     <!-- Menu Section -->
         <div id="navbar">
           <img id="Logo" src="fondos/logo.png" >  
@@ -12,9 +18,9 @@
           <a href="#PreguntasFrecuentes">Preguntas Frecuentes</a>
           <a href="/login">Iniciar Sesión</a>
         </div>
-    </header>    
+    </header>  
 
-	
+
 	<!-- First Parallax Section -->
           
 	<div class="jumbotron paral paralImgsec">
@@ -77,6 +83,59 @@
        <p id="textoSeccion5">Actualmente nos encontramos desarrollando la aplicacion "EnSeñas",una aplicación móvil la cual ayudará a personas discapacitadas a aprender un lenguaje signado, de manera fácil, rápida, divertida y sencilla.Todo esto con el fin de su inclusión en la sociedad.</p>  
     </div>
 
+  <h2>Carousel Example</h2>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="../fondos/principal.jpg" alt="Los Angeles" style="width:100%;background: white;">
+        <div class="carousel-caption">
+          <h3>Los Angeles</h3>
+          <p>LA is always so much fun!</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="../fondos/principal5.jpg" alt="Chicago" style="width:100%;background: white;">
+        <div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="" alt="New York" style="width:100%;background: white;" >
+        <div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+
+
+
 
 
     	@section('footerCliente')
@@ -84,6 +143,8 @@
 
    	  
        @endsection
+
+
 
 
 @endsection

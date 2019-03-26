@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  background-color: red;
    
 }
 
@@ -11,12 +12,14 @@ html, body {
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
+    background-color:white;
 }
 .paral2 {
     min-height: 900px;
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
+     background-color:white;
 }
 
 .paralSeccion3 {
@@ -24,6 +27,7 @@ html, body {
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
+     background-color:white;
 }
 
 
@@ -72,7 +76,7 @@ html, body {
     line-height: 100px;}
  
 #paral {
-    color: black;
+    color: white;
     font-size: 70px;
     text-align: center;
     padding-top: 10px;
@@ -518,3 +522,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     transform: rotate(-135deg);
     margin-top: -9px;
 }
+
+
+/**CARRUCEL*/
+
