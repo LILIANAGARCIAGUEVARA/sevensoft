@@ -29,35 +29,28 @@
       <div class="col-sm-2"></div>
       <div class="col-sm-10">
         <h1>TICKET</h1>
-        <h2>Agregar Nuevo Ticket</h2>
+        <img src="/fondos/factura.png" width="50px" height="50px" style="margin-top: -60px; margin-left: 150px;">
         <br>
         <div class="row">
+         
           <div class="col-sm-5">
-            <div class="row">
-              <label for="ticket" class="form-label col-sm-5"><h3>Ticket#</h3></label>
-              <input type="text" name="idTickets" class="form-control col-sm-3" ng-model="tickets.idTickets" disabled>
-            </div>
-          </div>
-          <br>
-          <br>
-          <div class="col-sm-5">
-            <div class="row">
-              <label for="ticket" class="form-label col-sm-4"><h3>Fecha</h3></label>
-              <input type="text" name="fecha" ng-model="fechaHoy" class="form-control col-sm-4" disabled>
+            <div class="row" >
+              <label for="ticket" class="form-label col-sm-4"><h3 style="margin-left: 390px;">Fecha</h3></label>
+              <input type="text" name="fecha" ng-model="fechaHoy" class="form-control col-sm-4" disabled style="margin-left: 500px;margin-top: -50px;">
             </div>
           </div>
           <br>
           <br>
           <div class="col-sm-8">
             <div class="row">
-              <label for="descripcion" class="form-label col-sm-12"><h4>Descripción del Problema</h4></label>
-              <textarea name="descripcion" rows="4" cols="50" ng-model="tickets.descripcionTickets" class="form-label col-sm-12"></textarea>
+              <textarea name="descripcion" rows="4" cols="50" ng-model="tickets.descripcionTickets" placeholder="Describenos tus problemas" class="form-label col-sm-12"></textarea>
             </div>
           </div>
           <br>
           <div class="col-sm-12">
             <div class="row">
-              <button ng-click="agregarTickets()" class="btn btn-success col-sm-2">Guardar</button>
+              <br>
+              <button style="margin-top: 50px;" ng-click="agregarTickets()" class="btn btn-success col-sm-2">Guardar</button>
             </div>
           </div>
         </div>
