@@ -1,7 +1,7 @@
 html, body {
   height: 100%;
   width: 100%;
-  background-color: red;
+  background-color: white;
    
 }
 
@@ -524,5 +524,20 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 
-/**CARRUCEL*/
+/**TICKETS*/
+
+ .main{
+    float: none;  
+  }
+  .Abierto{
+    color: green;
+    font-weight: bold;
+  }
+  .Cerrado{
+    color: red;
+    font-weight: bold;
+  }
+  .Pendiente{
+    font-weight: bold;
+  }
 

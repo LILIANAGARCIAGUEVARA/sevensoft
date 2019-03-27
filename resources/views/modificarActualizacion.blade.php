@@ -42,7 +42,7 @@
 
 <div  id='center' class="main center" ng-controller="ctrl" style="margin: 8% 7% 0px 20%;">
 	<div class="container">
-			<h1>ACTUALIZACIONES</h1>
+			<h1 style="padding-right: 15px;display: inline;padding-bottom: 15px;">ACTUALIZACIONES</h1><input style="padding-right: 15px;display: inline;" type=image src="{{asset('fondos/refrescar.png')}}" width="80" height="80">
 			<br>
 
 		<form name="frmActualizacion">
@@ -57,25 +57,25 @@
 
 					<div class="col-9">
 						<label>Información</label>
-						<input type="text" class="form-control" name="informacion" required ng-model="actualizacion.informacion"/>
+						<input type="text" class="form-control" name="informacion" required ng-model="actualizacion.informacion" onchange="return validatexto(this)"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.informacion.$error.informacion"> Campo informacion es requerido</span>
 					</div>
 
 					<div class="col-7">
 						<label>Ruta</label>
-						<input type="text" class="form-control" name="ruta" required ng-model="actualizacion.ruta"/>
+						<input type="text" class="form-control" name="ruta" required ng-model="actualizacion.ruta" onchange="return validatexto(this)"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.ruta.$error.ruta"> Campo ruta es requerido</span>
 					</div>
 
 		
 					<div class="col-2">
 						<br>
-						<button type="button" style="margin-top: 3%" class="btn btn-secondary" ng-disabled="!frmActualizacion.$valid" ng-click="guardar()">MODIFICAR</button>
+						<button type="button" style="margin-top: 3%" class="btn btn-success" ng-disabled="!frmActualizacion.$valid" ng-click="guardar()">MODIFICAR</button>
 					</div>
 
 					<div class="col-2">
 						<br>
-						<a href="/actualizaciones"><button style="margin-top: 3%" type="button" class="btn btn-secondary" >REGRESAR</button></a>
+						<a href="/actualizaciones"><button style="margin-top: 3%" type="button" class="btn btn-primary" >REGRESAR</button></a>
 					</div>
 					</div>
 				</div>
@@ -111,7 +111,8 @@
 
     }, function(errorResponse){
         alert('Error al modificar los datos');
-})
+	})
+            $scope.actualizacion={};
         }
 
     });

@@ -2,22 +2,7 @@
 @extends('header')
 @section('header')
   @parent
-<style>
-  .main{
-    float: none;  
-  }
-  .Abierto{
-    color: green;
-    font-weight: bold;
-  }
-  .Cerrado{
-    color: red;
-    font-weight: bold;
-  }
-  .Pendiente{
-    font-weight: bold;
-  }
-</style>
+
 <div class="header"></div>
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -58,7 +43,7 @@
           <div class="col-sm-5">
             <div class="row">
               <label for="ticket" class="form-label col-sm-4"><h3>Fecha</h3></label>
-              <input type="text" name="fecha" ng-model="tickets.fecha" class="form-control col-sm-4" disabled>
+              <input type="text" name="fecha" ng-model="fechaHoy" class="form-control col-sm-4" disabled>
             </div>
           </div>
           <br>

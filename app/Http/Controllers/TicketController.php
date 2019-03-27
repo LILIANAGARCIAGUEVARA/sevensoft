@@ -38,9 +38,7 @@ class TicketController extends Controller
 
         $datos->descripcion = $request->input('descripcionTickets');
         $datos->fecha = $request->input('fechaTickets');
-        $datos->fechacompromiso = '1998-01-12';
-        $datos->idtrabajadores="1";
-        $datos->idclientes="1";
+       
         $datos->save();
 
     }

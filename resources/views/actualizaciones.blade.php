@@ -33,7 +33,7 @@
 
 <div  id='center' class="main center" ng-controller="ctrl" style="margin: 8% 7% 0px 20%;">
 	<div class="container">
-			<h1>ACTUALIZACIONES</h1>
+			 <h1 style="padding-right: 15px;display: inline;padding-bottom: 15px;">ACTUALIZACIONES</h1><input style="padding-right: 15px;display: inline;" type=image src="{{asset('fondos/refrescar.png')}}" width="80" height="80">
 			<br>
 
 		<form name="frmActualizacion">
@@ -42,13 +42,13 @@
 			
 					<div class="col-3">
 						<label>Versión</label>
-						<input type="text" class="form-control" name="versiones" required ng-model="actualizacion.versiones"/>
+						<input type="text" class="form-control" name="versiones" required ng-model="actualizacion.versiones" />
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.versiones.$error.versiones"> Campo version es requerido</span>
 					</div>
 
 					<div class="col-9">
 						<label>Información</label>
-						<input type="text" class="form-control" name="informacion" required
+						<input type="text" class="form-control" name="informacion" required onchange="return validatexto(this)"
 						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.informacion"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.informacion.$error.informacion"> Campo informacion es requerido</span>
 					</div>
@@ -56,7 +56,7 @@
 					<div class="col-7">
 						<label>Ruta</label>
 						<input type="text" class="form-control" name="ruta" required
-						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.ruta"/>
+						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.ruta" onchange="return validatexto(this)"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.ruta.$error.ruta"> Campo ruta es requerido</span>
 					</div>
 
@@ -68,7 +68,7 @@
 
 					<div class="col-2">
 						<br>
-						<button type="button" style="margin-top: 3%" class="btn btn-secondary" ng-disabled="!frmActualizacion.$valid" ng-click="guardar()">GUARDAR</button>
+						<button type="button" style="margin-top: 3%" class="btn btn-success" ng-disabled="!frmActualizacion.$valid" ng-click="guardar()">GUARDAR</button>
 					</div>
 				</div>
 			</div>	
@@ -95,8 +95,9 @@
 						<td>{{$act->informacion}}</td>
 						<td>{{$act->ruta}}</td>
 						
-						<td><input style="padding-right: 5px;" type=image src="{{asset('img/eliminar.png')}}" ng-click="eliminar({{$act->idDescargas}})" width="40" height="40">
-						<a href="/editaractualizacion/{{$act->idDescargas}}"><input style="padding-right: 5px;" type=image src="{{asset('img/modificar.png')}}" width="40" height="40"></td></a>
+						<td><input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$act->idDescargas}})" width="40" height="40">
+						<a href="{{url('/editaractualizacion/'.encrypt($act->idDescargas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="40" height="40"></td></a>
+						
 						
 					</tr>
 					@endforeach
@@ -126,6 +127,7 @@
 		}, function(errorResponse){
 			alert('Error al guardar los datos');
 	});
+	        $scope.actualizacion={};
 			}
 
 
@@ -145,4 +147,14 @@
 	}
 }		
 	});
+</script>
+
+<script type="text/javascript">
+ function validatexto(elemento)
+ {
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
+      alert("Solo se permiten letras");
+      elemento.value = '';
+  }
+}
 </script>

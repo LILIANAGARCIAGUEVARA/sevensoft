@@ -59,6 +59,8 @@
         </div>
     </div>
 </div>
+
+
                      
 <script type="text/javascript" src="{{asset('js/angular.js')}}"></script>
 </body>
@@ -81,6 +83,7 @@
         function(response){
             alert("Se han modificado correctamente los datos");
             window.location.href='{{url("/preguntastrabajador")}}';
+            $scope.respuestas={};
             
 
     }, function(errorResponse){

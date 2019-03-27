@@ -9,11 +9,11 @@
 	    		<h1>Registrarse</h1>
 	    		<form name="frmUsuarios">
 
-	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="cliente.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/"/>
+	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="cliente.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
 	   			
 			
 
-	    		<input type="text" name="apellidos" placeholder="Apellidos" ng-model="cliente.apellidos"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" />
+	    		<input type="text" name="apellidos" placeholder="Apellidos" ng-model="cliente.apellidos"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
 
 
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="cliente.correo"  required />
@@ -25,7 +25,7 @@
 	    
 	    		<input type="submit" name="signup_submit" value="Registrar" ng-disabled="!frmUsuarios.$valid" ng-click="guardar()"/>
 	    		<div class="d-flex justify-content-center links">
-					Ya Tienes una Cuenta?<a href="/login">Login</a>
+					¿Ya Tienes una Cuenta?<a href="/login">Login</a>
 				</div>
 				</form>
   			</div>
@@ -33,6 +33,37 @@
      		<img src="{{asset('fondos/logito.png')}}">   
   		</div>
 	</div>
+
+
+	<script type="text/javascript">
+ function validatexto(elemento)
+ {
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
+      alert("Solo se permiten letras");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validaNumLet(elemento)
+ {
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ1-9])*$/.test(elemento.value)){
+      alert("Solo se permiten letras sin espacios");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validaNum(elemento)
+ {
+  if (!/^([1-9])*$/.test(elemento.value)){
+      alert("Solo se permiten números");
+      elemento.value = '';
+  }
+}
+</script>
 @section('footerCliente')
 		@parent
 
@@ -62,11 +93,16 @@
 						$http.post('/guardarUsuario', $scope.cliente).then(
 							function(response){
                 				alert("AGREGADO CON EXITO");
+
        						},function(errorResponse){
        							alert("FALLO LA CONEXION");
         					}
+
         				);
+						$scope.cliente={};
+
 					}
+
     			}
     	});
     			

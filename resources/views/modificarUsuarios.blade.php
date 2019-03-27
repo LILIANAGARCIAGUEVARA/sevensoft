@@ -24,14 +24,14 @@
 
             <div>
                 <label>Nombre:</label>
-                <input class="form-control" id="inputSeleccionado" type="text" name="nombre" ng-model="usuarioEditado.nombre" required>
+                <input class="form-control" id="inputSeleccionado" type="text" name="nombre" ng-model="usuarioEditado.nombre" onchange="return validatexto(this)" required>
                 <span ng-show="frm.nombre.$dirty && frm.nombre.$error.required"> Campo requerido </span> <br>
               
             </div>
 
              <div>
                 <label>Apellidos:</label>
-                <input class="form-control" id="inputSeleccionado" type="text" name="apellido" ng-model="usuarioEditado.apellido" required>
+                <input class="form-control" id="inputSeleccionado" type="text" name="apellido" ng-model="usuarioEditado.apellido" onchange="return validatexto(this)" required>
                 <span ng-show="frm.apellido.$dirty && frm.apellido.$error.required"> Campo requerido </span> <br>
               
             </div>
@@ -68,6 +68,19 @@
 }
 
 </script>
+
+<script type="text/javascript">
+ function validatexto(elemento)
+ {
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
+      alert("Solo se permiten letras");
+      elemento.value = '';
+  }
+}
+</script>
+
+
+
       
    	@section('footer')
    	  @parent
@@ -93,8 +106,6 @@
           
           
           $scope.editar=function(){
-
-               alert($scope.usuarioEditado.id);
               $http.post('/modificarUsuarios/'+$scope.usuarioEditado.id,$scope.usuarioEditado).then(
                 function(response){
                     alert('Los datos fueron modificados con exito');
@@ -105,7 +116,10 @@
               },function(errorResponse){
 
             }
-          );}
+
+          );
+$scope.usuarioEditado={};
+            }
 });
   </script>
       

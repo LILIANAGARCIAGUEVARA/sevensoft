@@ -53,9 +53,10 @@ class Descargas extends Controller
 
   public function preeditar($id)
     {
+         $idDM=decrypt($id);
         $editaract=\DB::table('descargas')
         ->select(DB::raw('descargas.`idDescargas`,descargas.`versiones`,descargas.`informacion`, descargas.`ruta`, descargas.`fecha`'))
-        -> where('descargas.idDescargas','=',$id)
+        -> where('descargas.idDescargas','=',$idDM)
         ->get();
         return view('modificarActualizacion', compact('editaract'));
     }
