@@ -19,7 +19,7 @@
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="cliente.correo"  required />
 	 
 
-	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena"  required/>
+	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena" maxlength="20" required/>
 	    		
 	    
 	    
@@ -93,6 +93,7 @@
 						$http.post('/guardarUsuario', $scope.cliente).then(
 							function(response){
                 				alert("AGREGADO CON EXITO");
+                				window.location.href = '{{url("/login")}}';
 
        						},function(errorResponse){
        							alert("FALLO LA CONEXION");

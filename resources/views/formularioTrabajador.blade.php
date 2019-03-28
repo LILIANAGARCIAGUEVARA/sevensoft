@@ -22,7 +22,7 @@
 
 	    		<input type="text" name="curp" placeholder="CURP" ng-model="trabajador.curp"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ1-9]*$/"  maxlength="18" minlength="18" onchange="return validaNumLet(this)"/>
 
-	    		<input type="number" name="telefono" placeholder="Telefono" ng-model="trabajador.telefono" maxlength="10" minlength="10" required onchange="return validaNum(this)" />
+	    		<input type="text" name="telefono" placeholder="Telefono" ng-model="trabajador.telefono" maxlength="10" minlength="10" required onchange="return validaNum(this)" />
 
 	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="18" minlength="18" required onchange="return validaNumLet(this)" />
 
@@ -30,7 +30,7 @@
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
 	 
 
-	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba"  required/>
+	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="20" required/>
 	    		
 	    
 	    
@@ -110,6 +110,8 @@
 							function(response){
 
 								alert("AGREGADO CON EXITO");
+								$scope.trabajador={};
+								$scope.trabajador.fechaNac={};
 								window.location.href = '{{url("/login")}}';
 								
 							},function(errorResponse){
