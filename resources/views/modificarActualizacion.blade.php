@@ -63,7 +63,7 @@
 
 					<div class="col-7">
 						<label>Ruta</label>
-						<input type="text" class="form-control" name="ruta" required ng-model="actualizacion.ruta" onchange="return validatexto(this)"/>
+						<input type="text" class="form-control" name="ruta" required ng-model="actualizacion.ruta" />
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.ruta.$error.ruta"> Campo ruta es requerido</span>
 					</div>
 
@@ -88,6 +88,16 @@
 <script type="text/javascript" src="{{asset('js/angular.js')}}"></script>
 </body>
 </html>
+
+<script type="text/javascript">
+ function validatexto(elemento)
+ {
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
+      alert("Solo se permiten letras");
+      elemento.value = '';
+  }
+}
+</script>
 
 <script>
 	var app=angular.module('app',[]);

@@ -56,7 +56,7 @@
 					<div class="col-7">
 						<label>Ruta</label>
 						<input type="text" class="form-control" name="ruta" required
-						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.ruta" onchange="return validatexto(this)"/>
+						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.ruta" />
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.ruta.$error.ruta"> Campo ruta es requerido</span>
 					</div>
 

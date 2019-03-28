@@ -78,17 +78,17 @@
 
         $scope.guardar=function(){
             $http.post('/modificandorespuesta/'+$scope.respuestas.id,$scope.respuestas).then(
-
-
-        function(response){
+            function(response){
             alert("Se han modificado correctamente los datos");
-            window.location.href='{{url("/preguntastrabajador")}}';
             $scope.respuestas={};
             
-
-    }, function(errorResponse){
-        alert('Error al modificar los datos');
-})
+            window.location.href='{{url("/preguntastrabajador")}}';
+           
+           }, function(errorResponse){
+             alert('Error al modificar los datos');
+            });
+             $scope.respuestas={};
+             
         }
        
     });
