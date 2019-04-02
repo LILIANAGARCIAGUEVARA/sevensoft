@@ -1,5 +1,6 @@
-
+@extends('footer')
 @extends('header')
+
 @section('header')
 	@parent
 
@@ -21,7 +22,7 @@
 			<div class="card-header">
 				<h3>Ingresar</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
+					<a href="https://www.facebook.com/SevenSoftDevelops/"><span><i class="fab fa-facebook-square"></i></span></a>
 					<span><i class="fab fa-google-plus-square"></i></span>
 					<span><i class="fab fa-twitter-square"></i></span>
 				</div>
@@ -41,11 +42,10 @@
 						</div>
 						<input type="password" class="form-control" placeholder="Contraseña" ng-model="datos.contrasena">
 					</div>
-			
-					
+				
 					<div class="form-group">
 
-						<input type="submit" value="Login" class="btn float-right login_btn" ng-click="guardar()">
+						<input type="submit" value="Login" class="btn float-right login_btn" ng-click="entrar()">
 					</div>
 				</form>
 			</div>
@@ -53,10 +53,29 @@
 				<div class="d-flex justify-content-center links">
 					¿No tienes una Cuenta?<a href="/formularioUsuarios">Registrate</a>
 				</div>
+				<div class="d-flex justify-content-center links">
+					Olvidaste tu Contraseña?<a href="/recuperarContrasena">Recuperarla</a>
+				</div>
 				
 			</div>
 		</div>
 	</div>
 </div>
 	
+@section('footer')
+		@parent
+		<script >
+	   		var app = angular.module('app',[]);
+    		app.controller('ctrl',function($scope,$http)
+   	     	{
+   	     		$scope.datos={};
+            	$scope.entrar=function(){
+                	window.location.href = `{{URL::to("/control")}}`+`/`+$scope.datos.usuario+`/`+$scope.datos.contrasena;
+            	};
+            });
+    				
+        </script>
+		
+	@endsection
 @endsection
+

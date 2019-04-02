@@ -27,14 +27,6 @@ Route::get('/tickets', function () {
 });
 
 
-//Liliana Rutas
-
-
-
-
-//
-
-
 //Julio Rutas
 Route::get('/consultaUsuarios', function () {
     return view('consultaUsuarios');
@@ -56,7 +48,6 @@ Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@d
 
 Route::get('/datosModificar/{id}', array ('as'=>'id','uses'=>'Controlador@datosModificar'));
 Route::post('/modificarUsuarios/{id}','Controlador@update');
-Route::get('/login','UsuarioController@login');
 
 
 Route::post('/saveTrabajador','TrabajadorController@store');
@@ -64,9 +55,17 @@ Route::post('/saveTrabajador','TrabajadorController@store');
 Route::post('/guardarUsuario','ClienteController@store');
 
 
+Route::get('/control/{usuario}/{contrasena}','login@login');
+Route::get('/login','login@consulta');
+Route::get('/recuperarContrasena',function(){
+	return view('recuperarContrasena');
+});
+Route::get('/control2/{usuario}/{pregunta}/{respuesta}','login@recuperar');
 
 
+Route::get('/recuperar/{idusuarios}','login@update');
 
+Route::put('/recuperar/{idusuarios}','login@updatecontra');
 ///
 
 //Maria Rutas
