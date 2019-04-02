@@ -518,3 +518,21 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     transform: rotate(-135deg);
     margin-top: -9px;
 }
+
+.espacio{
+    padding-top: 40px;
+}
+
+.agrandar{
+    padding-top: 80px;
+}
+
+.chico{
+    padding-top: 10px;
+}
+
+.bordes{
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+

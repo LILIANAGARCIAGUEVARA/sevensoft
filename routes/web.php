@@ -77,7 +77,6 @@ Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
 Route::post('/save','UsuarioController@store');
 Route::get('/consultaUsuarios','UsuarioController@consulta');
 Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
-
 Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
 Route::post('/modificarUsuarios/{id}','UsuarioController@update');
 Route::get('/menuUser', function () {
@@ -96,9 +95,9 @@ Route::get('/actualizaciones','Descargas@index');
 
 Route::get('/verrespuesta','PreguntasAdmin@respuesta');
 
+Route::get('/correo','Tickets@correos');
+Route::resource('mail','MailController');
 Route::post('/guardarrespuesta','PreguntasAdmin@store');
-
-Route::post('/hola','Descargas@store');
 
 Route::get('/editarrespuesta/{id}','PreguntasAdmin@preeditar');
 
@@ -107,7 +106,12 @@ Route::get('/editaractualizacion/{id}','Descargas@preeditar');
 Route::get('/modificar/{id}','PreguntasAdmin@modificar');
 Route::post('/modificaract/{id}','Descargas@update');
 
+Route::get('/ticketsoporte','Tickets@index');
+Route::get('/modificarTicket/{id}','Tickets@consulta');
+Route::post('/actualizarticket/{id}','Tickets@update');
+
 Route::get('/menuadmin', function () {
     return view('menuadmin');
 });
+
 
