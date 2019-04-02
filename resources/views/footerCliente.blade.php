@@ -91,7 +91,7 @@
           <p>
             <i class="fas fa-home mr-3">calle Jorge Salazar #30, colonia Francisco Villa, Mazatlán,Sinaloa,México</i></p>
           <p>
-            <i class="fas fa-envelope mr-3"></i> sevensoft@gmail.com</p>
+            <i class="fas fa-envelope mr-3"></i>sevensoft.soporte@gmail.com</p>
           <p>
             <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
           <p>

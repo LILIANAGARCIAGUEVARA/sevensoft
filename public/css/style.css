@@ -1,7 +1,8 @@
 html, body {
   height: 100%;
   width: 100%;
-    background-color: aliceblue;
+  background-color: white;
+   
 }
 
 
@@ -11,12 +12,14 @@ html, body {
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
+    background-color:white;
 }
 .paral2 {
     min-height: 900px;
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
+     background-color:white;
 }
 
 .paralSeccion3 {
@@ -24,6 +27,7 @@ html, body {
     background-attachment: fixed;
     background-size: cover;
     background-position: 50% 50%;
+     background-color:white;
 }
 
 
@@ -72,7 +76,7 @@ html, body {
     line-height: 100px;}
  
 #paral {
-    color: black;
+    color: white;
     font-size: 70px;
     text-align: center;
     padding-top: 10px;
@@ -82,7 +86,7 @@ html, body {
 .paralImgsec {
     background-image: url("../fondos/principal.jpg");}
 .paralImgsec0 {
-    background-color: aliceblue;}
+    background-color: white;}
  
 .paralImgsec1 {
     background-image: url("../fondos/gente2.jpg");
@@ -91,19 +95,19 @@ html, body {
     float: right;}
  
 .paralImgsec2 {
-    background-color: aliceblue;
+    background-color: white;
     width: 50%;
     height: 50%;}
 
 .paralImgsec3{
     margin-top: 250px;
-    background-color: aliceblue;}
+    background-color: white;}
 
 .paralImgsec4{
     background-image: url("../fondos/technology.jpg");}
 
 .paralImgsec5{
-   background-color: aliceblue;}
+   background-color: white;}
 
  
 /* Remove Bottom Margin from Jumbotron */
@@ -307,7 +311,7 @@ html, body {
 /*ESTILOS PREGUNTAS CLIENTES*/
 
 #formulario{
-    margin-left: 500px;
+    margin-left: 400px;
     margin-top: 100px;
 
 }
@@ -518,3 +522,41 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     transform: rotate(-135deg);
     margin-top: -9px;
 }
+
+
+.espacio{
+    padding-top: 40px;
+}
+
+.agrandar{
+    padding-top: 80px;
+}
+
+.chico{
+    padding-top: 10px;
+}
+
+.bordes{
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+
+/**TICKETS*/
+
+ .main{
+    float: none;  
+  }
+  .Abierto{
+    color: green;
+    font-weight: bold;
+  }
+  .Cerrado{
+    color: red;
+    font-weight: bold;
+  }
+  .Pendiente{
+    font-weight: bold;
+  }
+
+

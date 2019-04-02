@@ -28,45 +28,42 @@
       <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
       <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
     </ul>
-  </div>0
+  </div>
 
 
-<div  id='center' class="main center" ng-controller="ctrl" >
+<div  id='center' class="main center" ng-controller="ctrl" style="margin: 8% 7% 0px 20%;">
 	<div class="container">
-			<h1 style="padding: 40px 0px 0px 150px;">PREGUNTAS DE CLIENTES</h1>
+			<h1>ACTUALIZACIONES</h1>
 			<br>
-			
-			<br>
-			<div style="padding: 0px 0px 0px 150px;">
+
+		<div style="padding: 30px 0px 0px 0px;">
 			<table class="table">
 				<thead class="thead-dark">
 					<tr> 	
-						<th scope="col">#</th>
-						<th scope="col">PREGUNTA</th>
-						<th scope="col" >RESPUESTA</th>
+						<th scope="col">FECHA</th>
+						<th scope="col">VERSIÓN</th>
+						<th scope="col">INFORMACIÓN</th>
+						<th scope="col">RUTA</th>
 						<th scope="col" colspan="2">ACCIONES</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($mostrarpreguntas as $pregunta)
+					@foreach($mostraract as $act)
 					<tr>
-						<td>{{$pregunta->idpreguntas}}</td>
-						<td>{{$pregunta->descripcion}}</td>
-						<td>{{$pregunta->respuesta}}</td>
-						<td colspan="2"><a href="{{url('/editarrespuesta/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/agregar.png')}}" width="40" height="40" ></a>
-
-
-
-						<input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$pregunta->idpreguntas}})" width="30" height="30">
-						<a href="{{url('/modificar/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="30" height="30"></td></a>
-
+						<td>{{$act->fecha}}</td>
+						<td>{{$act->versiones}}</td>
+						<td>{{$act->informacion}}</td>
+						
+						
+						<td><input style="padding-right: 5px;" type=image src="{{asset('img/eliminar.png')}}" ng-click="eliminar({{$act->idDescargas}})" width="40" height="40">
+						<a href="/editaractualizacion/{{$act->idDescargas}}"><input style="padding-right: 5px;" type=image src="{{asset('img/modificar.png')}}" width="40" height="40"></td></a>
 						
 					</tr>
 					@endforeach
 				</tbody>
 
 			</table>
-			</div>	
+		</div>	
 	</div>
 </div>
 <script type="text/javascript" src="{{asset('js/angular.js')}}"></script>
@@ -75,10 +72,23 @@
 
 <script>
 	var app=angular.module('app',[]);
-		app.controller('ctrl', function($scope,$http){
-		$scope.pregunta={};
-		$scope.var={};
-		
+		app.controller('ctrl', function($scope,$http,$filter){
+		$scope.actualizacion={};
+		$scope.date=new Date();
+	
+
+		 $scope.guardar=function(){
+		 	$scope.actualizacion.fecha=$filter('date')($scope.date,'yyyy-MM-d hh:mm:ss');
+	        $http.post('/hola',$scope.actualizacion).then(
+			
+			function(response){
+				window.location.href='{{url("/actualizaciones")}}';
+		}, function(errorResponse){
+			alert('Error al guardar los datos');
+	});
+			}
+
+
 		$scope.eliminar=function(id){
 			
 		if(confirm("¿Quieres eliminar el registro?")){
@@ -86,7 +96,7 @@
 
 		function(response){
 			alert('Se han eliminado correctamente los datos');
-			window.location.href='{{url("/preguntastrabajador")}}';
+			window.location.href='{{url("/actualizaciones")}}';
 		
 
 	}, function(errorResponse){

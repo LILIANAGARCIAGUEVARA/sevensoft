@@ -79,10 +79,13 @@
              $http.post('/guardarrespuesta',$scope.respuesta).then(
         function(response){
             alert('Datos guardados correctamente');
+             $scope.respuesta={};
             window.location.href='{{url("/preguntastrabajador")}}';
+
     }, function(errorResponse){
         alert('Error al guardar los datos');
 }) 
+              $scope.respuesta={};
         }
       
         

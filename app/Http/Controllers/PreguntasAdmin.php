@@ -9,6 +9,7 @@ use App\Http\Controllers\PreguntasAdmin;
 use App\Http\Requests;
 use App\PreguntaAdmin;
 use App\Respuesta;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class PreguntasAdmin extends Controller
 {
@@ -49,22 +50,26 @@ class PreguntasAdmin extends Controller
 
      public function preeditar($id)
     {
+         $idP=decrypt($id);
         $pregunadmin=\DB::table('preguntas')
         ->select(DB::raw('preguntas.`idpreguntas`,preguntas.`descripcion`'))
-        -> where('preguntas.idpreguntas','=',$id)
+        -> where('preguntas.idpreguntas','=',$idP)
         ->get();
         return view('respuesta', compact('pregunadmin'));
     }
 
          public function modificar($id)
     {
+
+        $idR=decrypt($id);
+            
         $respuestaadmin=\DB::table('preguntas')
        ->select(DB::raw('preguntas.`idpreguntas`,preguntas.`descripcion`,respuestas.`respuesta`'))
         -> leftjoin('respuestas','preguntas.idpreguntas','=','respuestas.idpregunta')
-        -> where('preguntas.idpreguntas','=',$id)
+        -> where('preguntas.idpreguntas',$idR)
         ->get();
         return view('modificarRespuesta', compact('respuestaadmin'));
-    }
+       }
 
 
     /**
