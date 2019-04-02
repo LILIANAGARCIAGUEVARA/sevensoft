@@ -51,7 +51,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					No tienes una Cuenta?<a href="/formularioUsuarios">Registrate</a>
+					¿No tienes una Cuenta?<a href="/formularioUsuarios">Registrate</a>
 				</div>
 				
 			</div>

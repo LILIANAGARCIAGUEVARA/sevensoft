@@ -53,10 +53,13 @@
 						<td>{{$pregunta->idpreguntas}}</td>
 						<td>{{$pregunta->descripcion}}</td>
 						<td>{{$pregunta->respuesta}}</td>
-						<td colspan="2"><a href="/editarrespuesta/{{$pregunta->idpreguntas}}"><input style="padding-right: 5px;" type=image src="{{asset('img/agregar.png')}}" width="40" height="40" ></a>
+						<td colspan="2"><a href="{{url('/editarrespuesta/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/agregar.png')}}" width="40" height="40" ></a>
 
-						<input style="padding-right: 5px;" type=image src="{{asset('img/eliminar.png')}}" ng-click="eliminar({{$pregunta->idpreguntas}})" width="40" height="40">
-						<a href="/modificar/{{$pregunta->idpreguntas}}"><input style="padding-right: 5px;" type=image src="{{asset('img/modificar.png')}}" width="40" height="40"></td></a>
+
+
+						<input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$pregunta->idpreguntas}})" width="30" height="30">
+						<a href="{{url('/modificar/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="30" height="30"></td></a>
+
 						
 					</tr>
 					@endforeach

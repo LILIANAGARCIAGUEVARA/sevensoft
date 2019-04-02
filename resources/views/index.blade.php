@@ -4,7 +4,13 @@
 @section('header')
    @parent
 
-    <header>
+
+
+
+
+</header>
+
+    
     <!-- Menu Section -->
         <div id="navbar">
           <img id="Logo" src="fondos/logo.png" >  
@@ -12,9 +18,9 @@
           <a href="#PreguntasFrecuentes">Preguntas Frecuentes</a>
           <a href="/login">Iniciar Sesión</a>
         </div>
-    </header>    
+    </header>  
 
-	
+
 	<!-- First Parallax Section -->
           
 	<div class="jumbotron paral paralImgsec">
@@ -79,11 +85,18 @@
 
 
 
+
+
+
+
+
     	@section('footerCliente')
    	  	@parent
 
    	  
        @endsection
+
+
 
 
 @endsection

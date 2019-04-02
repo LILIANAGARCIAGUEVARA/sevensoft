@@ -1,4 +1,4 @@
-@extends('footerCliente')
+@extends('footer')
 @extends('header')
 
 @section('header')
@@ -27,10 +27,10 @@
       <div ng-controller="ctrl">
    
        <div id="formulario">
-      <h1>Preguntas</h1>
+      <h1>¿En qué podemos ayudarte?</h1>
       <form name="frm" style="width: 500px;height: 500px;">
             <div>
-              <textarea  class="form-control" id="inputSeleccionado" type="text" name="descripcion" ng-model="preguntas.descripcion" placeholder="Escribenos tu pregunta para poder ayudarte." rows="7" required> </textarea>
+              <textarea  class="form-control" id="inputSeleccionado" type="text" name="descripcion" ng-model="preguntas.descripcion" placeholder="Envianos tu pregunta para poder ayudarte." rows="7" required> </textarea>
               <span ng-show="frm.descripcion.$dirty && frm.descripcion.$error.required">  </span> <br>
               <img id="cuaderno" src="fondos/cuaderno.png" > 
             </div>
@@ -41,7 +41,9 @@
       </div>
 
 
-    	@section('footerCliente')
+
+
+    	@section('footer')
    	  	@parent
          <script> 
          var app = angular.module('app',[])
@@ -63,12 +65,14 @@
               $http.post('/savePregunta',$scope.preguntas).then(
                 function(response){
                   alert('Su peticion se ha realizado correctamente');
-                
+                  $scope.preguntas={};
+                  window.location.href=`{{url("/preguntas")}}`;
               },function(errorResponse)
               {
                 alert('error');
               });
               $scope.preguntas={};
+               $scope.frm.$setPristine();
             }
 
         });
