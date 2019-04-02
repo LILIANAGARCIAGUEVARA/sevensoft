@@ -125,7 +125,7 @@
             function(response){
               
                 alert('Ticket actualizado correctamente.');
-                window.location.href='{{url("/ticketsoporte")}}';
+                
         }, function(errorResponse){
             alert('Error al guardar los datos');
     });

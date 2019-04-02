@@ -119,4 +119,7 @@ Route::get('/menuadmin', function () {
     return view('menuadmin');
 });
 
+Route::get('/menusoporte', function () {
+    return view('menuSoporte');
+});
 
