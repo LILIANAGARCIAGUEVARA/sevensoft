@@ -52,9 +52,7 @@ class ClienteController extends Controller
         $data = new Usuario();
         $data->correo = $request->input('correo');
         $data->contraseña = $request->input('contrasena');
-        $data->pregunta = $request->input('pregunta');
-        $data->respuesta = $request->input('respuesta');
-        $data->tipo =3;
+        $data->tipo =1;
 
 
         $data->save();

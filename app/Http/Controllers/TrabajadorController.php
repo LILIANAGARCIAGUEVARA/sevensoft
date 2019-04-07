@@ -43,9 +43,7 @@ class TrabajadorController extends Controller
        
         $data->correo = $request->input('correo');
         $data->contraseña = $request->input('contrasenaTraba');
-        $data->tipo =2;
-        $data->pregunta = $request->input('pregunta');
-        $data->respuesta = $request->input('respuesta');
+        $data->tipo =1;
 
         $data->save();
 

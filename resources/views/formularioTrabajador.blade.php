@@ -32,9 +32,6 @@
 
 	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="20" required/>
 	    		
-	    		<select  type="text" ng-model="trabajador.pregunta" ng-options="x for x in preguntas" required placeholder="Pregunta de Seguridad"></select>
-
-	    		<input type="text" name="respuesta" placeholder="respuesta" ng-model="trabajador.respuesta" required>	
 	    
 	    
 	    		<input type="submit" name="signup_submit" value="Registrar" ng-disabled="!frmTrabajador.$valid" ng-click="guardar()"/>
@@ -86,11 +83,14 @@
         .controller('ctrl',function($scope,$http,$filter)
    	     {
         	$scope.hoy= $filter('date')(new Date(),'yyyy-MM-dd');
+<<<<<<< HEAD
 
 			$scope.preguntas=['Cuál fue el nombre de tu primera mascota',
     							'Cuál es tu comida favorita',
     							'Cuál es el nombre de tu madre',
     							'Cuál es el nombre de tu mejor amigo'];
+=======
+>>>>>>> parent of 6b113b1... LOGIN Y RECUPERAR CONTRA
           	$scope.trabajador={};
 
         	 $scope.fechaHoy = new Date().toISOString().split("T")[0];

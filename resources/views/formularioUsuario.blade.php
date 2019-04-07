@@ -21,6 +21,7 @@
 
 
 	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena"  required/>
+<<<<<<< HEAD
 
 	    		<select  type="text" ng-model="cliente.pregunta" ng-options="x for x in preguntas" required placeholder="Pregunta de Seguridad"></select>
 
@@ -28,7 +29,10 @@
 
 	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena" maxlength="20" required/>
 
+=======
+>>>>>>> parent of 6b113b1... LOGIN Y RECUPERAR CONTRA
 	    		
+	    
 	    
 	    		<input type="submit" name="signup_submit" value="Registrar" ng-disabled="!frmUsuarios.$valid" ng-click="guardar()"/>
 	    		<div class="d-flex justify-content-center links">
@@ -79,10 +83,7 @@
         .controller('ctrl',function($scope,$http)
    	     {
 
-            $scope.preguntas=['Cuál fue el nombre de tu primera mascota',
-    								'Cuál es tu comida favorita',
-    								'Cuál es el nombre de tu madre',
-    								'Cuál es el nombre de tu mejor amigo'];
+          
           $scope.cliente={};
     			
  				$scope.guardar=function(){
