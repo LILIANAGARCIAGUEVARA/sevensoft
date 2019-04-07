@@ -1,4 +1,4 @@
-
+´bnh
 @extends('footer')
 @extends('header')
 
@@ -14,15 +14,14 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li>Liliana García Guevara <span>Cliente</span></li>
-      <li><a href="../preguntastrabajador">Preguntas</a></li>
-      <li><a href="https://instagram.com/plavookac">Descargas</a></li>
-      <li><a href="../ticketsoporte">Tickets</a></li>
+      <li>Liliana García Guevara <span>Soporte</span></li>
+      <li><a href="/preguntastrabajador" >Preguntas</a></li>
+      <li><a href="/ticketsoporte">Tickets</a></li>
     </ul>
   </div>
   <div id='center' class="main center">
     <div class="mainInner">
-      <div>SEVENSOFT CLIENTE</div>
+      <div>SEVENSOFT SOPORTE</div>
     </div>
 
     @section('footer')
