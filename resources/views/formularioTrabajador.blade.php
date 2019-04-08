@@ -50,12 +50,6 @@
 	    	    <span ng-show="frmTrabajador.password.$dirty && frmTrabajador.password.$error.required"> Campo requerido </span> <br>
                   <a id='resultado'></a>
 
-	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.email"  required />
-	 
-
-
-	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="20" required/>
-
 	    		
 	    
 	    
