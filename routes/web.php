@@ -86,7 +86,7 @@ Route::get('/consultaUsuarios','UsuarioController@consulta');
 Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
 Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
 Route::post('/modificarUsuarios/{id}','UsuarioController@update');
-Route::get('/menuUser', function () {
+Route::get('/menuUser/{idusuarios}', function () {
     return view('menuUser');
 });
 
@@ -117,7 +117,7 @@ Route::get('/ticketsoporte','Tickets@index');
 Route::get('/modificarTicket/{id}','Tickets@consulta');
 Route::post('/actualizarticket/{id}','Tickets@update');
 
-Route::get('/menuadmin', function () {
+Route::get('/menuadmin/{idusuarios}', function () {
     return view('menuadmin');
 });
 
@@ -126,7 +126,7 @@ Route::get('/menuadmin', function () {
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/menusoporte', function () {
+Route::get('/menusoporte/{idusuarios}', function () {
     return view('menuSoporte');
 });
 

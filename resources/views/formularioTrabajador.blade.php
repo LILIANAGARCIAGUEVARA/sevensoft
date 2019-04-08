@@ -27,7 +27,7 @@
 	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="18" minlength="18" required onchange="return validaNumLet(this)" />
 
 
-	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.email"  required />
+	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
 	 
 
 
