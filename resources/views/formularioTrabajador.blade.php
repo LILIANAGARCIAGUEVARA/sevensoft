@@ -50,7 +50,7 @@
 	    	    <span ng-show="frmTrabajador.password.$dirty && frmTrabajador.password.$error.required"> Campo requerido </span> <br>
                   <a id='resultado'></a>
 
-	    		
+
 	    
 	    
 	    		<input type="submit" name="signup_submit" value="Registrar" id="desactivar" ng-disabled="!frmTrabajador.$valid" ng-click="guardar()"/>

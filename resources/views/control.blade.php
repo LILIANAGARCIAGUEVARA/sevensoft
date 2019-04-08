@@ -20,15 +20,15 @@
    	     		//existe
             if($scope.vaso == 1){
               //ADMINISTRADOR
-              window.location.href = `{{URL::to("/menuadmin")}}`;
+              window.location.href = `{{URL::to("/menuadmin")}}`+`/`+$scope.datos[0].idusuarios;
             }
             else if($scope.vaso == 2){
               //TRABAJADOR
-              window.location.href = `{{URL::to("/menuSoporte")}}`;
+              window.location.href = `{{URL::to("/menuSoporte")}}`+`/`+$scope.datos[0].idusuarios;
             }
             else if($scope.vaso == 3){
                 //CLIENTE
-                window.location.href = `{{URL::to("/menuUser")}}`;
+                window.location.href = `{{URL::to("/menuUser")}}`+`/`+$scope.datos[0].idusuarios;
             }
    	     	}
 
