@@ -58,7 +58,7 @@
           <!-- Content -->
           <h6 class="text-uppercase font-weight-bold">SevenSoft</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Somos una agencia creativa galardonada, dedicada al mejor resultado en diseño de software, promoción, consultoría de negocios y marketing..</p>
+          <p>Somos una agencia creativa, dedicada al mejor resultado en diseño de software, promoción, consultoría de negocios y marketing..</p>
 
         </div>
         <!-- Grid column -->
@@ -86,16 +86,15 @@
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
 
           <!-- Links -->
-          <h6 class="text-uppercase font-weight-bold">Contactanos</h6>
+          <h6 class="text-uppercase font-weight-bold">Contáctanos</h6>
           <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
             <i class="fas fa-home mr-3">calle Jorge Salazar #30, colonia Francisco Villa, Mazatlán,Sinaloa,México</i></p>
           <p>
             <i class="fas fa-envelope mr-3"></i>sevensoft.soporte@gmail.com</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-          <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <i class="fas fa-phone mr-3"></i> 669-441-74-32</p>
+         
 
         </div>
         <!-- Grid column -->
