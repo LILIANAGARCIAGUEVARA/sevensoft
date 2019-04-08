@@ -10,16 +10,12 @@
     <div class="spinner horizontal"></div>
     <div class="spinner diagonal part-2"></div>
   </label>
-  <div id="sidebarMenu"  ng-controller="ctrl">
+  <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-    <li>@{{nombre}}<span> Jefa</span></li>
-    <li>
-        <ul class="sidebarMenuInner">
-          <li>Asistencia</li>
-          <li><a href="#" target="_blank">Preguntas</a></li>
-          <li><a href="#" target="_blank">Desargas</a></li>
-        </ul>
-    </li>
+      <li>Liliana García Guevara <span>Cliente</span></li>
+      <li><a href="/verrespuesta">Preguntas</a></li>
+      <li><a href="/descargacliente">Descargas</a></li>
+      <li><a href="/tickets">Tickets</a></li>
     </ul>
   </div>
 

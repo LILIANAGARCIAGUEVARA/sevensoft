@@ -51,6 +51,12 @@ class Descargas extends Controller
         $data->save();
     }
 
+public function descargacliente()
+    {
+        $descarga=\DB::table('descargas')->where('idDescargas', \DB::raw("(select max(`idDescargas`) from descargas)"))->get();
+        return view('descargasCliente', compact('descarga'));
+    }
+
   public function preeditar($id)
     {
          $idDM=decrypt($id);

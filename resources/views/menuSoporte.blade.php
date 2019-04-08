@@ -1,4 +1,3 @@
-´bnh
 @extends('footer')
 @extends('header')
 
@@ -15,7 +14,6 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Soporte</span></li>
-      <li><a href="/preguntastrabajador" >Preguntas</a></li>
       <li><a href="/ticketsoporte">Tickets</a></li>
     </ul>
   </div>

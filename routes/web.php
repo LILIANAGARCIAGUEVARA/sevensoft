@@ -91,13 +91,17 @@ Route::get('/menuUser', function () {
 /*lili rutas*/
 
 
-Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
+Route::delete('/deletepregunta/{id}', 'PreguntasAdmin@destroy');
 Route::delete('/delete/{id}', 'Descargas@destroy');
 
 Route::get('/preguntastrabajador','PreguntasAdmin@index');
 Route::get('/actualizaciones','Descargas@index');
 
+Route::post('/agregaractualizacion','Descargas@store');
+
 Route::get('/verrespuesta','PreguntasAdmin@respuesta');
+
+Route::get('/descargacliente','Descargas@descargacliente');
 
 Route::get('/correo','Tickets@correos');
 Route::resource('mail','MailController');

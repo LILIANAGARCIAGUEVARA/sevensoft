@@ -51,13 +51,13 @@
 			
 					<div class="col-3">
 						<label>Versión</label>
-						<input type="text" class="form-control" name="versiones" required ng-model="actualizacion.versiones"/>
+						<input type="text" class="form-control" name="versiones" required ng-pattern="/^[1-9.]*$/" onchange="return validaNum(this)" ng-model="actualizacion.versiones"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.versiones.$error.versiones"> Campo version es requerido</span>
 					</div>
 
 					<div class="col-9">
 						<label>Información</label>
-						<input type="text" class="form-control" name="informacion" required ng-model="actualizacion.informacion" onchange="return validatexto(this)"/>
+						<input type="text" class="form-control" name="informacion" required ng-model="actualizacion.informacion"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.informacion.$error.informacion"> Campo informacion es requerido</span>
 					</div>
 
@@ -85,6 +85,17 @@
 	
 	</div>
 </div>
+
+<script type="text/javascript">
+ function validaNum(elemento)
+ {
+  if (!/^([1-9.])*$/.test(elemento.value)){
+      alert("Solo se permiten números y puntos");
+      elemento.value = '';
+  }
+}
+</script>
+
 <script type="text/javascript" src="{{asset('js/angular.js')}}"></script>
 </body>
 </html>

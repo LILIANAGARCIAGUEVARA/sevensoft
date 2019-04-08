@@ -24,9 +24,9 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Administrador</span></li>
-      <li><a href="../preguntastrabajador" target="_blank">Preguntas de Clientes</a></li>
-      <li><a href="../actualizaciones" target="_blank">Configurar usuario</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+      <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
+      <li><a href="/formularioTrabajador">Configurar usuario</a></li>
+      <li><a href="/actualizaciones">Subir actualización</a></li>
     </ul>
   </div>
   <div id='center' class="main center">

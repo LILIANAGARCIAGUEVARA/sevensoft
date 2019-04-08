@@ -7,7 +7,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/style.css" rel="stylesheet" />
     <link rel="shortcut icon" href="/fondo0s/logo.png" type="image/x-icon">
-	</script>
+	
 	
 </head>
 
@@ -23,13 +23,11 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li>Liliana García Guevara <span>Administrador</span></li>
-      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+      <li>Liliana García Guevara <span>Soporte</span></li>
+      <li><a href="/ticketsoporte">Tickets</a></li>
     </ul>
   </div>
-
+ 
 
 <div  id='center' class="main center" ng-controller="ctrl" style="margin: 8% 7% 0px 20%;">
 	<div class="container">

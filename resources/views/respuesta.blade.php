@@ -41,11 +41,12 @@
                 <h1 style="padding-top: 40px;">RESPUESTA A CLIENTES</h1>
             
                 <div> 
-                <label style="padding-top: 40px;">@{{descripcion}}</label>
+                <label style="padding-top: 45px;">@{{descripcion}}</label>
                 </div>
                 
                 <div class="col-12">
-                    <input type="text"  class="form-control" name="respuestaadmin" ng-model="respuesta.respuestaadmin" required />
+                    <textarea class="form-control" aria-label="With textarea" type="text" name="respuestaadmin" ng-model="respuesta.respuestaadmin" required></textarea>
+                    
 
                     <input type="text" ng-show="false" class="form-control" name="idpreguntasadmin" ng-model="respuesta.idpreguntaadmin" required />
 
@@ -53,9 +54,9 @@
                     
                 </div>
 
-                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-outline-info" ng-disabled="!frmRespuestas.$valid" ng-click="guardar()">GUARDAR</button> 
+                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-success"ng-disabled="!frmRespuestas.$valid" ng-click="guardar()">GUARDAR</button> 
                 <a href="/preguntastrabajador">
-                <button type="button" style="margin: 40px 0px 10px 0px;"  class="btn btn-outline-info">REGRESAR</button></a>
+                <button type="button" style="margin: 40px 0px 10px 0px;" class="btn btn-primary">REGRESAR</button></a>
             </form>
          
         </div>

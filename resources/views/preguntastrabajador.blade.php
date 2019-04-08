@@ -24,24 +24,25 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Administrador</span></li>
-      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+      <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
+      <li><a href="/formularioTrabajador">Configurar usuario</a></li>
+      <li><a href="/actualizaciones">Subir actualización</a></li>
     </ul>
   </div>
+  
 
 
-<div  id='center' class="main center" ng-controller="ctrl" >
+
+<div  id='center' class="main center" ng-controller="ctrl" style="margin: 8% 7% 0px 20%;">
 	<div class="container">
-			<h1 style="padding: 40px 0px 0px 150px;">PREGUNTAS DE CLIENTES</h1>
-			<br>
+			 <h1 style="padding-right: 15px;display: inline;padding-bottom: 15px;">ACTUALIZACIONES</h1><input style="padding-right: 15px;display: inline;" type=image src="{{asset('fondos/refrescar.png')}}" width="80" height="80">
+			<br><br>
 			
-			<br>
-			<div style="padding: 0px 0px 0px 150px;">
+			<div >
 			<table class="table">
 				<thead class="thead-dark">
 					<tr> 	
-						<th scope="col">#</th>
+						
 						<th scope="col">PREGUNTA</th>
 						<th scope="col" >RESPUESTA</th>
 						<th scope="col" colspan="2">ACCIONES</th>
@@ -50,18 +51,24 @@
 				<tbody>
 					@foreach($mostrarpreguntas as $pregunta)
 					<tr>
-						<td>{{$pregunta->idpreguntas}}</td>
+						
 						<td>{{$pregunta->descripcion}}</td>
 						<td>{{$pregunta->respuesta}}</td>
-						<td colspan="2"><a href="{{url('/editarrespuesta/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/agregar.png')}}" width="40" height="40" ></a>
+						
+						
+						<td colspan="2">
 
 
+							<a ng-show="!{{$pregunta->idrespuestas}}" href="{{url('/editarrespuesta/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/agregar.png')}}" width="40" height="40" ></a>
 
-						<input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$pregunta->idpreguntas}})" width="30" height="30">
-						<a href="{{url('/modificar/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="30" height="30"></td></a>
+							<a ng-show="{{$pregunta->idrespuestas}}" href="{{url('/modificar/'.encrypt($pregunta->idpreguntas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="30" height="30"></a>
+
+							<input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$pregunta->idpreguntas}})" ng-show="bandera==0" width="30" height="30">
+						</td>
 
 						
 					</tr>
+					
 					@endforeach
 				</tbody>
 
@@ -78,13 +85,16 @@
 		app.controller('ctrl', function($scope,$http){
 		$scope.pregunta={};
 		$scope.var={};
+		$scope.bandera=0;
 		
 		$scope.eliminar=function(id){
 			
 		if(confirm("¿Quieres eliminar el registro?")){
-			$http.delete('/delete/'+id).then(
+			$scope.bandera=1;
+			$http.delete('/deletepregunta/'+id).then(
 
 		function(response){
+			
 			alert('Se han eliminado correctamente los datos');
 			window.location.href='{{url("/preguntastrabajador")}}';
 		
