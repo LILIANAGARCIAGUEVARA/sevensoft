@@ -52,7 +52,7 @@ Route::delete('/eliminarUsuarios/{id}', array ('as'=>'id','uses'=>'Controlador@d
 
 Route::get('/datosModificar/{id}', array ('as'=>'id','uses'=>'Controlador@datosModificar'));
 Route::post('/modificarUsuarios/{id}','Controlador@update');
-Route::get('/login','UsuarioController@login');
+
 
 
 Route::post('/saveTrabajador','TrabajadorController@store');
@@ -61,6 +61,8 @@ Route::post('/guardarUsuario','ClienteController@store');
 
 
 
+Route::get('/control/{usuario}/{contrasena}','login@login');
+Route::get('/login','login@consulta');
 
 
 ///
@@ -104,3 +106,8 @@ Route::get('/menuadmin', function () {
     return view('menuadmin');
 });
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

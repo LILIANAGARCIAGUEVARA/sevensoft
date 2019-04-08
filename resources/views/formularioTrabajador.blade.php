@@ -24,10 +24,10 @@
 
 	    		<input type="number" name="telefono" placeholder="Telefono" ng-model="trabajador.telefono"  required  />
 
-	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
+	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.email"  required />
 	 
 
-	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba"  required/>
+	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.password"  required/>
 	    		
 	    
 	    
@@ -57,7 +57,7 @@
 					var ban = 0;
 					if($scope.mostrar[0]!=null){
 						for(contenido = $scope.mostrar.length -1; contenido >=0; contenido--){
-							if($scope.trabajador.correo == $scope.mostrar[contenido].correo){
+							if($scope.trabajador.email == $scope.mostrar[contenido].email){
 								ban=1;
 							}
 						}

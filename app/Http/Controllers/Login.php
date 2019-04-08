@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class Login extends Controller
 {
     /**
@@ -82,13 +82,20 @@ class Login extends Controller
         //
     }
 
-    public function login($correo,$contrasena){
-        $consulta=\DB::table('usuarios')
-        ->select(DB::raw('nombre,tipo'))
-        ->where('usuarios.correo',$correo);
-        ->where('usuarios.contraseña',$contrasena);
-        ->get();
 
-        return view('index',compact('consulta'));
+
+    public function consulta(){
+        $consultarUsuario=\DB::table('usuarios')
+        ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
+        ->get(); 
+        return view ('login',compact('consultarUsuario'));
     }
+
+    public function login($usuario,$contrasena)
+    {
+
+        $datos = DB::table('Usuarios')->where('correo',$usuario)->where('contraseña',$contrasena)->get();
+        return view('control',compact('datos'));
+    }
+
 }

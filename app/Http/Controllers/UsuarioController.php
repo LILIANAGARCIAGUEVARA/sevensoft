@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Contracts\Encryption\DecryptException;
-use App\Usuario;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,10 +36,10 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Usuario();
-        $data->correo = $request->input('correo');
-        $data->contrasena = $request->input('contrasena');
-        $data->tipo =1;
+        $data = new User();
+        $data->email = $request->input('correo');
+        $data->password = $request->input('contrasena');
+        $data->tipo =3;
 
         $data->save();
     }

@@ -1,9 +1,11 @@
 @extends('footerCliente')
+
+
 @extends('header')
 
 @section('header')
    @parent
-
+@extends('layouts.app')
     <header>
     <!-- Menu Section -->
         <div id="navbar">
