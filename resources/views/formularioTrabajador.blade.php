@@ -42,9 +42,6 @@
 
 
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
-
-
-	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
 	    		 <span ng-show="frmTrabajador.email.$dirty && frmTrabajador.email.$error.required"> Campo requerido </span> <br>
                 <span ng-show="frmTrabajador.email.$error.email"> Formato e-mail incorrecto</span> 
 	 
@@ -53,12 +50,7 @@
 	    	    <span ng-show="frmTrabajador.password.$dirty && frmTrabajador.password.$error.required"> Campo requerido </span> <br>
                   <a id='resultado'></a>
 
-	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.email"  required />
-
 	 
-
-
-	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="20" required/>
 
 	    		
 	    
