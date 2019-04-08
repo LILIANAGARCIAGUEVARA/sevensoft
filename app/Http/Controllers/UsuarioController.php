@@ -100,6 +100,7 @@ class UsuarioController extends Controller
                 return 2;
             }
         else{
+
               $format="Y-m-d";
              
               \DB::table('trabajadores')
@@ -140,6 +141,7 @@ class UsuarioController extends Controller
      public function datosModificar($id)
     {
          $idDM=decrypt($id);
+          $contraseña=decrypt('contraseña');
         $modificarUsuarios=\DB::table('trabajadores')
          ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,direccion,rfc,telefono,curp,apellido,fecha_nac,usuarios.`correo`,usuarios.`contraseña`'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
