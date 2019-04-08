@@ -11,15 +11,15 @@
 
 	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="cliente.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
 	   			
-			
-
-	    		<input type="text" name="apellidos" placeholder="Apellidos" ng-model="cliente.apellidos"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
+				<input type="text" name="apellidos" placeholder="Apellidos"  ng-model="cliente.apellido"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
 
 
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="cliente.correo"  required />
 	 
 
 	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena" maxlength="20" required/>
+
+
 	    		
 	    
 	    

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
@@ -15,6 +16,7 @@
 
 
 <div class="header"></div>
+
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="spinner diagonal part-1"></div>
@@ -32,6 +34,7 @@
   <div id='center' class="main center">
     <div class="mainInner">
       <div>SEVENSOFT ADMINISTRACIÓN</div>
+      <a href="/login">Cerrar Sesión</a>
     </div>
 
 

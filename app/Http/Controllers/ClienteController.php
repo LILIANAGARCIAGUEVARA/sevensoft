@@ -52,7 +52,7 @@ class ClienteController extends Controller
         $data = new Usuario();
         $data->correo = $request->input('correo');
         $data->contraseña = $request->input('contrasena');
-        $data->tipo =1;
+        $data->tipo =3;
 
 
         $data->save();
@@ -63,7 +63,7 @@ class ClienteController extends Controller
 
         $datos = new Cliente();
         $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
+        $datos->apellido = $request->input('apellido');
         $datos->idusuario = $id;
 
         $datos->save();

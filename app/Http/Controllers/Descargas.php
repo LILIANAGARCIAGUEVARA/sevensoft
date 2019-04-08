@@ -92,7 +92,7 @@ class Descargas extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "holaaa";
+    
         $datosModificados=\DB::table('descargas')
             ->where('iddescargas',$id)
             ->update(['versiones'=>$request->input('versiones'),'informacion'=>$request->input('informacion'),'ruta'=>$request->input('ruta')]);

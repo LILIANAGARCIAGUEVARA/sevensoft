@@ -1,5 +1,6 @@
-
+@extends('footer')
 @extends('header')
+
 @section('header')
 	@parent
 
@@ -41,11 +42,10 @@
 						</div>
 						<input type="password" class="form-control" placeholder="Contraseña" ng-model="datos.contrasena">
 					</div>
-			
-					
+				
 					<div class="form-group">
 
-						<input type="submit" value="Login" class="btn float-right login_btn" ng-click="guardar()">
+						<input type="submit" value="Login" class="btn float-right login_btn" ng-click="entrar()">
 					</div>
 				</form>
 			</div>
@@ -59,4 +59,20 @@
 	</div>
 </div>
 	
+@section('footer')
+		@parent
+		<script >
+	   		var app = angular.module('app',[]);
+    		app.controller('ctrl',function($scope,$http)
+   	     	{
+   	     		$scope.datos={};
+            	$scope.entrar=function(){
+                	window.location.href = `{{URL::to("/control")}}`+`/`+$scope.datos.usuario+`/`+$scope.datos.contrasena;
+            	};
+            });
+    				
+        </script>
+		
+	@endsection
 @endsection
+

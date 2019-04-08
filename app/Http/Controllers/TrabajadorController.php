@@ -37,6 +37,7 @@ class TrabajadorController extends Controller
      */
     public function store(Request $request)
     {
+
       /*$contraseña=Trabajadore::findOrFail($id);
       $contraseña->fill(['contraseña'=>encrypt($request->input('contrasenaTraba'))]);*/
 
@@ -89,6 +90,8 @@ class TrabajadorController extends Controller
             $datos->save();
             return 3;
           }
+
+
 
         
 

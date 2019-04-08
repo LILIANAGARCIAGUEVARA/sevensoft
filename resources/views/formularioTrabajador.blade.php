@@ -40,6 +40,7 @@
 	    		 <span ng-show="frmTrabajador.rfc.$dirty && frmTrabajador.rfc.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
 
 
+
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.correo"  required />
 	    		 <span ng-show="frmTrabajador.email.$dirty && frmTrabajador.email.$error.required"> Campo requerido </span> <br>
                 <span ng-show="frmTrabajador.email.$error.email"> Formato e-mail incorrecto</span> 
@@ -48,6 +49,13 @@
 	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="25" required onchange="return validacontra(this)" required/>
 	    	    <span ng-show="frmTrabajador.password.$dirty && frmTrabajador.password.$error.required"> Campo requerido </span> <br>
                   <a id='resultado'></a>
+
+	    		<input type="email" name="email" placeholder="E-mail" ng-model="trabajador.email"  required />
+	 
+
+
+	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="20" required/>
+
 	    		
 	    
 	    
@@ -117,6 +125,10 @@
         .controller('ctrl',function($scope,$http,$filter)
    	     {
         	$scope.hoy= $filter('date')(new Date(),'yyyy-MM-dd');
+
+
+          	$scope.trabajador={};
+
         	 $scope.fechaHoy = new Date().toISOString().split("T")[0];
           	$scope.trabajador={
           		fechaRegistro:$scope.fechaHoy

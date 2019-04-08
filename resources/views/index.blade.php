@@ -1,16 +1,27 @@
 @extends('footerCliente')
+
+
 @extends('header')
 
 @section('header')
    @parent
+
+    <header>
 
 
 
 
 
 </header>
+
    <!-- Menu Section -->
    <div class="menu barraNormal"><center>MENÚ SUPERIOR</center> 
+
+
+    
+
+    <!-- Menu Section -->
+
         <div id="navbar">
           <img id="Logo" src="fondos/logo.png" >  
           <a href="/login">Iniciar Sesión</a>
