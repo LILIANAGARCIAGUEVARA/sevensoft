@@ -24,23 +24,29 @@
   </div>
 
 
-<div  id='center' class="main center" ng-controller="ctrl" >
+<div   class="main center" ng-controller="ctrl" >
   <div class="container">
       <h1 style="padding: 40px 0px 0px 150px;display: inline;">CONSULTA USUARIOS SOPORTE</h1>
       <input style="padding-right: 15px;display: inline;" type=image src="{{asset('fondos/usuarios.png')}}" width="90" height="90">
+      <a href="{{url('/formularioTrabajador')}}"> <img id="btnEdicion2" src="fondos/agregarUsuario.png" style="margin-left: 160px;"></a>
       <br>
       
       <br>
-      <div style="padding: 0px 0px 0px 150px;">
+      <div style="padding: 0px 0px 0px 150px;margin-left: -400px;">
       <table class="table">
         <thead class="thead-dark">
           <tr>  
-            <th scope="col">***ID****</th>
-              <th  scope="col">***NOMBRE***</th>
-              <th  scope="col">***APELLIDO***</th>
-              <th  scope="col">***CORREO***</th>
-               <th  scope="col">***CONTRASEÑA***</th>
-            <th scope="col">**ACCIONES**</th>
+            <th scope="col">ID</th>
+              <th  scope="col">NOMBRE</th>
+              <th  scope="col">APELLIDO</th>
+              <th  scope="col">RFC</th>
+              <th  scope="col">CURP</th>
+              <th  scope="col">TELEFONO</th>
+              <th  scope="col">DIRECCIÓN</th>
+              <th  scope="col">EDAD</th>
+              <th  scope="col">CORREO</th>
+            
+               <th scope="col">ACCIONES</th>
           </tr>
         </thead>
         <tbody>
@@ -49,12 +55,17 @@
              <td>{{$user->idtrabajadores}}</td>
               <td>{{$user->nombre}}</td>
               <td>{{$user->apellido}}</td>
+              <td>{{$user->rfc}}</td>
+              <td>{{$user->curp}}</td>
+              <td>{{$user->telefono}}</td>
+              <td>{{$user->direccion}}</td>
+              <td>{{$user->edad}}</td>
               <td>{{$user->correo}}</td>
-              <td>{{$user->contraseña}}</td>
+             
               
           
  <td>
-         <a id="btnCircular" href="{{url('/datosModificar/'.encrypt($user->idtrabajadores))}}"> <img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
+         <a  href="{{url('/datosModificar/'.encrypt($user->idtrabajadores))}}"> <img id="btnEdicion" src="fondos/editar.png" ></a></td>
           <td><a ng-click="eliminar({{$user->idtrabajadores}});"> <img id="btnEdicion" src="fondos/borrar.png"></a></td>
             
           </tr>
@@ -93,6 +104,7 @@
                if(bool){
                $http.delete('/eliminarUsuarios/'+id).then(
                 function(response){
+                   console.log(response);
                     location.reload();
                  },function(errorResponse)
                  {

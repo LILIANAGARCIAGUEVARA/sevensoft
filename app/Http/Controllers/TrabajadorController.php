@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Trabajadore;
 use App\Usuario;
-
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -38,34 +38,60 @@ class TrabajadorController extends Controller
     public function store(Request $request)
     {
 
+      /*$contraseña=Trabajadore::findOrFail($id);
+      $contraseña->fill(['contraseña'=>encrypt($request->input('contrasenaTraba'))]);*/
 
-        $data = new Usuario();
-       
-        $data->correo = $request->input('correo');
-        $data->contraseña = $request->input('contrasenaTraba');
-        $data->tipo =2;
+         $data = new Usuario();
+         $datos = new Trabajadore();
+           $contraseña=encrypt($request->input('contrasenaTraba'));
+         
+         if($datos->where('curp', '=' ,$request->input('curp'))
+            ->count() > 0)
+            {   
 
-        $data->save();
+                
+                return 0;
+                
+            }
+        elseif($datos->where('rfc', '=' ,$request->input('rfc'))
+            ->count() > 0)
+             {
+               return 1;
+             }
+        elseif($data->where('correo', '=' ,$request->input('correo'))
+            ->count() > 0)
+            {
+                return 2;
+            }
 
-        $id=DB::getPdo()->lastInsertId();
+        else
+           {
+             $format="Y-m-d";
+             $data->correo = $request->input('correo');
+             $data->contraseña = $contraseña;
+             $data->tipo =1;
+             $data->save();
+             $id=DB::getPdo()->lastInsertId();
 
-        echo $id;
+
+            $datos = new Trabajadore();
+
+            $datos->nombre = $request->input('nombre');
+            $datos->apellido = $request->input('apellidos');
+            $datos->direccion = $request->input('domicilio');
+            $datos->fecha_nac = date_format(date_create($request->input('fechaNac')),$format);
+            $datos->rfc = $request->input('rfc');
+            $datos->curp = $request->input('curp');
+            $datos->telefono= $request->input('telefono');
+
+            $datos->fecharegistro =$request->get('fechaRegistro');;
+            $datos->idusuarios = $data->id;
+
+            $datos->save();
+            return 3;
+          }
 
 
-        $datos = new Trabajadore();
-
-        $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
-        $datos->direccion = $request->input('domicilio');
-        $datos->fecha_nac = $request->input('fechaNac');
-        $datos->rfc = $request->input('rfc');
-        $datos->curp = $request->input('curp');
-        $datos->telefono= $request->input('telefono');
-
-        $datos->fecharegistro =$request->get('fechaRegistro');;
-        $datos->idusuarios = $data->id;
-
-        $datos->save();
 
         
 
