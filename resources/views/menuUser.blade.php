@@ -23,6 +23,7 @@
   <div id='center' class="main center">
     <div class="mainInner">
       <div>SEVENSOFT CLIENTE</div>
+      <a href="/login">Cerrar Sesión</a>
     </div>
 
     @section('footer')

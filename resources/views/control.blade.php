@@ -20,13 +20,15 @@
    	     		//existe
             if($scope.vaso == 1){
               //ADMINISTRADOR
-              window.location.href = `{{URL::to("/index")}}`;
+              window.location.href = `{{URL::to("/menuadmin")}}`;
             }
             else if($scope.vaso == 2){
               //TRABAJADOR
+              window.location.href = `{{URL::to("/menuSoporte")}}`;
             }
             else if($scope.vaso == 3){
                 //CLIENTE
+                window.location.href = `{{URL::to("/menuUser")}}`;
             }
    	     	}
 

@@ -31,8 +31,6 @@
 	 
 
 
-	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.password"  required/>
-
 	    		<input type="password" name="password" placeholder="Password" ng-model="trabajador.contrasenaTraba" maxlength="20" required/>
 
 	    		
@@ -89,12 +87,6 @@
         	$scope.hoy= $filter('date')(new Date(),'yyyy-MM-dd');
 
 
-			$scope.preguntas=['Cuál fue el nombre de tu primera mascota',
-    							'Cuál es tu comida favorita',
-    							'Cuál es el nombre de tu madre',
-    							'Cuál es el nombre de tu mejor amigo'];
-
-
           	$scope.trabajador={};
 
         	 $scope.fechaHoy = new Date().toISOString().split("T")[0];
@@ -108,7 +100,7 @@
 					var ban = 0;
 					if($scope.mostrar[0]!=null){
 						for(contenido = $scope.mostrar.length -1; contenido >=0; contenido--){
-							if($scope.trabajador.email == $scope.mostrar[contenido].email){
+							if($scope.trabajador.correo == $scope.mostrar[contenido].correo){
 								ban=1;
 							}
 						}

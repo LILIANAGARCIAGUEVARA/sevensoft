@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Cliente;
-use App\User;
+use App\Usuario;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -49,9 +49,9 @@ class ClienteController extends Controller
 
         
 
-        $data = new User();
-        $data->email = $request->input('email');
-        $data->password = $request->input('password');
+        $data = new Usuario();
+        $data->correo = $request->input('correo');
+        $data->contraseña = $request->input('contrasena');
         $data->tipo =3;
 
 
@@ -63,7 +63,7 @@ class ClienteController extends Controller
 
         $datos = new Cliente();
         $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
+        $datos->apellido = $request->input('apellido');
         $datos->idusuario = $id;
 
         $datos->save();

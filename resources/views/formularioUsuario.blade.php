@@ -11,26 +11,15 @@
 
 	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="cliente.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
 	   			
-			
-
-	    		<input type="text" name="apellidos" placeholder="Apellidos" ng-model="cliente.apellidos"  required  ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
+				<input type="text" name="apellidos" placeholder="Apellidos"  ng-model="cliente.apellido"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
 
 
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="cliente.correo"  required />
 	 
 
-
-	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena"  required/>
-<<<<<<< HEAD
-
-	    		<select  type="text" ng-model="cliente.pregunta" ng-options="x for x in preguntas" required placeholder="Pregunta de Seguridad"></select>
-
-	    		<input type="text" name="respuesta" placeholder="respuesta" ng-model="cliente.respuesta" required>	
-
 	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena" maxlength="20" required/>
 
-=======
->>>>>>> parent of 6b113b1... LOGIN Y RECUPERAR CONTRA
+
 	    		
 	    
 	    

@@ -6,7 +6,6 @@
 @section('header')
    @parent
 
-@extends('layouts.app')
     <header>
 
 
