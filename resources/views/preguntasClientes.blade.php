@@ -52,7 +52,6 @@
 
             $scope.fechaHoy = new Date().toISOString().split("T")[0];
             $scope.preguntas={
-             
               descripcion:$scope.descripcion,
               fecha:$scope.fechaHoy,
               cliente:1
@@ -60,9 +59,8 @@
 
 
              $scope.enviar=function(){
-              console.log($scope.preguntas)
-
-              $http.post('/savePregunta',$scope.preguntas).then(
+             angular.element(document.getElementById('btnEnviar'))[0].disabled = true;
+             $http.post('/savePregunta',$scope.preguntas).then(
                 function(response){
                   alert('Su peticion se ha realizado correctamente');
                   $scope.preguntas={};
@@ -71,8 +69,7 @@
               {
                 alert('error');
               });
-              $scope.preguntas={};
-               $scope.frm.$setPristine();
+             
             }
 
         });

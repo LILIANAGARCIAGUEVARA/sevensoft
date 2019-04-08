@@ -22,7 +22,7 @@
 			<div class="card-header">
 				<h3>Ingresar</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<a href="https://www.facebook.com/SevenSoftDevelops/"><span><i class="fab fa-facebook-square"></i></span></a>
+					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
 					<span><i class="fab fa-twitter-square"></i></span>
 				</div>
@@ -52,9 +52,6 @@
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
 					¿No tienes una Cuenta?<a href="/formularioUsuarios">Registrate</a>
-				</div>
-				<div class="d-flex justify-content-center links">
-					Olvidaste tu Contraseña?<a href="/recuperarContrasena">Recuperarla</a>
 				</div>
 				
 			</div>

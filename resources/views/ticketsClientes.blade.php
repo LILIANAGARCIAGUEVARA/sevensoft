@@ -54,7 +54,7 @@
             <div class="row">
            </form>
               <br>
-              <button style="margin-top: 50px;" ng-click="agregarTickets()" class="btn btn-success col-sm-2" ng-disabled="!frmTicket.$valid">Guardar</button>
+              <button style="margin-top: 50px;" id="btnGuardar" ng-click="agregarTickets()" class="btn btn-success col-sm-2" ng-disabled="!frmTicket.$valid">Guardar</button>
            
 
             </div>
@@ -81,13 +81,11 @@
 
 
          $scope.agregarTickets=function(){
-          
-
+          angular.element(document.getElementById('btnGuardar'))[0].disabled = false;
           $http.post('/saveTickets',$scope.tickets).then(
             function(response){
               alert('Su peticion se ha realizado correctamente');
                     $scope.tickets={};
-                   
                     window.location.href=`{{url("/tickets")}}`;
           },function(errorResponse)
           {

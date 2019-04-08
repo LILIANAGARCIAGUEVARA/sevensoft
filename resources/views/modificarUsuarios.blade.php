@@ -9,10 +9,16 @@
     <div id="formulario">
       <h1>USUARIOS</h1>
      
+     
     <script type="text/javascript">
         window.idClien = "<?php print_r($modificarUsuarios[0]->idusuarios);?>";
         window.nombre = "<?php print_r($modificarUsuarios[0]->nombre);?>";
         window.apellido= "<?php print_r($modificarUsuarios[0]->apellido);?>";
+        window.domicilio= "<?php print_r($modificarUsuarios[0]->direccion);?>";
+        window.curp= "<?php print_r($modificarUsuarios[0]->curp);?>";
+        window.telefono= "<?php print_r($modificarUsuarios[0]->telefono);?>";
+        window.rfc= "<?php print_r($modificarUsuarios[0]->rfc);?>";
+        window.fecha_nac= "<?php print_r($modificarUsuarios[0]->fecha_nac);?>";
         window.correo = "<?php print_r($modificarUsuarios[0]->correo);?>";
         window.contrasenaUser = "<?php print_r($modificarUsuarios[0]->contraseña);?>";
        
@@ -24,61 +30,136 @@
 
             <div>
                 <label>Nombre:</label>
-                <input class="form-control" id="inputSeleccionado" type="text" name="nombre" ng-model="usuarioEditado.nombre" onchange="return validatexto(this)" required>
-                <span ng-show="frm.nombre.$dirty && frm.nombre.$error.required"> Campo requerido </span> <br>
+                <input class="form-control"  type="text" name="nombre" maxlength="25" ng-model="usuarioEditado.nombre" onchange="return validatexto(this)" required>
+                <span ng-show="frm.nombre.$dirty && frm.nombre.$error.required"> Campo requerido<br>Longitud de 4 a 25 caracteres </span> 
+                 <br>
               
             </div>
 
              <div>
                 <label>Apellidos:</label>
-                <input class="form-control" id="inputSeleccionado" type="text" name="apellido" ng-model="usuarioEditado.apellido" onchange="return validatexto(this)" required>
-                <span ng-show="frm.apellido.$dirty && frm.apellido.$error.required"> Campo requerido </span> <br>
+                <input class="form-control"  type="text" name="apellido" maxlength="25" ng-model="usuarioEditado.apellido" onchange="return validatexto(this)" required>
+                <span ng-show="frm.apellido.$dirty && frm.apellido.$error.required"> Campo requerido <br>Longitud 25 caracteres </span> <br>
               
             </div>
+
+            <div>
+                <label>Domicilio:</label>
+                <input class="form-control"  type="text" name="domicilioModificar" maxlength="25" ng-model="usuarioEditado.domicilioModificar" onchange="return validatext(this)" required>
+                <span ng-show="frm.domicilioModificar.$dirty && frm.domicilioModificar.$error.required"> Campo requerido <br>Longitud de 15 a 25 caracteres</span> <br>
+            </div>
+
+             <div>
+                <label>CURP:</label>
+                <input class="form-control"  type="text" name="curpModificar" maxlength="18"  ng-model="usuarioEditado.curpModificar" onchange="return validaCurpRFC(this)" required>
+                <span ng-show="frm.curpModificar.$dirty && frm.curpModificar.$error.required"> Campo requerido </span>
+                 <span ng-show="frm.curpModificar.$dirty && frm.curpModificar.$error.required"> Longitud 18 caracteres </span>
+                 <br>
+            </div>
+
+            <div>
+                <label>Telefono:</label>
+                <input class="form-control"  type="text" name="telefonoModificar" ng-model="usuarioEditado.telefonoModificar" onchange="return validaNum(this)" maxlength="10"  required>
+                <span ng-show="frm.telefonoModificar.$dirty && frm.telefonoModificar.$error.required"> Campo requerido<br>Longitud 10 caracteres </span>
+                 <br>
+            </div>
+
+            <div>
+               <label>Fecha Nacimiento:</label>            
+               <input class="form-control"  type="date" name="fechaNacimiento" ng-model="usuarioEditado.edad" required min="1919-01-01" max="2001-12-32">
+               <span ng-show="frm.fechaNacimiento.$dirty && frm.fechaNacimiento.$error.required"> Campo requerido </span> <br>
+               <span ng-show="frm.fechaNacimiento.$dirty && frm.fechaNacimiento.$invalid"> Fecha de Nacimiento Invalida </span> <br>
+            
+           </div>
+
+            <div>
+                <label>RFC:</label>
+                <input class="form-control"  type="text" name="rfcModificar" ng-model="usuarioEditado.rfcModificar" onchange="return validaCurpRFC(this)" maxlength="18"  required>
+                <span ng-show="frm.rfcModificar.$dirty && frm.rfcModificar.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
+            </div>
+
+
             <div> 
    			        <label>Correo:</label>
-                <input class="form-control" id="inputSeleccionado" placeholder="example@gmail.com " type="email" name="correo"  ng-model="usuarioEditado.correo" onkeyup ="return validarEmail(this)" required>
+                <input class="form-control"  placeholder="example@gmail.com " type="email" name="correo"  ng-model="usuarioEditado.correoModificado"  required>
                 <span ng-show="frm.correo.$dirty && frm.correo.$error.required"> Campo requerido </span> <br>
                 <span ng-show="frm.correo.$error.email"> Formato e-mail incorrecto</span> 
                   <a id='resultado'></a>
             </div>
             <div>
                 <label>Contraseña:</label>
-                <input class="form-control" id="inputSeleccionado" type="text" name="contrasenaUser" ng-model="usuarioEditado.contrasenaUser" required>
+                <input class="form-control"  type="password" name="contrasenaUser"  maxlength="25" ng-model="usuarioEditado.contrasenaUser"  onchange="return validacontra(this)" required>
                 <span ng-show="frm.contrasenaUser.$dirty && frm.contrasenaUser.$error.required"> Campo requerido </span> <br>
-              
             </div>
+
+
             <button type=" text" class="btn btn-primary" ng-disabled="frm.$invalid" ng-click="editar()"> Modificar</button>
          
       </form>
    </div>
 </div>
-<script type="text/javascript">
+<!--<script type="text/javascript">
  function validarEmail(elemento){
-
-  var texto = document.getElementById(elemento.id).value;
+ var texto = document.getElementById(elemento.id).value;
   var regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-  
   if (!regex.test(texto)) {
       document.getElementById("resultado").innerHTML = "Correo invalido";
   } else {
       document.getElementById("resultado").innerHTML = "";
   }
-
 }
 
-</script>
+</script>-->
 
 <script type="text/javascript">
  function validatexto(elemento)
  {
-  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
-      alert("Solo se permiten letras");
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{4,25})*$/.test(elemento.value)){
+      alert("Solo se permiten letras, Longitud de 4 a 25 caracteres");
       elemento.value = '';
   }
 }
 </script>
 
+<script type="text/javascript">
+ function validaNum(elemento)
+ {
+  if (!/^([0-9]{10})*$/.test(elemento.value)){
+      alert("Solo se permiten numeros,su número telefonico debe contener 10 digitos");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validaCurpRFC(elemento)
+ {
+  if (!/^([0-9A-Z]{18})*$/.test(elemento.value)){
+      alert("Solo se permiten letras Mayusculas y números sin espacios,este espacio debe contener 18 caracteres");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validatext(elemento)
+ {
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ# ]{15,45})*$/.test(elemento.value)){
+      alert("este espacio debe contener al menos 15 caracteres");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validacontra(elemento)
+ {
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{8,45})*$/.test(elemento.value)){
+      alert("este espacio debe contener al menos 8 caracteres. solo se permiten letras y numeros");
+      elemento.value = '';
+  }
+}
+</script>
 
 
       
@@ -91,36 +172,64 @@
         .controller('ctrl',function($scope,$http)
    	     {
 
+
+
             $scope.usuarioEditado={};
 
-            
+
+
+           
 
             $scope.usuarioEditado={
             id:window.idClien,
             nombre:window.nombre,
             apellido:window.apellido,
-            correo:window.correo,
-            contrasenaUser:window.contrasenaUser
+            correoModificado:window.correo,
+            contrasenaUser:window.contrasenaUser,
+            domicilioModificar:window.domicilio,
+            curpModificar:window.curp,
+            telefonoModificar:window.telefono,
+            rfcModificar:window.rfc,
+            edad:new Date(window.fecha_nac)
            }
 
-          
+
+
+
+          console.log($scope.usuarioEditado.edad);
           
           $scope.editar=function(){
               $http.post('/modificarUsuarios/'+$scope.usuarioEditado.id,$scope.usuarioEditado).then(
                 function(response){
+                    if (response.data==3) {
                     alert('Los datos fueron modificados con exito');
                     $scope.usuarioEditado={};
                     $scope.frm.$setPristine();
                     window.location.href=`{{url("/consultaUsuarios")}}`;
+                  }
+                   if(response.data==2)
+                  {
+                    alert("correo no valido")
+                  }
                   
+                  if(response.data==1)
+                  {
+                    alert("RFC no valido")
+                  }
+                  if(response.data==0)
+                  {
+                    alert("CURP no valido")
+                  }
+                  
+
               },function(errorResponse){
 
             }
 
           );
-$scope.usuarioEditado={};
+          
             }
-});
+     });
   </script>
       
    @endsection

@@ -27,6 +27,14 @@ Route::get('/tickets', function () {
 });
 
 
+//Liliana Rutas
+
+
+
+
+//
+
+
 //Julio Rutas
 Route::get('/consultaUsuarios', function () {
     return view('consultaUsuarios');
@@ -50,22 +58,17 @@ Route::get('/datosModificar/{id}', array ('as'=>'id','uses'=>'Controlador@datosM
 Route::post('/modificarUsuarios/{id}','Controlador@update');
 
 
+
 Route::post('/saveTrabajador','TrabajadorController@store');
 
 Route::post('/guardarUsuario','ClienteController@store');
 
 
+
 Route::get('/control/{usuario}/{contrasena}','login@login');
 Route::get('/login','login@consulta');
-Route::get('/recuperarContrasena',function(){
-	return view('recuperarContrasena');
-});
-Route::get('/control2/{usuario}/{pregunta}/{respuesta}','login@recuperar');
 
 
-Route::get('/recuperar/{idusuarios}','login@update');
-
-Route::put('/recuperar/{idusuarios}','login@updatecontra');
 ///
 
 //Maria Rutas
@@ -83,7 +86,7 @@ Route::get('/consultaUsuarios','UsuarioController@consulta');
 Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
 Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
 Route::post('/modificarUsuarios/{id}','UsuarioController@update');
-Route::get('/menuUser', function () {
+Route::get('/menuUser/{idusuarios}', function () {
     return view('menuUser');
 });
 
@@ -118,11 +121,17 @@ Route::get('/ticketsoporte','Tickets@index');
 Route::get('/modificarTicket/{id}','Tickets@consulta');
 Route::post('/actualizarticket/{id}','Tickets@update');
 
-Route::get('/menuadmin', function () {
+Route::get('/menuadmin/{idusuarios}', function () {
     return view('menuadmin');
 });
 
-Route::get('/menusoporte', function () {
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/menusoporte/{idusuarios}', function () {
     return view('menuSoporte');
 });
+
 

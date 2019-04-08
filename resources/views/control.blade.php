@@ -14,17 +14,21 @@
     	app.controller('ctrl',function($scope,$http)
    	     {
    	     	$scope.datos={!! json_encode($datos->toArray()) !!};
+  
+          $scope.vaso = $scope.datos[0].tipo ;
    	     if($scope.datos.length>0){
    	     		//existe
-            if($scope.datos[0].tipo == 1){
+            if($scope.vaso == 1){
               //ADMINISTRADOR
-              window.location.href = `{{URL::to("/index")}}`;
+              window.location.href = `{{URL::to("/menuadmin")}}`+`/`+$scope.datos[0].idusuarios;
             }
-            else if($scope.datos[0].tipo == 2){
+            else if($scope.vaso == 2){
               //TRABAJADOR
+              window.location.href = `{{URL::to("/menuSoporte")}}`+`/`+$scope.datos[0].idusuarios;
             }
-            else if($scope.datos[0].tipo== 3){
+            else if($scope.vaso == 3){
                 //CLIENTE
+                window.location.href = `{{URL::to("/menuUser")}}`+`/`+$scope.datos[0].idusuarios;
             }
    	     	}
 

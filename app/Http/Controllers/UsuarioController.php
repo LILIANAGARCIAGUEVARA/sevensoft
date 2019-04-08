@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Contracts\Encryption\DecryptException;
-use App\Usuario;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,12 +36,14 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Usuario();
-        $data->correo = $request->input('correo');
-        $data->contrasena = $request->input('contrasena');
-        $data->tipo =1;
+
+        $data = new User();
+        $data->email = $request->input('correo');
+        $data->password = $request->input('contrasena');
+        $data->tipo =3;
 
         $data->save();
+
     }
 
     /**
@@ -75,11 +77,39 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        \DB::table('trabajadores')
-            ->join('usuarios','trabajadores.idusuarios',"=","usuarios.idusuarios")
-            ->where('trabajadores.idusuarios',$id)
-            ->update(['correo'=>$request->input('correo'), 'contraseña'=>$request->input('contrasenaUser'),'nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido')]);
 
+         if($datos=\DB::table('trabajadores')
+            ->where('curp', '=' ,$request->input('curpModificar'))
+            ->where('trabajadores.idusuarios','!=',$id)
+            ->count() > 0)
+            {
+                return 0;
+            }
+        elseif($datos=\DB::table('trabajadores')
+            ->where('rfc', '=' ,$request->input('rfcModificar'))
+            ->where('trabajadores.idusuarios','!=',$id)
+            ->count() > 0)
+             {
+               return 1;
+             }
+        elseif($datos=\DB::table('usuarios')
+            ->where('correo', '=' ,$request->input('correoModificado'))
+            ->where('idusuarios','!=',$id)
+            ->count() > 0)
+            {
+                return 2;
+            }
+        else{
+              $format="Y-m-d";
+             
+              \DB::table('trabajadores')
+              ->join('usuarios','trabajadores.idusuarios',"=","usuarios.idusuarios")
+              ->where('trabajadores.idusuarios',$id)
+              ->update(['correo'=>$request->input('correoModificado'), 'contraseña'=>$request->input('contrasenaUser'),'nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido'),'fecha_nac'=>date_format(date_create($request->input('edad')),$format),'direccion'=>$request->input('domicilioModificar'),'curp'=>$request->input('curpModificar'),'rfc'=>$request->input('rfcModificar'),'telefono'=>$request->input('telefonoModificar')]);
+
+                
+                 return 3;
+            }
 
 
     }
@@ -100,7 +130,7 @@ class UsuarioController extends Controller
       public function consulta()
     {
          $consulta=\DB::table('trabajadores')
-         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`,direccion,rfc,TIMESTAMPDIFF(YEAR,fecha_nac,CURDATE())  AS edad,telefono,curp'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->get();
          return view('consultaUsuarios',compact('consulta'));
@@ -111,7 +141,7 @@ class UsuarioController extends Controller
     {
          $idDM=decrypt($id);
         $modificarUsuarios=\DB::table('trabajadores')
-         ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,apellido,usuarios.`correo`,usuarios.`contraseña`'))
+         ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,direccion,rfc,telefono,curp,apellido,fecha_nac,usuarios.`correo`,usuarios.`contraseña`'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->where('idtrabajadores',$idDM)
         ->get();
