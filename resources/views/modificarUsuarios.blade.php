@@ -20,7 +20,7 @@
         window.rfc= "<?php print_r($modificarUsuarios[0]->rfc);?>";
         window.fecha_nac= "<?php print_r($modificarUsuarios[0]->fecha_nac);?>";
         window.correo = "<?php print_r($modificarUsuarios[0]->correo);?>";
-        window.contrasenaUser = "<?php print_r($modificarUsuarios[0]->contraseña);?>";
+        window.contrasenaUser = "<?php print_r(decrypt($modificarUsuarios[0]->contraseña));?>";
        
       </script>
  
