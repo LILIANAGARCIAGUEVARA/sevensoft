@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Trabajadore;
-use App\Usuario;
-
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Quotation;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Descargas;
+use App\Http\Requests;
+use App\Descarga;
 
-class TrabajadorController extends Controller
+class Descargas extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,10 @@ class TrabajadorController extends Controller
      */
     public function index()
     {
-        //
+        $mostraract=\DB::table('Descargas')
+        ->select(DB::raw('Descargas.`idDescargas`,Descargas.`fecha`,Descargas.`versiones`,Descargas.`informacion`,Descargas.`ruta`'))
+        ->get();
+        return view('actualizaciones', compact('mostraract'));
     }
 
     /**
@@ -38,38 +42,23 @@ class TrabajadorController extends Controller
     public function store(Request $request)
     {
 
-
-        $data = new Usuario();
-       
-        $data->correo = $request->input('correo');
-        $data->contraseña = $request->input('contrasenaTraba');
-        $data->tipo =1;
-
+        $data=new Descarga();
+        $data->fecha=$request->input('fecha');
+        $data->versiones=$request->input('versiones');
+        $data->informacion=$request->input('informacion');
+        $data->ruta=$request->input('ruta');
+        $data->idtrabajador="1";
         $data->save();
+    }
 
-        $id=DB::getPdo()->lastInsertId();
-
-        echo $id;
-
-
-        $datos = new Trabajadore();
-
-        $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
-        $datos->direccion = $request->input('domicilio');
-        $datos->fecha_nac = $request->input('fechaNac');
-        $datos->rfc = $request->input('rfc');
-        $datos->curp = $request->input('curp');
-        $datos->telefono= $request->input('telefono');
-
-        $datos->fecharegistro =$request->get('fechaRegistro');;
-        $datos->idusuarios = $data->id;
-
-        $datos->save();
-
-        
-
-
+  public function preeditar($id)
+    {
+         $idDM=decrypt($id);
+        $editaract=\DB::table('descargas')
+        ->select(DB::raw('descargas.`idDescargas`,descargas.`versiones`,descargas.`informacion`, descargas.`ruta`, descargas.`fecha`'))
+        -> where('descargas.idDescargas','=',$idDM)
+        ->get();
+        return view('modificarActualizacion', compact('editaract'));
     }
 
     /**
@@ -103,7 +92,11 @@ class TrabajadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    
+        $datosModificados=\DB::table('descargas')
+            ->where('iddescargas',$id)
+            ->update(['versiones'=>$request->input('versiones'),'informacion'=>$request->input('informacion'),'ruta'=>$request->input('ruta')]);
+
     }
 
     /**
@@ -114,14 +107,6 @@ class TrabajadorController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-
-    public function validacion(){
-        $vaso=\DB::table('usuarios')
-        ->select(DB::raw('correo'))
-        ->get(); 
-        return view ('formularioTrabajador',compact('vaso'));
+         $eliminar=DB::table('Descargas')->where('Descargas.idDescargas',$id)->delete(); 
     }
 }

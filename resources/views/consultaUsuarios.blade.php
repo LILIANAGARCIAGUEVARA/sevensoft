@@ -26,7 +26,8 @@
 
 <div  id='center' class="main center" ng-controller="ctrl" >
   <div class="container">
-      <h1 style="padding: 40px 0px 0px 150px;">CONSULTA USUARIOS SOPORTE</h1>
+      <h1 style="padding: 40px 0px 0px 150px;display: inline;">CONSULTA USUARIOS SOPORTE</h1>
+      <input style="padding-right: 15px;display: inline;" type=image src="{{asset('fondos/usuarios.png')}}" width="90" height="90">
       <br>
       
       <br>
@@ -53,8 +54,8 @@
               
           
  <td>
-  <a id="btnCircular" href="{{url('/datosModificar/'.encrypt($user->idtrabajadores))}}"> <img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
-          <td><a ng-click="eliminar({{$user->idtrabajadores}});"> <img id="btnEdicion" src="fondos/eliminar.png"></a></td>
+         <a id="btnCircular" href="{{url('/datosModificar/'.encrypt($user->idtrabajadores))}}"> <img id="btnEdicion" src="fondos/editar usuario.png" ></a></td>
+          <td><a ng-click="eliminar({{$user->idtrabajadores}});"> <img id="btnEdicion" src="fondos/borrar.png"></a></td>
             
           </tr>
           @endforeach

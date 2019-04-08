@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Trabajadore;
-use App\Usuario;
-
-use Illuminate\Support\Facades\DB;
+use App\Ticket;
 use Illuminate\Http\Request;
 
-class TrabajadorController extends Controller
+class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,38 +34,12 @@ class TrabajadorController extends Controller
      */
     public function store(Request $request)
     {
+        $datos = new Ticket();
 
-
-        $data = new Usuario();
-       
-        $data->correo = $request->input('correo');
-        $data->contraseña = $request->input('contrasenaTraba');
-        $data->tipo =1;
-
-        $data->save();
-
-        $id=DB::getPdo()->lastInsertId();
-
-        echo $id;
-
-
-        $datos = new Trabajadore();
-
-        $datos->nombre = $request->input('nombre');
-        $datos->apellido = $request->input('apellidos');
-        $datos->direccion = $request->input('domicilio');
-        $datos->fecha_nac = $request->input('fechaNac');
-        $datos->rfc = $request->input('rfc');
-        $datos->curp = $request->input('curp');
-        $datos->telefono= $request->input('telefono');
-
-        $datos->fecharegistro =$request->get('fechaRegistro');;
-        $datos->idusuarios = $data->id;
-
+        $datos->descripcion = $request->input('descripcionTickets');
+        $datos->fecha = $request->input('fechaTickets');
+        $datos->idclientes=1;
         $datos->save();
-
-        
-
 
     }
 
@@ -115,13 +86,5 @@ class TrabajadorController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function validacion(){
-        $vaso=\DB::table('usuarios')
-        ->select(DB::raw('correo'))
-        ->get(); 
-        return view ('formularioTrabajador',compact('vaso'));
     }
 }

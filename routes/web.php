@@ -22,6 +22,10 @@ Route::get('/preguntas', function () {
     return view('preguntasClientes');
 });
 
+Route::get('/tickets', function () {
+    return view('ticketsClientes');
+});
+
 
 //Liliana Rutas
 
@@ -72,6 +76,7 @@ Route::get('/login','login@consulta');
 Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
 
 Route::post('/savePregunta','Controlador@store');
+Route::post('/saveTickets','TicketController@store');
 
 
 Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
@@ -79,7 +84,6 @@ Route::post('/modificandorespuesta/{id}','PreguntasAdmin@update');
 Route::post('/save','UsuarioController@store');
 Route::get('/consultaUsuarios','UsuarioController@consulta');
 Route::delete('/eliminarUsuarios/{id}', 'UsuarioController@destroy');
-
 Route::get('/datosModificar/{id}','UsuarioController@datosModificar');
 Route::post('/modificarUsuarios/{id}','UsuarioController@update');
 Route::get('/menuUser', function () {
@@ -91,23 +95,39 @@ Route::get('/menuUser', function () {
 
 
 Route::delete('/delete/{id}', 'PreguntasAdmin@destroy');
+Route::delete('/delete/{id}', 'Descargas@destroy');
 
 Route::get('/preguntastrabajador','PreguntasAdmin@index');
+Route::get('/actualizaciones','Descargas@index');
 
 Route::get('/verrespuesta','PreguntasAdmin@respuesta');
 
+Route::get('/correo','Tickets@correos');
+Route::resource('mail','MailController');
 Route::post('/guardarrespuesta','PreguntasAdmin@store');
 
 Route::get('/editarrespuesta/{id}','PreguntasAdmin@preeditar');
 
+Route::get('/editaractualizacion/{id}','Descargas@preeditar');
+
 Route::get('/modificar/{id}','PreguntasAdmin@modificar');
+Route::post('/modificaract/{id}','Descargas@update');
+
+Route::get('/ticketsoporte','Tickets@index');
+Route::get('/modificarTicket/{id}','Tickets@consulta');
+Route::post('/actualizarticket/{id}','Tickets@update');
 
 Route::get('/menuadmin', function () {
     return view('menuadmin');
 });
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/menusoporte', function () {
+    return view('menuSoporte');
+});
+
+
