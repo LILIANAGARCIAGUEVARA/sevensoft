@@ -144,11 +144,14 @@ class UsuarioController extends Controller
     {
          $idDM=decrypt($id);
 
+
         $modificarUsuarios=\DB::table('trabajadores')
          ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,direccion,rfc,telefono,curp,apellido,fecha_nac,usuarios.`correo`,usuarios.`contraseña`'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->where('idtrabajadores',$idDM)
         ->get();
+
+         
 
         return view('modificarUsuarios',compact('modificarUsuarios'));
     }

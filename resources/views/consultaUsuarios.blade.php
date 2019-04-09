@@ -62,7 +62,7 @@
               <td>{{date("d-m-Y",strtotime($user->fecha_nac."- 1 days"))}}</td>
               <td>{{$user->correo}}</td>
              
-              
+             
           
  <td>
          <a  href="{{url('/datosModificar/'.encrypt($user->idtrabajadores))}}"> <img id="btnEdicion" src="fondos/editar.png" ></a></td>
