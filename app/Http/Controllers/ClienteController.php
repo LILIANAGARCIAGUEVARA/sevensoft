@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Usuario;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -50,8 +51,9 @@ class ClienteController extends Controller
         
 
         $data = new Usuario();
+        $contraseñaa=encrypt($request->input('contrasena'));
         $data->correo = $request->input('correo');
-        $data->contraseña = $request->input('contrasena');
+        $data->contraseña = $contraseñaa;
         $data->tipo =3;
 
 

@@ -1,4 +1,4 @@
-´bnh
+
 @extends('footer')
 @extends('header')
 

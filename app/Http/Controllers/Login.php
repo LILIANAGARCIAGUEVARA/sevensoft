@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Encryption\DecryptException;
 class Login extends Controller
 {
     /**
@@ -91,9 +92,9 @@ class Login extends Controller
         return view ('login',compact('consultarUsuario'));
     }
 
-    public function login($usuario,$contrasena)
+    public function login(Request $request,$usuario,$contrasena)
     {
-
+       
         $datos = DB::table('Usuarios')->where('correo',$usuario)->where('contraseña',$contrasena)->get();
         return view('control',compact('datos'));
     }
