@@ -101,6 +101,7 @@ Route::get('/preguntastrabajador','PreguntasAdmin@index');
 Route::get('/actualizaciones','Descargas@index');
 
 Route::post('/agregaractualizacion','Descargas@store');
+Route::post('/liberarticket/{id}','Tickets@liberarticket');
 
 Route::get('/verrespuesta','PreguntasAdmin@respuesta');
 
@@ -115,6 +116,9 @@ Route::get('/editarrespuesta/{id}','PreguntasAdmin@preeditar');
 Route::get('/editaractualizacion/{id}','Descargas@preeditar');
 
 Route::get('/modificar/{id}','PreguntasAdmin@modificar');
+
+Route::get('/llenarticket/{id}','Tickets@llenarticket');
+
 Route::post('/modificaract/{id}','Descargas@update');
 
 Route::get('/ticketsoporte','Tickets@index');

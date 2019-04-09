@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Ticket;
 use Mail;
 use App\Http\Controllers\Controllers;
+use Carbon\Carbon;
 
 
 
@@ -23,10 +24,28 @@ class Tickets extends Controller
     public function index()
     {
         $ticketsop=\DB::table('tickets')
-        ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`fecha`,tickets.`status`'))
+        ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`fecha`,tickets.`status`, tickets.`fechacompromiso`'))
         ->get();
 
         return view('ticketsoporte', compact('ticketsop'));
+      
+    }
+
+
+       public function llenarticket($id)
+    {
+
+        $ticketsoporte= Carbon::now()->addMonths(6)->format('d/m/Y');
+   
+
+        $ticketsop=\DB::table('tickets')
+        ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`observaciones`,tickets.`fechacompromiso`,tickets.`fecha`,tickets.`status`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo`'))
+        -> join('clientes','tickets.idclientes','=','clientes.idclientes')
+        -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
+        ->where('tickets.idtickets','=',$id)
+        ->get();
+        
+        return view('modificarTicketSoporte', compact('ticketsop','ticketsoporte'));
       
     }
 
@@ -100,6 +119,11 @@ class Tickets extends Controller
     public function update(Request $request, $id)
     {
       //  DB::enableQueryLog();
+         $datosModificados=\DB::table('tickets')
+            ->where('idtickets',$id)
+            ->update(['observaciones'=>$request->input('observaciones'),'fechacompromiso'=>$request->input('fechacompromiso'),'status'=>'PENDIENTE']);
+
+
         $soporte=\DB::table('tickets')
         ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`fechacompromiso`, tickets.`fecha`,tickets.`status`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo` as correo'))
         -> join('clientes','tickets.idclientes','=','clientes.idclientes')
@@ -122,6 +146,36 @@ class Tickets extends Controller
    
     }
 
+
+public function liberarticket($id)
+    {
+      //  DB::enableQueryLog();
+         $datosModificados=\DB::table('tickets')
+            ->where('idtickets',$id)
+            ->update(['status'=>'LIBERADO']);
+
+
+        $soporte=\DB::table('tickets')
+        ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`fechacompromiso`, tickets.`fecha`,tickets.`status`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo` as correo'))
+        -> join('clientes','tickets.idclientes','=','clientes.idclientes')
+        -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
+        ->where('tickets.idtickets','=',$id)
+        ->get();
+
+        $idtickets = array('idtickets'=>$soporte[0]->idtickets);
+        $nombre = array('nombre'=>$soporte[0]->nombre);
+        $comp = array('comp'=>$soporte[0]->fechacompromiso);
+        $fromEmail=$soporte[0]->correo;
+        $fromName = $soporte[0]->nombre;
+
+          Mail::send('mail4', $idtickets+$nombre, function($message) use ($fromEmail, $fromName) {
+            $message->to($fromEmail, $fromName)->subject
+            ('SOPORTE SEVENSOFT');
+             $message->from('sevensoft.soporte@gmail.com','Soporte Sevensoft');
+             });
+            
+   
+    }
    
        
 
