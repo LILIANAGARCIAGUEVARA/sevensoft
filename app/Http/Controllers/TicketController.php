@@ -41,6 +41,7 @@ class TicketController extends Controller
         $datos->descripcion = $request->input('descripcionTickets');
         $datos->fecha = $request->input('fechaTickets');
         $datos->idclientes=1;
+        $datos->status='ABIERTO';
         $datos->save();
         $id=DB::getPdo()->lastInsertId();
 
