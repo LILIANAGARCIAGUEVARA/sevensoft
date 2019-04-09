@@ -81,10 +81,11 @@
 
 
          $scope.agregarTickets=function(){
-          angular.element(document.getElementById('btnGuardar'))[0].disabled = false;
+         angular.element(document.getElementById('btnGuardar'))[0].disabled = true;
           $http.post('/saveTickets',$scope.tickets).then(
             function(response){
-              alert('Su peticion se ha realizado correctamente');
+              alert('Su peticion se ha realizado correctamente, espere respuesta');
+                 
                     $scope.tickets={};
                     window.location.href=`{{url("/tickets")}}`;
           },function(errorResponse)

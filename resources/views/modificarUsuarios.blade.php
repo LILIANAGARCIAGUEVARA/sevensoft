@@ -31,7 +31,7 @@
             <div>
                 <label>Nombre:</label>
                 <input class="form-control"  type="text" name="nombre" maxlength="25" ng-model="usuarioEditado.nombre" onchange="return validatexto(this)" required>
-                <span ng-show="frm.nombre.$dirty && frm.nombre.$error.required"> Campo requerido<br>Longitud de 4 a 25 caracteres </span> 
+                <span ng-show="frm.nombre.$dirty && frm.nombre.$error.required"> Campo requerido<br>Longitud de 3 a 25 caracteres </span> 
                  <br>
               
             </div>
@@ -66,7 +66,7 @@
 
             <div>
                <label>Fecha Nacimiento:</label>            
-               <input class="form-control"  type="date" name="fechaNacimiento" ng-model="usuarioEditado.edad" required min="1919-01-01" max="2001-12-32">
+               <input class="form-control"  type="date" name="fechaNacimiento" ng-model="usuarioEditado.edad"  min="1919-01-01" max="2002-01-01" required>
                <span ng-show="frm.fechaNacimiento.$dirty && frm.fechaNacimiento.$error.required"> Campo requerido </span> <br>
                <span ng-show="frm.fechaNacimiento.$dirty && frm.fechaNacimiento.$invalid"> Fecha de Nacimiento Invalida </span> <br>
             
@@ -88,7 +88,7 @@
             </div>
             <div>
                 <label>Contraseña:</label>
-                <input class="form-control"  type="password" name="contrasenaUser"  maxlength="25" ng-model="usuarioEditado.contrasenaUser"  onchange="return validacontra(this)" required>
+                <input class="form-control"  type="password" name="contrasenaUser"  maxlength="25" ng-model="usuarioEditado.contrasenaUser" id="deshabilitar" onchange="return validacontra(this)" required>
                 <span ng-show="frm.contrasenaUser.$dirty && frm.contrasenaUser.$error.required"> Campo requerido </span> <br>
             </div>
 
@@ -114,8 +114,8 @@
 <script type="text/javascript">
  function validatexto(elemento)
  {
-  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{4,25})*$/.test(elemento.value)){
-      alert("Solo se permiten letras, Longitud de 4 a 25 caracteres");
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{3,25})*$/.test(elemento.value)){
+      alert("Solo se permiten letras, Longitud de 3 a 25 caracteres");
       elemento.value = '';
   }
 }
@@ -172,12 +172,14 @@
         .controller('ctrl',function($scope,$http)
    	     {
 
-
+ 
+             fn=new Date(window.fecha_nac);
+             fn.setDate(fn.getDate()+1);
 
             $scope.usuarioEditado={};
+     
 
-
-
+      
            
 
             $scope.usuarioEditado={
@@ -190,8 +192,8 @@
             curpModificar:window.curp,
             telefonoModificar:window.telefono,
             rfcModificar:window.rfc,
-            edad:new Date(window.fecha_nac)
-           }
+            edad:fn
+            }
 
 
 
@@ -206,6 +208,7 @@
                     $scope.usuarioEditado={};
                     $scope.frm.$setPristine();
                     window.location.href=`{{url("/consultaUsuarios")}}`;
+                     angular.element(document.getElementById('deshabilitar'))[0].disabled = false;
                   }
                    if(response.data==2)
                   {

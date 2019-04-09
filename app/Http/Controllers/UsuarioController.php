@@ -133,7 +133,7 @@ class UsuarioController extends Controller
       public function consulta()
     {
          $consulta=\DB::table('trabajadores')
-         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`,direccion,rfc,TIMESTAMPDIFF(YEAR,fecha_nac,CURDATE())  AS edad,telefono,curp'))
+         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`,direccion,rfc,fecha_nac,telefono,curp'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->get();
          return view('consultaUsuarios',compact('consulta'));
