@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Mail;
+use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
@@ -40,6 +42,26 @@ class TicketController extends Controller
         $datos->fecha = $request->input('fechaTickets');
         $datos->idclientes=1;
         $datos->save();
+        $id=DB::getPdo()->lastInsertId();
+
+         $soporte=\DB::table('tickets')
+    ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo` as correo'))
+        -> join('clientes','tickets.idclientes','=','clientes.idclientes')
+        -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
+        ->where('tickets.idtickets','=',$id)
+        ->get();
+
+        $descripcion = array('descripcion'=>$request->input('descripcion'));
+        $nombre = array('nombre'=>$soporte[0]->nombre);
+        $fromEmail=$soporte[0]->correo;
+        $fromName = $soporte[0]->nombre;
+
+          Mail::send('mail3', $descripcion+$nombre, function($message) use ($fromEmail, $fromName) {
+            $message->to($fromEmail, $fromName)->subject
+            ('SOPORTE SEVENSOFT');
+             $message->from('sevensoft.soporte@gmail.com','Soporte Sevensoft');
+             });
+            
 
     }
 

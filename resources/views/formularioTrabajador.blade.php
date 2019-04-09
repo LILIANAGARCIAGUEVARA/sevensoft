@@ -3,6 +3,22 @@
 @section('header')
 
 	@parent
+
+  <div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li>Liliana García Guevara <span>Administrador</span></li>
+      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
+      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
+      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+    </ul>
+  </div>
 	<link rel="stylesheet" type="text/css" href="/css/styleFormularioTrabajador.css">
 		<div id="login-box">
   			<div class="left" ng-controller="ctrl">
@@ -12,7 +28,7 @@
 	    		<form name="frmTrabajador">
 
 	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="trabajador.nombre"  required maxlength="25" onchange="return validatexto(this)"/>
-	   			<span ng-show="frmTrabajador.nombre.$dirty && frmTrabajador.nombre.$error.required"> Campo requerido<br>Longitud de 4 a 25 caracteres </span> 
+	   			<span ng-show="frmTrabajador.nombre.$dirty && frmTrabajador.nombre.$error.required"> Campo requerido<br>Longitud de 3 a 25 caracteres </span> 
                  <br>
 	   			
 
@@ -50,9 +66,7 @@
 	    	    <span ng-show="frmTrabajador.password.$dirty && frmTrabajador.password.$error.required"> Campo requerido </span> <br>
                   <a id='resultado'></a>
 
-	 
 
-	    		
 	    
 	    
 	    		<input type="submit" name="signup_submit" value="Registrar" id="desactivar" ng-disabled="!frmTrabajador.$valid" ng-click="guardar()"/>
@@ -67,8 +81,8 @@
 <script type="text/javascript">
  function validatexto(elemento)
  {
-  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{4,25})*$/.test(elemento.value)){
-      alert("Solo se permiten letras, Longitud de 4 a 25 caracteres");
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{3,25})*$/.test(elemento.value)){
+      alert("Solo se permiten letras, Longitud de 3 a 25 caracteres");
       elemento.value = '';
   }
 }
@@ -144,6 +158,7 @@
                     $scope.trabajador={};
                     $scope.frmTrabajador.$setPristine();
                     window.location.href=`{{url("/consultaUsuarios")}}`;
+                    angular.element(document.getElementById('desactivar'))[0].disabled = true;
                   }
                    else if(response.data==2)
                   {

@@ -9,6 +9,7 @@ use App\Http\Controllers\PreguntasAdmin;
 use App\Http\Requests;
 use App\PreguntaAdmin;
 use App\Respuesta;
+use Mail;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 class PreguntasAdmin extends Controller
@@ -20,10 +21,13 @@ class PreguntasAdmin extends Controller
      */
     public function index()
     {
+     //   DB::enableQueryLog();
          $mostrarpreguntas=\DB::table('preguntas')
-        ->select(DB::raw('preguntas.`idpreguntas`,preguntas.`descripcion`,respuestas.`respuesta`'))
+        ->select(DB::raw('preguntas.`idpreguntas`,preguntas.`descripcion`,respuestas.`respuesta`, respuestas.`idrespuestas`'))
         -> leftjoin('respuestas','preguntas.idpreguntas','=','respuestas.idpregunta')
         ->get();
+         //dd($);
+       // print_r(DB::getQueryLog());
 
         return view('preguntastrabajador', compact('mostrarpreguntas'));
     }
@@ -85,6 +89,28 @@ class PreguntasAdmin extends Controller
         $data->idtrabajador=$request->input('idtrabajadoradmin');
         $data->idpregunta=$request->input('idpreguntaadmin');
         $data->save();
+
+        $respuestas=\DB::table('preguntas')
+        ->select(DB::raw('preguntas.`idpreguntas`,preguntas.`descripcion`,respuestas.`respuesta`,
+            clientes.`nombre`,usuarios.`correo` as correo'))
+        -> join('respuestas','preguntas.idpreguntas','=','respuestas.idpregunta')
+        -> join('clientes','preguntas.idcliente','=','clientes.idclientes')
+        -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
+        -> where('preguntas.idpreguntas','=',$request->input('idpreguntaadmin'))
+        ->get();
+
+        $nombre = array('nombre'=>$respuestas[0]->nombre);
+        $pregunta = array('pregunta'=>$respuestas[0]->descripcion);
+        $respuesta = array('respuesta'=>$respuestas[0]->respuesta);
+        $fromEmail=$respuestas[0]->correo;
+        $fromName = $respuestas[0]->nombre;
+
+          Mail::send('mail2', $nombre+$pregunta+$respuesta, function($message) use ($fromEmail, $fromName) {
+            $message->to($fromEmail, $fromName)->subject
+            ('SOPORTE SEVENSOFT');
+             $message->from('sevensoft.soporte@gmail.com','Soporte Sevensoft');
+             });
+            
 
     }
 

@@ -15,13 +15,14 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Cliente</span></li>
-      <li><a href="../preguntastrabajador">Preguntas</a></li>
-      <li><a href="https://instagram.com/plavookac">Descargas</a></li>
-      <li><a href="../ticketsoporte">Tickets</a></li>
+      <li><a href="/verrespuesta">Preguntas</a></li>
+      <li><a href="/descargacliente">Descargas</a></li>
+      <li><a href="/tickets">Tickets</a></li>
     </ul>
   </div>
   <div id='center' class="main center">
     <div class="mainInner">
+
       <div>SEVENSOFT CLIENTE</div>
       <a href="/login">Cerrar Sesión</a>
     </div>

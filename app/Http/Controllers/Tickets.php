@@ -96,20 +96,7 @@ class Tickets extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function correo($id){
-        DB::enableQueryLog();
-        $correos=\DB::table('tickets')
-        ->select(DB::raw('usuarios.`correo` as correo'))
-        -> join('clientes','tickets.idclientes','=','clientes.idclientes')
-        -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
-        ->where('tickets.idtickets','=',$id)
-        ->get();
-        foreach ($correo as $k) {
-            return $k->correo;
-            # code...
-        }
-
-    }
+  
     public function update(Request $request, $id)
     {
       //  DB::enableQueryLog();

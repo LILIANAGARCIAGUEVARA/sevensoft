@@ -43,7 +43,7 @@
               <th  scope="col">CURP</th>
               <th  scope="col">TELEFONO</th>
               <th  scope="col">DIRECCIÓN</th>
-              <th  scope="col">EDAD</th>
+              <th  scope="col">FECHA NACIMIENTO</th>
               <th  scope="col">CORREO</th>
             
                <th scope="col">ACCIONES</th>
@@ -59,7 +59,7 @@
               <td>{{$user->curp}}</td>
               <td>{{$user->telefono}}</td>
               <td>{{$user->direccion}}</td>
-              <td>{{$user->edad}}</td>
+              <td>{{$user->fecha_nac}}</td>
               <td>{{$user->correo}}</td>
              
               

@@ -15,10 +15,10 @@
   </label>
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li>Liliana García Guevara <span>Administrador</span></li>
-      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+      <li>Liliana García Guevara <span>Cliente</span></li>
+      <li><a href="/verrespuesta">Preguntas</a></li>
+      <li><a href="/descargacliente">Descargas</a></li>
+      <li><a href="/tickets">Tickets</a></li>
     </ul>
   </div>
 

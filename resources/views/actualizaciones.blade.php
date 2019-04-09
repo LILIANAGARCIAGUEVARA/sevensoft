@@ -24,9 +24,9 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Administrador</span></li>
-      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+      <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
+      <li><a href="/formularioTrabajador"  target="_blank">Configurar usuario</a></li>
+      <li><a href="/actualizaciones"  target="_blank">Subir actualización</a></li>
     </ul>
   </div>
 
@@ -42,21 +42,19 @@
 			
 					<div class="col-3">
 						<label>Versión</label>
-						<input type="text" class="form-control" name="versiones" required ng-model="actualizacion.versiones" />
+						<input type="text" class="form-control" name="versiones" required ng-model="actualizacion.versiones" ng-pattern="/^[1-9.]*$/" onchange="return validaNum(this)"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.versiones.$error.versiones"> Campo version es requerido</span>
 					</div>
 
 					<div class="col-9">
 						<label>Información</label>
-						<input type="text" class="form-control" name="informacion" required onchange="return validatexto(this)"
-						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.informacion"/>
+						<input type="text" class="form-control" name="informacion" required ng-model="actualizacion.informacion"/>
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.informacion.$error.informacion"> Campo informacion es requerido</span>
 					</div>
 
 					<div class="col-7">
 						<label>Ruta</label>
-						<input type="text" class="form-control" name="ruta" required
-						ng-pattern="/^[a-zA-Z\s-ZñÑáéíóúÁÉÍÓÚ\s]*$/"  ng-model="actualizacion.ruta" />
+						<input type="text" class="form-control" name="ruta" required ng-model="actualizacion.ruta" />
 						<span ng-show="frmActualizacion.$dirty && frmActualizacion.ruta.$error.ruta"> Campo ruta es requerido</span>
 					</div>
 
@@ -95,8 +93,8 @@
 						<td>{{$act->informacion}}</td>
 						<td>{{$act->ruta}}</td>
 						
-						<td><input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$act->idDescargas}})" width="40" height="40">
-						<a href="{{url('/editaractualizacion/'.encrypt($act->idDescargas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="40" height="40"></td></a>
+						<td><input style="padding-right: 5px;" type=image src="{{asset('fondos/borrar.png')}}" ng-click="eliminar({{$act->idDescargas}})" width="30" height="30">
+						<a href="{{url('/editaractualizacion/'.encrypt($act->idDescargas))}}"><input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}" width="30" height="30"></td></a>
 						
 						
 					</tr>
@@ -111,6 +109,16 @@
 </body>
 </html>
 
+<script type="text/javascript">
+ function validaNum(elemento)
+ {
+  if (!/^([1-9.])*$/.test(elemento.value)){
+      alert("Solo se permiten números y puntos");
+      elemento.value = '';
+  }
+}
+</script>
+
 <script>
 	var app=angular.module('app',[]);
 		app.controller('ctrl', function($scope,$http,$filter){
@@ -120,10 +128,11 @@
 
 		 $scope.guardar=function(){
 		 	$scope.actualizacion.fecha=$filter('date')($scope.date,'yyyy-MM-d hh:mm:ss');
-	        $http.post('/hola',$scope.actualizacion).then(
-			
+	        $http.post('/agregaractualizacion',$scope.actualizacion).then(
 			function(response){
+				alert('Se agregaron los datos correctamente');
 				window.location.href='{{url("/actualizaciones")}}';
+
 		}, function(errorResponse){
 			alert('Error al guardar los datos');
 	});
