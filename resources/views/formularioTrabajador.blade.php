@@ -52,7 +52,7 @@
 	    		 <span ng-show="frmTrabajador.telefono.$dirty && frmTrabajador.telefono.$error.required"> Campo requerido<br>Longitud 10 caracteres </span>
                  <br>
 
-	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="18" minlength="18" required onchange="return validaCurpRFC(this)" />
+	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="14" minlength="18" required onchange="return validaRFC(this)" />
 	    		 <span ng-show="frmTrabajador.rfc.$dirty && frmTrabajador.rfc.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
 
 
@@ -111,7 +111,7 @@
 <script type="text/javascript">
  function validatext(elemento)
  {
-  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ# ]{15,45})*$/.test(elemento.value)){
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ#, ]{15,45})*$/.test(elemento.value)){
       alert("este espacio debe contener al menos 15 caracteres");
       elemento.value = '';
   }
@@ -123,6 +123,16 @@
  {
   if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{8,45})*$/.test(elemento.value)){
       alert("este espacio debe contener al menos 8 caracteres. solo se permiten letras y numeros");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validaRFC(elemento)
+ {
+  if (!/^([0-9A-Z]{14})*$/.test(elemento.value)){
+      alert("Solo se permiten letras Mayusculas y números sin espacios,este espacio debe contener 14 caracteres");
       elemento.value = '';
   }
 }

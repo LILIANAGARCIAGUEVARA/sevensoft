@@ -74,8 +74,8 @@
 
             <div>
                 <label>RFC:</label>
-                <input class="form-control"  type="text" name="rfcModificar" ng-model="usuarioEditado.rfcModificar" onchange="return validaCurpRFC(this)" maxlength="18"  required>
-                <span ng-show="frm.rfcModificar.$dirty && frm.rfcModificar.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
+                <input class="form-control"  type="text" name="rfcModificar" ng-model="usuarioEditado.rfcModificar" onchange="return validaRFC(this)" maxlength="14"  required>
+                <span ng-show="frm.rfcModificar.$dirty && frm.rfcModificar.$error.required"> Campo requerido <br>Longitud 14 caracteres </span> <br>
             </div>
 
 
@@ -142,9 +142,19 @@
 </script>
 
 <script type="text/javascript">
+ function validaRFC(elemento)
+ {
+  if (!/^([0-9A-Z]{14})*$/.test(elemento.value)){
+      alert("Solo se permiten letras Mayusculas y números sin espacios,este espacio debe contener 14 caracteres");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
  function validatext(elemento)
  {
-  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ# ]{15,45})*$/.test(elemento.value)){
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ#, ]{15,45})*$/.test(elemento.value)){
       alert("este espacio debe contener al menos 15 caracteres");
       elemento.value = '';
   }
@@ -173,8 +183,8 @@
    	     {
 
  
-             fn=new Date(window.fecha_nac);
-             fn.setDate(fn.getDate()+1);
+             /*fn=new Date(window.fecha_nac);
+             fn.setDate(fn.getDate()+1);*/
 
             $scope.usuarioEditado={};
      
@@ -192,7 +202,7 @@
             curpModificar:window.curp,
             telefonoModificar:window.telefono,
             rfcModificar:window.rfc,
-            edad:fn
+            edad:new Date(window.fecha_nac)
             }
 
 

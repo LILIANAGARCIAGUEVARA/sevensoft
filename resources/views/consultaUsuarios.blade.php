@@ -59,7 +59,7 @@
               <td>{{$user->curp}}</td>
               <td>{{$user->telefono}}</td>
               <td>{{$user->direccion}}</td>
-              <td>{{$user->fecha_nac}}</td>
+              <td>{{date("d-m-Y",strtotime($user->fecha_nac."- 1 days"))}}</td>
               <td>{{$user->correo}}</td>
              
               
