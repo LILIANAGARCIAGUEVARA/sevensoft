@@ -93,8 +93,8 @@ class Login extends Controller
 
     public function login($usuario,$contrasena)
     {
-
-        $datos = DB::table('Usuarios')->where('correo',$usuario)->where('contraseña',$contrasena)->get();
+       $contraseña=decrypt($contrasena);
+        $datos = DB::table('Usuarios')->where('correo',$usuario)->where('contraseña',$$contraseña)->get();
         return view('control',compact('datos'));
     }
 

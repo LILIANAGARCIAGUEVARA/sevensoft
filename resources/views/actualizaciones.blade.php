@@ -112,7 +112,7 @@
 <script type="text/javascript">
  function validaNum(elemento)
  {
-  if (!/^([1-9.])*$/.test(elemento.value)){
+  if (!/^([0-9.])*$/.test(elemento.value)){
       alert("Solo se permiten números y puntos");
       elemento.value = '';
   }
@@ -161,7 +161,7 @@
 <script type="text/javascript">
  function validatexto(elemento)
  {
-  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ. ])*$/.test(elemento.value)){
       alert("Solo se permiten letras");
       elemento.value = '';
   }
