@@ -77,7 +77,9 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
 
+          $contraseña=encrypt($request->input('contrasenaUser'));
          if($datos=\DB::table('trabajadores')
             ->where('curp', '=' ,$request->input('curpModificar'))
             ->where('trabajadores.idusuarios','!=',$id)
@@ -100,12 +102,13 @@ class UsuarioController extends Controller
                 return 2;
             }
         else{
+
               $format="Y-m-d";
              
               \DB::table('trabajadores')
               ->join('usuarios','trabajadores.idusuarios',"=","usuarios.idusuarios")
               ->where('trabajadores.idusuarios',$id)
-              ->update(['correo'=>$request->input('correoModificado'), 'contraseña'=>$request->input('contrasenaUser'),'nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido'),'fecha_nac'=>date_format(date_create($request->input('edad')),$format),'direccion'=>$request->input('domicilioModificar'),'curp'=>$request->input('curpModificar'),'rfc'=>$request->input('rfcModificar'),'telefono'=>$request->input('telefonoModificar')]);
+              ->update(['correo'=>$request->input('correoModificado'), 'contraseña'=>$contraseña,'nombre'=>$request->input('nombre'), 'apellido'=>$request->input('apellido'),'fecha_nac'=>date_format(date_create($request->input('edad')),$format),'direccion'=>$request->input('domicilioModificar'),'curp'=>$request->input('curpModificar'),'rfc'=>$request->input('rfcModificar'),'telefono'=>$request->input('telefonoModificar')]);
 
                 
                  return 3;
@@ -130,7 +133,7 @@ class UsuarioController extends Controller
       public function consulta()
     {
          $consulta=\DB::table('trabajadores')
-         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`,direccion,rfc,TIMESTAMPDIFF(YEAR,fecha_nac,CURDATE())  AS edad,telefono,curp'))
+         ->select(DB::raw('idtrabajadores,nombre,apellido,usuarios.`correo`,usuarios.`contraseña`,direccion,rfc,fecha_nac,telefono,curp'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->get();
          return view('consultaUsuarios',compact('consulta'));
@@ -140,11 +143,13 @@ class UsuarioController extends Controller
      public function datosModificar($id)
     {
          $idDM=decrypt($id);
+
         $modificarUsuarios=\DB::table('trabajadores')
          ->select(DB::raw('idtrabajadores,nombre,trabajadores.`idusuarios`,direccion,rfc,telefono,curp,apellido,fecha_nac,usuarios.`correo`,usuarios.`contraseña`'))
         ->join('usuarios','usuarios.idusuarios','=','trabajadores.idusuarios')
         ->where('idtrabajadores',$idDM)
         ->get();
+
         return view('modificarUsuarios',compact('modificarUsuarios'));
     }
 

@@ -44,8 +44,8 @@
 					</div>
 				
 					<div class="form-group">
-
-						<input type="submit" value="Login" class="btn float-right login_btn" ng-click="entrar()">
+					
+				<input type="submit" value="Login" class="btn float-right login_btn" ng-click="entrar()" >
 					</div>
 				</form>
 			</div>
