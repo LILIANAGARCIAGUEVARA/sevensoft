@@ -9,20 +9,25 @@
 	    		<h1>Registrarse</h1>
 	    		<form name="frmUsuarios">
 
-	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="cliente.nombre"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
+	   			<input type="text" name="nombre" placeholder="Nombre"  ng-model="cliente.nombre"  required maxlength="25" onchange="return validatexto(this)"/>
+	   			<span ng-show="frmUsuarios.nombre.$dirty && frmUsuarios.nombre.$error.required" style="color: red;"> Campo requerido<br>Longitud de 4 a 25 caracteres </span> 
+                 <br>
 	   			
-				<input type="text" name="apellidos" placeholder="Apellidos"  ng-model="cliente.apellido"  required ng-pattern="/^[a-zA-Z\sZñÑáéíóúÁÉÍÓÚ]*$/" onchange="return validatexto(this)"/>
+				<input type="text" name="apellidos" placeholder="Apellidos" ng-model="cliente.apellido"  required  maxlength="25" onchange="return validatexto(this)"/>
+	    		 <span ng-show="frmUsuarios.apellidos.$dirty && frmUsuarios.apellidos.$error.required" style="color: red;"> Campo requerido<br>Longitud de 4 a 25 caracteres </span> 
+                 <br>
 
 
 	    		<input type="email" name="email" placeholder="E-mail" ng-model="cliente.correo"  required />
+	    		 <span ng-show="frmUsuarios.email.$dirty && frmUsuarios.email.$error.required" style="color: red;"> Campo requerido </span>
+                <span ng-show="frmUsuarios.email.$error.email" style="color: red;"> Formato e-mail incorrecto</span> 
 	 
 
-	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena" maxlength="20" required/>
+	    		<input type="password" name="password" placeholder="Password" ng-model="cliente.contrasena" maxlength="25" required onchange="return validacontra(this)" required/>
+	    	    <span ng-show="frmUsuarios.password.$dirty && frmUsuarios.password.$error.required" style="color: red;"> Campo requerido </span> <br>
 
 
 	    		
-	    
-	    
 	    		<input type="submit" name="signup_submit" value="Registrar" ng-disabled="!frmUsuarios.$valid" ng-click="guardar()"/>
 	    		<div class="d-flex justify-content-center links">
 					¿Ya Tienes una Cuenta?<a href="/login">Login</a>
@@ -35,31 +40,22 @@
 	</div>
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
  function validatexto(elemento)
  {
-  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ])*$/.test(elemento.value)){
-      alert("Solo se permiten letras");
+  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{4,25})*$/.test(elemento.value)){
+      alert("Solo se permiten letras, Longitud de 4 a 25 caracteres");
       elemento.value = '';
   }
 }
 </script>
 
-<script type="text/javascript">
- function validaNumLet(elemento)
- {
-  if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ1-9])*$/.test(elemento.value)){
-      alert("Solo se permiten letras sin espacios");
-      elemento.value = '';
-  }
-}
-</script>
 
 <script type="text/javascript">
- function validaNum(elemento)
+ function validacontra(elemento)
  {
-  if (!/^([1-9])*$/.test(elemento.value)){
-      alert("Solo se permiten números");
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{8,45})*$/.test(elemento.value)){
+      alert("este espacio debe contener al menos 8 caracteres. solo se permiten letras y numeros");
       elemento.value = '';
   }
 }
