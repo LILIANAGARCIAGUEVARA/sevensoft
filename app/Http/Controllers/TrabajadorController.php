@@ -66,7 +66,7 @@ class TrabajadorController extends Controller
 
         else
            {
-             $format="Y-m-d";
+            
              $data->correo = $request->input('correo');
              $data->contraseña = $contraseña;
              $data->tipo =1;
@@ -75,7 +75,7 @@ class TrabajadorController extends Controller
 
 
             $datos = new Trabajadore();
-
+            $format="Y-m-d";
             $datos->nombre = $request->input('nombre');
             $datos->apellido = $request->input('apellidos');
             $datos->direccion = $request->input('domicilio');

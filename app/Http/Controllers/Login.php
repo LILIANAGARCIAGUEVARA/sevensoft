@@ -96,9 +96,7 @@ class Login extends Controller
     {
        
 
-        (foreach $data as $datos)
-
-       /* $datos = DB::table('Usuarios')->where('correo',$usuario)->where(decrypt('contraseña'),$contrasena)->get();
+       $datos = DB::table('Usuarios')->where('correo',$usuario)->where('contraseña',$contrasena)->get();
 
       
        
