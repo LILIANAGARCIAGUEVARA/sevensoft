@@ -17,6 +17,7 @@
       <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
       <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
       <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+      <li><a href="/index">Cerrar Sesión</a></li>
     </ul>
   </div>
 	<link rel="stylesheet" type="text/css" href="/css/styleFormularioTrabajador.css">

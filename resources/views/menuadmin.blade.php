@@ -29,13 +29,14 @@
       <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
       <li><a href="/formularioTrabajador">Configurar usuario</a></li>
       <li><a href="/actualizaciones">Subir actualización</a></li>
+      <li><a href="/index">Cerrar Sesión</a></li>
     </ul>
   </div>
   <div id='center' class="main center">
     <div class="mainInner">
       <div>SEVENSOFT ADMINISTRACIÓN</div>
-      <a href="/login">Cerrar Sesión</a>
     </div>
+
 
 
 

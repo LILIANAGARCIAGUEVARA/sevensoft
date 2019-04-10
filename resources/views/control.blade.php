@@ -15,7 +15,7 @@
    	     {
    	     	$scope.datos={!! json_encode($datos->toArray()) !!};
        
-
+          
    	     if($scope.datos.length>0){
    	     		//existe
             if($scope.datos[0].tipo == 1){

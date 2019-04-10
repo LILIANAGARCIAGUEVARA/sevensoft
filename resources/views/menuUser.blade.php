@@ -18,13 +18,13 @@
       <li><a href="/verrespuesta">Preguntas</a></li>
       <li><a href="/descargacliente">Descargas</a></li>
       <li><a href="/tickets">Tickets</a></li>
+      <li><a href="/index">Cerrar Sesión</a></li>
     </ul>
   </div>
   <div id='center' class="main center">
     <div class="mainInner">
 
       <div>SEVENSOFT CLIENTE</div>
-      <a href="/login">Cerrar Sesión</a>
     </div>
 
     @section('footer')
