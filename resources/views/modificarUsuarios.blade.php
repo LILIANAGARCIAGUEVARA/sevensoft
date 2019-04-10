@@ -5,6 +5,22 @@
 @section('header')
    @parent
 <head> <link href="/css/bootstrap.min.css" rel="stylesheet"></head>
+
+<div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li>Liliana García Guevara <span>Administrador</span></li>
+      <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
+      <li><a href="/consultaUsuarios">Configurar usuario</a></li>
+      <li><a href="/actualizaciones">Subir actualización</a></li>
+    </ul>
+  </div>
    <div ng-controller="ctrl">
     <div id="formulario">
       <h1>USUARIOS</h1>

@@ -69,7 +69,7 @@ class TrabajadorController extends Controller
             
              $data->correo = $request->input('correo');
              $data->contraseña = $contraseña;
-             $data->tipo =1;
+             $data->tipo =2;
              $data->save();
              $id=DB::getPdo()->lastInsertId();
 
