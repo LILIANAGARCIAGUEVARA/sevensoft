@@ -107,7 +107,7 @@ class Login extends Controller
        $datos = DB::table('Usuarios')
        ->where('correo',$usuario)
        ->get();
-     
+        
        if($vaso2==$contrasena)
        {
 

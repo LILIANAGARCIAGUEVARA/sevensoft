@@ -62,7 +62,7 @@
 						
 					</tr>
 				</thead>
-				<tbody ng-repeat="resp in pre | filter:buscar as result"">
+				<tbody ng-repeat="resp in pre | filter:buscar as result">
 					<tr>
 						<td scope="row" >@{{ resp.descripcion }}</td>
 						<td>@{{ resp.respuesta }}</td>
