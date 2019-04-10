@@ -126,6 +126,7 @@ Route::get('/modificarTicket/{id}','Tickets@consulta');
 Route::post('/actualizarticket/{id}','Tickets@update');
 
 Route::get('/menuadmin/{idusuarios}', function () {
+   
     return view('menuadmin');
 });
 

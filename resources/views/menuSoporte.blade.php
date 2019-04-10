@@ -16,6 +16,7 @@
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Soporte</span></li>
       <li><a href="/ticketsoporte">Tickets</a></li>
+      <li><a href="/index">Cerrar Sesión</a></li>
     </ul>
   </div>
   <div id='center' class="main center">

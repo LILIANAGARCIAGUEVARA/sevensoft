@@ -22,9 +22,7 @@
 			<div class="card-header">
 				<h3>Ingresar</h3>
 				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
+				
 				</div>
 			</div>
 			<div class="card-body">
@@ -44,7 +42,6 @@
 					</div>
 				
 					<div class="form-group">
-					
 				<input type="submit" value="Login" class="btn float-right login_btn" ng-click="entrar()" >
 					</div>
 				</form>
@@ -53,7 +50,9 @@
 				<div class="d-flex justify-content-center links">
 					¿No tienes una Cuenta?<a href="/formularioUsuarios">Registrate</a>
 				</div>
-				
+				<div class="d-flex justify-content-center links">
+					<a href="/index">Pagina Principal</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -67,6 +66,7 @@
    	     	{
    	     		$scope.datos={};
             	$scope.entrar=function(){
+            		
                 	window.location.href = `{{URL::to("/control")}}`+`/`+$scope.datos.usuario+`/`+$scope.datos.contrasena;
             	};
             });

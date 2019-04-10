@@ -15,9 +15,12 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Administrador</span></li>
+
       <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
       <li><a href="/consultaUsuarios">Configurar usuario</a></li>
       <li><a href="/actualizaciones">Subir actualización</a></li>
+      <li><a href="/index">Cerrar Sesión</a></li>
+
     </ul>
   </div>
 	<link rel="stylesheet" type="text/css" href="/css/styleFormularioTrabajador.css">
