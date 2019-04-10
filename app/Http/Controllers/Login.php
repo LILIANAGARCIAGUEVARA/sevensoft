@@ -115,6 +115,10 @@ class Login extends Controller
 
           $contra=$vaso2;
        }
+       
+       else{
+          return view('Login');
+       }
       
     
         return view('control',compact('datos','contra'));
