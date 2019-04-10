@@ -89,6 +89,9 @@ class Login extends Controller
         $consultarUsuario=\DB::table('usuarios')
         ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
         ->get(); 
+
+  
+
         return view ('login',compact('consultarUsuario'));
     }
 
