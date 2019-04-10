@@ -69,20 +69,25 @@ class TrabajadorController extends Controller
             
              $data->correo = $request->input('correo');
              $data->contraseña = $contraseña;
-             $data->tipo =1;
+             $data->tipo =2;
              $data->save();
              $id=DB::getPdo()->lastInsertId();
 
-
+             
             $datos = new Trabajadore();
             $format="Y-m-d";
+            $fechaNaci=date_format(date_create($request->input('fechaNac')),$format);
+            $nuevafecha = strtotime ( '+1 day' , strtotime ( $fechaNaci ) ) ;
+            $nuevafecha = date ( 'Y-m-d' , $nuevafecha );
             $datos->nombre = $request->input('nombre');
             $datos->apellido = $request->input('apellidos');
             $datos->direccion = $request->input('domicilio');
-            $datos->fecha_nac = date_format(date_create($request->input('fechaNac')),$format);
+            $datos->fecha_nac =  $nuevafecha;
             $datos->rfc = $request->input('rfc');
             $datos->curp = $request->input('curp');
             $datos->telefono= $request->input('telefono');
+
+            
 
             $datos->fecharegistro =$request->get('fechaRegistro');;
             $datos->idusuarios = $data->id;

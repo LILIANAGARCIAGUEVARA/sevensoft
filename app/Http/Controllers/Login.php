@@ -98,6 +98,8 @@ class Login extends Controller
     public function login(Request $request,$usuario,$contrasena)
     {
        
+
+       
       $vaso=DB::table('Usuarios')
       ->select(DB::raw('contraseña'))
       ->where('correo',$usuario)
@@ -112,10 +114,15 @@ class Login extends Controller
        {
 
           $contra=$vaso2;
+
+       }
+       
+       else{
+          return view('Login');
        }
       
-       
       
+    
         return view('control',compact('datos','contra'));
     }
 

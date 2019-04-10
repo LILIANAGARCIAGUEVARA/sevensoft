@@ -4,7 +4,8 @@
 
 	@parent
 
-  <div class="header"></div>
+  
+<div class="header"></div>
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="spinner diagonal part-1"></div>
@@ -14,10 +15,12 @@
   <div id="sidebarMenu">
     <ul class="sidebarMenuInner">
       <li>Liliana García Guevara <span>Administrador</span></li>
-      <li><a href="https://vanila.io" target="_blank">Preguntas de Clientes</a></li>
-      <li><a href="https://instagram.com/plavookac" target="_blank">Configurar usuario</a></li>
-      <li><a href="https://twitter.com/plavookac" target="_blank">Subir actualización</a></li>
+
+      <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
+      <li><a href="/consultaUsuarios">Configurar usuario</a></li>
+      <li><a href="/actualizaciones">Subir actualización</a></li>
       <li><a href="/index">Cerrar Sesión</a></li>
+
     </ul>
   </div>
 	<link rel="stylesheet" type="text/css" href="/css/styleFormularioTrabajador.css">
@@ -53,7 +56,9 @@
 	    		 <span ng-show="frmTrabajador.telefono.$dirty && frmTrabajador.telefono.$error.required"> Campo requerido<br>Longitud 10 caracteres </span>
                  <br>
 
-	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="18" minlength="18" required onchange="return validaCurpRFC(this)" />
+
+	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="14"  required onchange="return validaRFC(this)" />
+
 	    		 <span ng-show="frmTrabajador.rfc.$dirty && frmTrabajador.rfc.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
 
 
@@ -112,7 +117,7 @@
 <script type="text/javascript">
  function validatext(elemento)
  {
-  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ# ]{15,45})*$/.test(elemento.value)){
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ#, ]{15,45})*$/.test(elemento.value)){
       alert("este espacio debe contener al menos 15 caracteres");
       elemento.value = '';
   }
@@ -124,6 +129,16 @@
  {
   if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{8,45})*$/.test(elemento.value)){
       alert("este espacio debe contener al menos 8 caracteres. solo se permiten letras y numeros");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
+ function validaRFC(elemento)
+ {
+  if (!/^([0-9A-Z]{14})*$/.test(elemento.value)){
+      alert("Solo se permiten letras Mayusculas y números sin espacios,este espacio debe contener 14 caracteres");
       elemento.value = '';
   }
 }

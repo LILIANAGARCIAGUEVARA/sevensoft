@@ -5,6 +5,22 @@
 @section('header')
    @parent
 <head> <link href="/css/bootstrap.min.css" rel="stylesheet"></head>
+
+<div class="header"></div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <div id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li>Liliana García Guevara <span>Administrador</span></li>
+      <li><a href="/preguntastrabajador">Preguntas de Clientes</a></li>
+      <li><a href="/consultaUsuarios">Configurar usuario</a></li>
+      <li><a href="/actualizaciones">Subir actualización</a></li>
+    </ul>
+  </div>
    <div ng-controller="ctrl">
     <div id="formulario">
       <h1>USUARIOS</h1>
@@ -74,8 +90,8 @@
 
             <div>
                 <label>RFC:</label>
-                <input class="form-control"  type="text" name="rfcModificar" ng-model="usuarioEditado.rfcModificar" onchange="return validaCurpRFC(this)" maxlength="18"  required>
-                <span ng-show="frm.rfcModificar.$dirty && frm.rfcModificar.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
+                <input class="form-control"  type="text" name="rfcModificar" ng-model="usuarioEditado.rfcModificar" onchange="return validaRFC(this)" maxlength="14"  required>
+                <span ng-show="frm.rfcModificar.$dirty && frm.rfcModificar.$error.required"> Campo requerido <br>Longitud 14 caracteres </span> <br>
             </div>
 
 
@@ -143,9 +159,19 @@
 </script>
 
 <script type="text/javascript">
+ function validaRFC(elemento)
+ {
+  if (!/^([0-9A-Z]{14})*$/.test(elemento.value)){
+      alert("Solo se permiten letras Mayusculas y números sin espacios,este espacio debe contener 14 caracteres");
+      elemento.value = '';
+  }
+}
+</script>
+
+<script type="text/javascript">
  function validatext(elemento)
  {
-  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ# ]{15,45})*$/.test(elemento.value)){
+  if (!/^([0-9a-zA-Zá-úñÑáéíóúÁÉÍÓÚ#, ]{15,45})*$/.test(elemento.value)){
       alert("este espacio debe contener al menos 15 caracteres");
       elemento.value = '';
   }
@@ -174,10 +200,11 @@
    	     {
 
  
-            /* fn=new Date(window.fecha_nac);
-             fn.setDate(fn.getDate()-1);
+             /*fn=new Date(window.fecha_nac);
+             fn.setDate(fn.getDate()+1);*/
 
-            $scope.usuarioEditado={};*/
+
+            $scope.usuarioEditado={};
      
 
       
