@@ -96,7 +96,7 @@
                         </div>
                 </div>
 
-                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-success" ng-disabled="!frmRespuestas.$valid || date<fechahoy && date<=fecha" ng-click="guardar()">GUARDAR
+                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-success" ng-disabled="!frmRespuestas.$valid || date<fechacomprofinal || date>fechaseismeses" ng-click="guardar()">GUARDAR
                 </button> 
 
                 <a href="/ticketsoporte">
@@ -121,6 +121,17 @@
         $scope.apellido=window.apellido;
         $scope.fecha=window.fecha;
         $scope.fechanew=$scope.fecha.split(" ");
+        $scope.correo=window.correo;
+        $scope.ticketsoporte=window.ticketsoporte;
+        fechacom=new Date($scope.fechahoy);
+        var day=fechacom.getDate();
+        var month=fechacom.getMonth()+1;
+        var year=fechacom.getFullYear();
+        $scope.fechacompro= month + '/' + day + '/' + year;
+        $scope.fechacomprofinal = new Date($scope.fechacompro);
+        $scope.fechaseismeses = new Date ($scope.ticketsoporte);
+        $scope.ticket.observaciones=window.observaciones;
+        $scope.fechacompromiso=window.fechacompromiso;
         $scope.correo=window.correo;
 
          $scope.guardar=function(){

@@ -135,21 +135,9 @@
         var day=fechacom.getDate();
         var month=fechacom.getMonth()+1;
         var year=fechacom.getFullYear();
-
-
-       // $scope.jiji='04/09/2019';
-        //$scope.jaja = new Date($scope.jiji);
-
-        //alert($scope.jaja);
-
         $scope.fechacompro= month + '/' + day + '/' + year;
         $scope.fechacomprofinal = new Date($scope.fechacompro);
-        //alert($scope.fechacomprofinal);
-
         $scope.fechaseismeses = new Date ($scope.ticketsoporte);
-        //alert($scope.fechaseismeses);
-        //alert($scope.fechacompro);
-        //alert($scope.ticketsoporte);
         $scope.ticket.observaciones=window.observaciones;
         $scope.fechacompromiso=window.fechacompromiso;
         $scope.correo=window.correo;

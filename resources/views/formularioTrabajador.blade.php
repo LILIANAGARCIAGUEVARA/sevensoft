@@ -56,7 +56,9 @@
 	    		 <span ng-show="frmTrabajador.telefono.$dirty && frmTrabajador.telefono.$error.required"> Campo requerido<br>Longitud 10 caracteres </span>
                  <br>
 
+
 	    		<input type="text" name="rfc" placeholder="RFC" ng-model="trabajador.rfc" maxlength="14"  required onchange="return validaRFC(this)" />
+
 	    		 <span ng-show="frmTrabajador.rfc.$dirty && frmTrabajador.rfc.$error.required"> Campo requerido <br>Longitud 18 caracteres </span> <br>
 
 
