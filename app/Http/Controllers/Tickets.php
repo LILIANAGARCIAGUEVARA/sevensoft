@@ -35,6 +35,7 @@ class Tickets extends Controller
        public function llenarticket($id)
     {
 
+        $idd=decrypt($id);
         $ticketsoporte= Carbon::now()->addMonths(6)->format('d/m/Y');
    
 
@@ -42,7 +43,7 @@ class Tickets extends Controller
         ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`observaciones`,tickets.`fechacompromiso`,tickets.`fecha`,tickets.`status`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo`'))
         -> join('clientes','tickets.idclientes','=','clientes.idclientes')
         -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
-        ->where('tickets.idtickets','=',$id)
+        ->where('tickets.idtickets','=',$idd)
         ->get();
         
         return view('modificarTicketSoporte', compact('ticketsop','ticketsoporte'));
@@ -52,15 +53,16 @@ class Tickets extends Controller
 
     public function consulta($id)
     {
-
+        $idd=decrypt($id);
+        $ticketsoporte= Carbon::now()->addMonths(6)->format('d/m/Y');
         $ticketsop=\DB::table('tickets')
         ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`fecha`,tickets.`status`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo`'))
         -> join('clientes','tickets.idclientes','=','clientes.idclientes')
         -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
-        ->where('tickets.idtickets','=',$id)
+        ->where('tickets.idtickets','=',$idd)
         ->get();
 
-        return view('ticket', compact('ticketsop'));
+        return view('ticket', compact('ticketsop','ticketsoporte'));
         
     }
 
@@ -133,11 +135,45 @@ class Tickets extends Controller
 
         $data = array('obs'=>$request->input('observaciones'));
         $nombre = array('nombre'=>$soporte[0]->nombre);
+         $idtickets = array('idtickets'=>$soporte[0]->idtickets);
         $comp = array('comp'=>$soporte[0]->fechacompromiso);
         $fromEmail=$soporte[0]->correo;
         $fromName = $soporte[0]->nombre;
 
-          Mail::send('mail', $data+$comp+$nombre, function($message) use ($fromEmail, $fromName) {
+          Mail::send('mail', $data+$comp+$nombre+$idtickets, function($message) use ($fromEmail, $fromName) {
+            $message->to($fromEmail, $fromName)->subject
+            ('SOPORTE SEVENSOFT');
+             $message->from('sevensoft.soporte@gmail.com','Soporte Sevensoft');
+             });
+            
+   
+    }
+
+
+      public function modificarsoporte(Request $request, $id)
+    {
+      //  DB::enableQueryLog();
+        
+         $datosModificados=\DB::table('tickets')
+            ->where('idtickets',$id)
+            ->update(['observaciones'=>$request->input('observaciones'),'fechacompromiso'=>$request->input('fechacompromiso'),'status'=>'PENDIENTE']);
+
+
+        $soporte=\DB::table('tickets')
+        ->select(DB::raw('tickets.`idtickets`,tickets.`descripcion`,tickets.`fechacompromiso`, tickets.`fecha`,tickets.`status`,clientes.`nombre`,clientes.`apellido`,usuarios.`correo` as correo'))
+        -> join('clientes','tickets.idclientes','=','clientes.idclientes')
+        -> join('usuarios','usuarios.idusuarios','=','clientes.idusuario')
+        ->where('tickets.idtickets','=',$id)
+        ->get();
+
+        $data = array('obs'=>$request->input('observaciones'));
+        $nombre = array('nombre'=>$soporte[0]->nombre);
+        $idtickets = array('idtickets'=>$soporte[0]->idtickets);
+        $comp = array('comp'=>$soporte[0]->fechacompromiso);
+        $fromEmail=$soporte[0]->correo;
+        $fromName = $soporte[0]->nombre;
+
+          Mail::send('mail5', $data+$comp+$nombre+$idtickets, function($message) use ($fromEmail, $fromName) {
             $message->to($fromEmail, $fromName)->subject
             ('SOPORTE SEVENSOFT');
              $message->from('sevensoft.soporte@gmail.com','Soporte Sevensoft');

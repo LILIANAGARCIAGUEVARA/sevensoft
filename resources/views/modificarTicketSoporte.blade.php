@@ -149,7 +149,7 @@
        
          $scope.guardar=function(){
             $scope.ticket.fechacompromiso=$filter('date')($scope.date,'yyyy-MM-d');
-            $http.post('/actualizarticket/'+$scope.idtickets,$scope.ticket).then(
+            $http.post('/modificarticketsoporte/'+$scope.idtickets,$scope.ticket).then(
             
             function(response){
                

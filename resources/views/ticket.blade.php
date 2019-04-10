@@ -21,6 +21,7 @@
     window.apellido="<?php print_r($ticketsop[0]->apellido);?>";
     window.status="<?php print_r($ticketsop[0]->status);?>";
     window.correo="<?php print_r($ticketsop[0]->correo);?>";
+    window.ticketsoporte="<?php print_r($ticketsoporte);?>";
 </script>
 
 <body>
@@ -130,7 +131,6 @@
         $scope.fechacompro= month + '/' + day + '/' + year;
         $scope.fechacomprofinal = new Date($scope.fechacompro);
         $scope.fechaseismeses = new Date ($scope.ticketsoporte);
-        $scope.ticket.observaciones=window.observaciones;
         $scope.fechacompromiso=window.fechacompromiso;
         $scope.correo=window.correo;
 

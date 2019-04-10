@@ -57,10 +57,10 @@
 						<td>
 						
 
-							<a ng-show="'{{$tick->status}}'=='PENDIENTE'" href="/llenarticket/{{$tick->idtickets}}">
+							<a ng-show="'{{$tick->status}}'=='PENDIENTE'"  href="{{url('/llenarticket/'.encrypt($tick->idtickets))}}">
 							<input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}"  width="35" height="35"></a>
 
-							<a ng-show="'{{$tick->status}}'=='ABIERTO'" href="/modificarTicket/{{$tick->idtickets}}">
+							<a ng-show="'{{$tick->status}}'=='ABIERTO'" href="{{url('/modificarTicket/'.encrypt($tick->idtickets))}}">
 							<input style="padding-right: 5px;" type=image src="{{asset('fondos/agregar.png')}}"  width="35" height="35"></a>
 
 						</td>

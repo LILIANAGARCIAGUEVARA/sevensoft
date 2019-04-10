@@ -117,6 +117,9 @@ Route::get('/editaractualizacion/{id}','Descargas@preeditar');
 
 Route::get('/modificar/{id}','PreguntasAdmin@modificar');
 
+Route::post('/modificarticketsoporte/{id}','Tickets@modificarsoporte');
+
+
 Route::get('/llenarticket/{id}','Tickets@llenarticket');
 
 Route::post('/modificaract/{id}','Descargas@update');
