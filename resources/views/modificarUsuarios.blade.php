@@ -117,6 +117,7 @@
   if (!/^([a-zA-Zá-úñÑáéíóúÁÉÍÓÚ ]{3,25})*$/.test(elemento.value)){
       alert("Solo se permiten letras, Longitud de 3 a 25 caracteres");
       elemento.value = '';
+
   }
 }
 </script>
@@ -173,10 +174,10 @@
    	     {
 
  
-             fn=new Date(window.fecha_nac);
-             fn.setDate(fn.getDate()+1);
+            /* fn=new Date(window.fecha_nac);
+             fn.setDate(fn.getDate()-1);
 
-            $scope.usuarioEditado={};
+            $scope.usuarioEditado={};*/
      
 
       
@@ -192,7 +193,7 @@
             curpModificar:window.curp,
             telefonoModificar:window.telefono,
             rfcModificar:window.rfc,
-            edad:fn
+            edad:new Date(window.fecha_nac)
             }
 
 

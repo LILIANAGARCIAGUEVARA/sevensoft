@@ -89,14 +89,34 @@ class Login extends Controller
         $consultarUsuario=\DB::table('usuarios')
         ->select(DB::raw('idusuarios,correo,contraseña,tipo'))
         ->get(); 
+
+  
+
         return view ('login',compact('consultarUsuario'));
     }
 
     public function login(Request $request,$usuario,$contrasena)
     {
        
-        $datos = DB::table('Usuarios')->where('correo',$usuario)->where('contraseña',$contrasena)->get();
-        return view('control',compact('datos'));
+      $vaso=DB::table('Usuarios')
+      ->select(DB::raw('contraseña'))
+      ->where('correo',$usuario)
+      ->get();
+
+      $vaso2=decrypt($vaso[0]->contraseña);
+       $datos = DB::table('Usuarios')
+       ->where('correo',$usuario)
+       ->get();
+     
+       if($vaso2==$contrasena)
+       {
+
+          $contra=$vaso2;
+       }
+      
+       
+      
+        return view('control',compact('datos','contra'));
     }
 
 }

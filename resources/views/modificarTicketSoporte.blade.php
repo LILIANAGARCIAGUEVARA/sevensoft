@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
@@ -16,11 +17,14 @@
 <script type="text/javascript">
     window.idtickets="<?php print_r($ticketsop[0]->idtickets);?>";
     window.descripcion="<?php print_r($ticketsop[0]->descripcion);?>";
+    window.ticketsoporte="<?php print_r($ticketsoporte);?>";
     window.fecha="<?php print_r($ticketsop[0]->fecha);?>";
     window.nombre="<?php print_r($ticketsop[0]->nombre);?>";
     window.apellido="<?php print_r($ticketsop[0]->apellido);?>";
     window.status="<?php print_r($ticketsop[0]->status);?>";
     window.correo="<?php print_r($ticketsop[0]->correo);?>";
+    window.observaciones="<?php print_r($ticketsop[0]->observaciones);?>";
+    window.fechacompromiso="<?php print_r($ticketsop[0]->fechacompromiso);?>";
 </script>
 
 <body>
@@ -96,12 +100,14 @@
                         </div>
                 </div>
 
-                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-success" ng-disabled="!frmRespuestas.$valid || date<fechahoy && date<=fecha" ng-click="guardar()">GUARDAR
+                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-success" ng-disabled="!frmRespuestas.$valid || date<fechacomprofinal || date>fechaseismeses " ng-click="guardar()">GUARDAR
                 </button> 
 
                 <a href="/ticketsoporte">
                     <button type="button" style="margin: 40px 0px 10px 0px;"  class="btn btn-primary">REGRESAR</button>
                 </a>
+
+                <button  style="margin: 40px 30px 10px 20px;" type="button"   class="btn btn-success" ng-disabled="!frmRespuestas.$valid || date<fechahoy" ng-click="liberar(idtickets)">LIBERAR</button>
             </form>
          
         </div>
@@ -114,15 +120,45 @@
 <script>
     var app=angular.module('app',[]);
         app.controller('ctrl', function($scope,$http,$filter){
+        $scope.ticket={};
         $scope.descripcion=window.descripcion;
         $scope.fechahoy=new Date();
         $scope.idtickets=window.idtickets;
         $scope.nombre=window.nombre;
+        $scope.ticketsoporte=window.ticketsoporte;
         $scope.apellido=window.apellido;
+        $scope.fechacompromiso=window.fechacompromiso;
         $scope.fecha=window.fecha;
-        $scope.fechanew=$scope.fecha.split(" ");
-        $scope.correo=window.correo;
+        $scope.date= new Date($filter('date')($scope.fechacompromiso,'yyyy-MM-d'));
 
+        fechacom=new Date($scope.fechahoy);
+        var day=fechacom.getDate();
+        var month=fechacom.getMonth()+1;
+        var year=fechacom.getFullYear();
+
+
+       // $scope.jiji='04/09/2019';
+        //$scope.jaja = new Date($scope.jiji);
+
+        //alert($scope.jaja);
+
+        $scope.fechacompro= month + '/' + day + '/' + year;
+        $scope.fechacomprofinal = new Date($scope.fechacompro);
+        //alert($scope.fechacomprofinal);
+
+        $scope.fechaseismeses = new Date ($scope.ticketsoporte);
+        //alert($scope.fechaseismeses);
+        //alert($scope.fechacompro);
+        //alert($scope.ticketsoporte);
+        $scope.ticket.observaciones=window.observaciones;
+        $scope.fechacompromiso=window.fechacompromiso;
+        $scope.correo=window.correo;
+        
+
+
+
+        //alert($scope.ticketsoporte);
+       
          $scope.guardar=function(){
             $scope.ticket.fechacompromiso=$filter('date')($scope.date,'yyyy-MM-d');
             $http.post('/actualizarticket/'+$scope.idtickets,$scope.ticket).then(
@@ -139,9 +175,28 @@
             }
 
 
+            $scope.liberar=function(id){
+            if(confirm("¿Quieres liberar el ticket?")){
+            $http.post('/liberarticket/'+id).then(
+
+        function(response){
+            
+            alert('Se han liberado correctamente el ticket');
+            window.location.href='{{url("/ticketsoporte")}}';
+        
+
+    }, function(errorResponse){
+        alert('Error al eliminar los datos');
+})
+    }
+     $scope.ticket={};
+}       
+
         
       
         
     });
 </script>
+
+
 

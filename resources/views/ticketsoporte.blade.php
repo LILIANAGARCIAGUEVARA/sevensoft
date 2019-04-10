@@ -2,11 +2,12 @@
 <html ng-app="app">
 <head>
 	<title>SEVENSOFT</title>
-	<meta charset="utf-8" />
+	 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/css/style.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="/fondo0s/logo.png" type="image/x-icon">
+    <link href="/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="/fondos/logo.png" type="image/x-icon">
+    </script>
 	
 	
 </head>
@@ -30,15 +31,16 @@
  
 
 <div  id='center' class="main center" ng-controller="ctrl" style="margin: 8% 7% 0px 20%;">
-	<div class="container">
-			<h1>TICKETS</h1>
-			<br>
+    <div class="container">
+             <h1 style="padding-right: 15px;display: inline;padding-bottom: 15px;">TICKETS</h1><input style="padding-right: 15px;display: inline;" type=image src="{{asset('fondos/refrescar.png')}}" width="80" height="80">
+             <br><br>
 
 		<div style="padding: 30px 0px 0px 0px;">
 			<table class="table">
 				<thead class="thead-dark">
 					<tr> 	
 						<th scope="col">FECHA</th>
+						<th scope="col">F.COMPROMISO</th>
 						<th scope="col">DESCRIPCIÓN</th>
 						<th scope="col">STATUS</th>
 						<th scope="col" colspan="2">ACCIONES</th>
@@ -47,12 +49,21 @@
 				<tbody>
 					@foreach($ticketsop as $tick)
 					<tr>
-						<td>{{$tick->fecha}}</td>
+						<td>{{\Carbon\Carbon::parse($tick->fecha)->format('d/m/Y')}}</td>
+						<td>{{$tick->fechacompromiso}}</td>
 						<td>{{$tick->descripcion}}</td>
 						<td>{{$tick->status}}</td>
-						<td><a href="/modificarTicket/{{$tick->idtickets}}">
-							<input style="padding-right: 5px;" type=image src="{{asset('img/modificar.png')}}" width="40" height="40">
-						</a></td>
+
+						<td>
+						
+
+							<a ng-show="'{{$tick->status}}'=='PENDIENTE'" href="/llenarticket/{{$tick->idtickets}}">
+							<input style="padding-right: 5px;" type=image src="{{asset('fondos/editar.png')}}"  width="35" height="35"></a>
+
+							<a ng-show="'{{$tick->status}}'=='ABIERTO'" href="/modificarTicket/{{$tick->idtickets}}">
+							<input style="padding-right: 5px;" type=image src="{{asset('fondos/agregar.png')}}"  width="35" height="35"></a>
+
+						</td>
 						
 					</tr>
 					@endforeach
